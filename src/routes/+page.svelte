@@ -1,2 +1,11 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<script lang="ts">
+	import Blog from '$lib/blocks/home/Blog.svelte';
+	import Felix from '$lib/blocks/home/Felix.svelte';
+	import Hero from '$lib/blocks/home/Hero.svelte';
+	import Projects from '$lib/blocks/home/Projects.svelte';
+</script>
+
+<Hero></Hero>
+<Projects></Projects>
+<Felix></Felix>
+<Blog></Blog>
