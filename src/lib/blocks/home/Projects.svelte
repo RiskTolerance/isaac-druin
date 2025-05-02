@@ -22,8 +22,10 @@
 	];
 </script>
 
-<div class="container mx-auto">
-	<p>Projects</p>
+<div class="container mx-auto flex flex-col items-center gap-4">
+	<div class="flex w-full justify-start">
+		<p>Projects</p>
+	</div>
 	{#each projects as project}
 		<Project {...project}></Project>
 	{/each}
