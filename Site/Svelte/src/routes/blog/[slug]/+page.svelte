@@ -1,6 +1,8 @@
 <script lang="ts">
+	import type { PageData } from './$types';
+
+	let { data }: { data: PageData } = $props();
+	console.log(data);
 </script>
 
-<div>
-	<p>Post</p>
-</div>
+{@render data.post()}
