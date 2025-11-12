@@ -1,22 +1,29 @@
+
 import type { EntryGenerator, RouteParams, PageLoad } from './$types';
+import type { Snippet } from 'svelte';
 const posts = import.meta.glob('/src/lib/posts/*.svx', { eager: true });
 
 export const entries: EntryGenerator = () => {
-	return Object.keys(posts).map((path) => {
-		const slug = path.split('/').pop()?.replace('.svx', '');
-    console.log(slug);
-		if (slug) {
-			return {
-				slug: path.split('/').pop()?.replace('.svx', '')
-			};
-		}
-	}) as RouteParams[];
+	return Object.keys(posts)
+		.map((path) => {
+			const slug = path.split('/').pop()?.replace('.svx', '');
+			return slug ? { slug } : null;
+		})
+		.filter((entry): entry is RouteParams => entry !== null);
 };
 
-export const load: PageLoad = async ({ params }) => {
-  // vite doesn't know about .svx files - the vite ignore just drops the warning
-  const post = await import(/* @vite-ignore */ `/src/lib/posts/${params.slug}.svx`)
+export const load: PageLoad = ({ params }) => {
+	const postPath = Object.keys(posts).find(
+		(path) => path.split('/').pop()?.replace('.svx', '') === params.slug
+	);
+
+	if (!postPath) {
+		throw new Error(`Post not found: ${params.slug}`);
+	}
+
+	const post = posts[postPath] as { default: Snippet };
+
 	return {
-    post: post.default
-  };
+		post: post.default
+	};
 };

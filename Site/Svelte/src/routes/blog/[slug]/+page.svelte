@@ -1,8 +1,9 @@
 <script lang="ts">
+	import type { Snippet } from 'svelte';
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
-	console.log(data);
+	const post: Snippet = data.post as Snippet;
 </script>
 
-{@render data.post()}
+{@render post()}
