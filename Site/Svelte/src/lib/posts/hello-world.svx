@@ -4,12 +4,12 @@ date: 2024-01-15
 ---
 
 <script>
-  import Mountains from '$lib/images/mountains.jpg?enhanced';
   import Image from '$lib/components/global/Image.svelte';
+  	import image from '$lib/images/mountains.jpg?enhanced';
 </script>
 
 # Hello, World!
 
 We're just testing up in here.
 
-<Image path={Mountains} />
+<enhanced:img src={image} alt="Mountains" />
