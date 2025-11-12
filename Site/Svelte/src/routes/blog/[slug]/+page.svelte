@@ -6,4 +6,19 @@
 	const post: Snippet = data.post as Snippet;
 </script>
 
-{@render post()}
+{#if data.metadata}
+	<header>
+		{#if data.metadata.title}
+			<h1>{data.metadata.title}</h1>
+		{/if}
+		{#if data.metadata.date}
+			<time datetime={data.metadata.date}>
+				{new Date(data.metadata.date).toLocaleDateString()}
+			</time>
+		{/if}
+	</header>
+{/if}
+
+<article>
+	{@render post()}
+</article>

@@ -12,6 +12,12 @@ export const entries: EntryGenerator = () => {
 		.filter((entry): entry is RouteParams => entry !== null);
 };
 
+export interface PostMetadata {
+	title?: string;
+	date?: string;
+	[key: string]: unknown;
+}
+
 export const load: PageLoad = ({ params }) => {
 	const postPath = Object.keys(posts).find(
 		(path) => path.split('/').pop()?.replace('.svx', '') === params.slug
@@ -21,9 +27,10 @@ export const load: PageLoad = ({ params }) => {
 		throw new Error(`Post not found: ${params.slug}`);
 	}
 
-	const post = posts[postPath] as { default: Snippet };
+	const postModule = posts[postPath] as { default: Snippet; metadata?: PostMetadata };
 
 	return {
-		post: post.default
+		post: postModule.default,
+		metadata: postModule.metadata
 	};
 };

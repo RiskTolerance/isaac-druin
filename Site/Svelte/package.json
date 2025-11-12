@@ -37,12 +37,14 @@
 	},
 	"pnpm": {
 		"onlyBuiltDependencies": [
-			"esbuild"
+			"esbuild",
+			"sharp"
 		]
 	},
 	"dependencies": {
 		"@lucide/svelte": "^0.553.0",
 		"@sveltejs/adapter-static": "^3.0.10",
+		"@sveltejs/enhanced-img": "^0.8.4",
 		"bits-ui": "^2.14.3",
 		"mdsvex": "^0.12.6"
 	}
