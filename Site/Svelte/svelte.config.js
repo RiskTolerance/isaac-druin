@@ -8,7 +8,10 @@ const config = {
 	preprocess: [mdsvex(),vitePreprocess()],
 	extensions: ['.svelte', '.svx'],
 	kit: {
-		adapter: adapter(),
+		adapter: adapter({
+			precompress: true,
+			strict: true
+		}),
 		prerender: {
 			crawl: true,
 			handleHttpError: 'fail'

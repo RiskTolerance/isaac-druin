@@ -1,0 +1,54 @@
+---
+title: This Site (The One You're On)
+date: 2024-01-15
+---
+
+One of the first sites I tried to build was a personal website with a blog and projects. The site actually looked a lot like this one and obviously the structure is similar. But this site is special because I wanted to challenge myself through constraint and the knowledge that I've gained over the past five years.
+
+Modern web development takes a lot for granted. We assume that:
+- everyone that views our site has high speed internet
+- the hardware running our site is essentially limitless
+- we will be paying for various services, trading established implemention and ease of use for money
+
+I wanted to remove those assumptions for this site. So I constrained myself with the following:
+- I would optimize this site to every degree possible. Loosly inspired by sites like [mother fucking website](https://motherfuckingwebsite.com/) and [the best motherfucking website](https://thebestmotherfucking.website/) (no, those aren't porn sites), I wanted to build something that feels modern but is performant as possible.
+- I would run the website locally, on the absolutely weakest hardware I could find that (I *hope*) will still perform under reasonable stress.
+- I will not pay for anything outside of the site domain or use a service that could end up charging me at some scaling point.
+
+So this is the setup.
+
+### Frontend 
+
+For the frontend I'm using [SvelteKit]() with [adapter-static]() to precompile the site down to HTML/CSS/JS. The SvelteKit does all the heavy lifting here. It precompresses the code, [optimizes the images](https://svelte.dev/docs/kit/images#sveltejs-enhanced-img), and handles a [whole laudary list](https://svelte.dev/docs/kit/performance) of additional optimizations.
+
+While there are CMS options that are technically free, there aren't any that:
+- you can run locally with zero performance overhead
+- you can run remotely without impending cost down the road
+For the site content, I'm writing it all in [augmented markdown]() files that get built alongside the site.
+
+For fonts, I'm using Google Fonts with [subsetting](https://web.dev/learn/performance/optimize-web-fonts#subset_your_web_fonts). This speeds up the local build because I don't have to serve fonts, and speeds up the site because the characters pulled from Google are the exact characters that I need.
+
+Image optimization is worth touching on in more detail. Since the website is built on a more powerful machine, I have the luxury of dropping big ol' images in and getting small, optimized images out after building. Images are the biggest contributor to page load speed and automating their optimization was a must.
+
+### Backend
+
+This is actually where it gets crazy. This site is running on a Rasberry Pi Nano (*not* the Nano 2). it is the size of a stick of gum, is single core, and has a whopping 512MB of RAM. After intalling Pi OS 32bit Lite, there isn't a lot to work with. This is where building a static site is a must, we can't be running something like Nodejs, and while a more recent runtime like Bun would be feasible, the Pi Nano only supports 32bit Pi OS (not supported).
+
+So I needed a web server that would be perfomant. After some research I settled on the first viable opton, [Nginx](). Tried and true, Nginx has been around for a while. It's performance is insane, and it scales really well. But there are a few caviats;
+1. Modern Nginx prefers 64bit operating systems (32bit is avalible, but not obvious).
+2. It's built to scale across multiple cores, which I do not have.
+
+The other option took a bit more digging: [lighttpd](https://www.lighttpd.net/). This little guy is insane. It's been around for a long time and is optimized for very constrained environments. Not as fast as Nginx, but less resource intense at smaller scales (this site).
+
+I tried both options with some stress tests and here are the results:
+
+
+
+
+### Deplyment
+
+While I could just SSH into my Pi and drop a new build in every time I deploy, I am not insane. I may have spent an inordinate amount of time and effort to make this site as lean and mean as possible, but I don't want to fight it in the future. To deploy, I'm using git actions to build the site and update the local files.
+
+### DNS 
+
+This is where I'm just cheating. 
