@@ -19,12 +19,13 @@ So this is the setup.
 
 ### Frontend 
 
-For the frontend I'm using [SvelteKit]() with [adapter-static]() to precompile the site down to HTML/CSS/JS. The SvelteKit does all the heavy lifting here. It precompresses the code, [optimizes the images](https://svelte.dev/docs/kit/images#sveltejs-enhanced-img), and handles a [whole laudary list](https://svelte.dev/docs/kit/performance) of additional optimizations.
+For the frontend I'm using [SvelteKit](). It precompresses the code, [optimizes the images](https://svelte.dev/docs/kit/images#sveltejs-enhanced-img), and handles a [whole laudary list](https://svelte.dev/docs/kit/performance) of additional optimizations. SvelteKit is a full-stack framework, meaning it handles the frontend *and* the backend, so we'll be talking about it again soon.
 
 While there are CMS options that are technically free, there aren't any that:
 - you can run locally with zero performance overhead
 - you can run remotely without impending cost down the road
-For the site content, I'm writing it all in [augmented markdown]() files that get built alongside the site.
+
+For the site content, I'm writing it all in [augmented markdown]() files.
 
 For fonts, I'm using Google Fonts with [subsetting](https://web.dev/learn/performance/optimize-web-fonts#subset_your_web_fonts). This speeds up the local build because I don't have to serve fonts, and speeds up the site because the characters pulled from Google are the exact characters that I need.
 
@@ -32,23 +33,46 @@ Image optimization is worth touching on in more detail. Since the website is bui
 
 ### Backend
 
-This is actually where it gets crazy. This site is running on a Rasberry Pi Nano (*not* the Nano 2). it is the size of a stick of gum, is single core, and has a whopping 512MB of RAM. After intalling Pi OS 32bit Lite, there isn't a lot to work with. This is where building a static site is a must, we can't be running something like Nodejs, and while a more recent runtime like Bun would be feasible, the Pi Nano only supports 32bit Pi OS (not supported).
+This is actually where it gets crazy. This site is running on a Rasberry Pi Zero 2w. The machine is the size of a stick of gum, is single core, and has a whopping 512MB of RAM. After intalling Pi OS 64bit Lite, there isn't a lot to work with. But we do have a lot of options. The problem is, given the amount of relivent, up-to-date information avalible, those options aren't clear-cut. So it's time to ✨experiment✨.
 
-So I needed a web server that would be perfomant. After some research I settled on the first viable opton, [Nginx](). Tried and true, Nginx has been around for a while. It's performance is insane, and it scales really well. But there are a few caviats;
-1. Modern Nginx prefers 64bit operating systems (32bit is avalible, but not obvious).
-2. It's built to scale across multiple cores, which I do not have.
+Tthere are two avenues that we can take:
 
-The other option took a bit more digging: [lighttpd](https://www.lighttpd.net/). This little guy is insane. It's been around for a long time and is optimized for very constrained environments. Not as fast as Nginx, but less resource intense at smaller scales (this site).
+1. SvelteKit at runtime. Utilize a JavaScript runtime like Node/Bun/Deno with [adapter-node](). This implies:
+  - (benefit) We will have a server environment to work with, so we could handle requests (e.g database writes).
+  - (drawback) This will use more RAM/CPU than a file server architecture (or, that's my strong assumption)
+2. SvelteKit for build. Use [adapter-static]() to precompile the site down to static assets (HTML/CSS/JavaScript). This implies:
+  - (benefit) We can use a simple web server to serve our static assets (still assuming this will be more performant).
+  - (drawback) No server-side logic unless we run a separate API server and let it handle requests from the client.
 
-I tried both options with some stress tests and here are the results:
+For option 1, we have the following JavaScript runtime options:
 
+- [Nodejs]() ([wiki](https://en.wikipedia.org/wiki/Node.js)) - The OG, first released in 2009.
+- [Deno]() ([wiki](https://en.wikipedia.org/wiki/Deno_(software))) - A newcomer, first release in 2018.
+- [Bun]() ([wiki](https://en.wikipedia.org/wiki/Bun_(software))) - The definitive new kid, first released in 2021.
 
+This post is getting a bit long, so I'm going to break out the testing phase into another post: [Testing Node, Deno and Bun in a Constrained Environment]().
+
+And the winner is: (spoiler, click/tap to reveal): 
+
+>! BUN!
+
+For option 2, we can build the static assets and serve them with a web server. There are actually dozens of options but I don't have infintiate time. Based on my research, these are the top contenders for this use-case:
+
+- [Nginx]() ([wiki](https://en.wikipedia.org/wiki/Nginx)) - Tried and true, first released in 2004.
+- [Caddy]() ([wiki]()) - 
+- [Lighttpd] ([wiki]()) -
+
+Additional testing post: [Testing Nginx, Caddy and Lighttpd in a Constrained Environment]().
+
+And the winnder is:
+
+>! NGINX!
 
 
 ### Deplyment
 
-While I could just SSH into my Pi and drop a new build in every time I deploy, I am not insane. I may have spent an inordinate amount of time and effort to make this site as lean and mean as possible, but I don't want to fight it in the future. To deploy, I'm using git actions to build the site and update the local files.
+
 
 ### DNS 
 
-This is where I'm just cheating. 
+This is where I'm just cheating. We're using [Cloudflared]() to create a tunnel for our 

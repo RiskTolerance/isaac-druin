@@ -3,6 +3,13 @@
 	import Felix from '$lib/blocks/home/Felix.svelte';
 	import Hero from '$lib/blocks/home/Hero.svelte';
 	import Projects from '$lib/blocks/home/Projects.svelte';
+	import Image from '$lib/components/global/Image.svelte';
+	import image from '$lib/images/mountains.jpg?enhanced';
+	import image2 from '$lib/images/mountains2.jpg?enhanced';
+	import image3 from '$lib/images/faces.jpg?enhanced';
+	import image4 from '$lib/images/flowers.jpg?enhanced';
+	import image5 from '$lib/images/whale.jpg?enhanced';
+	import image6 from '$lib/images/lantern.jpg?enhanced';
 </script>
 
 <Hero></Hero>
@@ -15,6 +22,12 @@
 			<h1 class="font-bold">hi</h1>
 		</div>
 
+		<Image src={image} alt={'this is an image!'}></Image>
+		<Image src={image2} alt={'this is an image!'}></Image>
+		<Image src={image3} alt={'this is an image!'}></Image>
+		<Image src={image4} alt={'this is an image!'}></Image>
+		<Image src={image5} alt={'this is an image!'}></Image>
+		<Image src={image6} alt={'this is an image!'}></Image>
 		<p class="prose">
 			<img
 				class="float-left mt-4 mr-4 -mb-1 aspect-square w-1/2 object-cover"
