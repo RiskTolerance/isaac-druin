@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Post from '$lib/blocks/blog/Post.svelte';
+	import Post from '$lib/client/blocks/blog/Post.svelte';
 
 	const posts = [
 		{

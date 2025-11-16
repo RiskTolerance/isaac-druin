@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Footer from '$lib/blocks/layout/Footer.svelte';
-	import Navigation from '$lib/blocks/layout/Navigation.svelte';
+	import Footer from '$lib/client/blocks/layout/Footer.svelte';
+	import Navigation from '$lib/client/blocks/layout/Navigation.svelte';
 	import '../app.css';
 
 	let { children } = $props();

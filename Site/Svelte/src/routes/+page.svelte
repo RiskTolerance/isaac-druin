@@ -1,15 +1,15 @@
 <script lang="ts">
-	import Blog from '$lib/blocks/home/Blog.svelte';
-	import Felix from '$lib/blocks/home/Felix.svelte';
-	import Hero from '$lib/blocks/home/Hero.svelte';
-	import Projects from '$lib/blocks/home/Projects.svelte';
-	import Image from '$lib/components/global/Image.svelte';
-	import image from '$lib/images/mountains.jpg?enhanced';
-	import image2 from '$lib/images/mountains2.jpg?enhanced';
-	import image3 from '$lib/images/faces.jpg?enhanced';
-	import image4 from '$lib/images/flowers.jpg?enhanced';
-	import image5 from '$lib/images/whale.jpg?enhanced';
-	import image6 from '$lib/images/lantern.jpg?enhanced';
+	import Blog from '$lib/client/blocks/home/Blog.svelte';
+	import Felix from '$lib/client/blocks/home/Felix.svelte';
+	import Hero from '$lib/client/blocks/home/Hero.svelte';
+	import Projects from '$lib/client/blocks/home/Projects.svelte';
+	import Image from '$lib/client/components/global/Image.svelte';
+	import image from '$lib/client/images/mountains.jpg?enhanced';
+	import image2 from '$lib/client/images/mountains2.jpg?enhanced';
+	import image3 from '$lib/client/images/faces.jpg?enhanced';
+	import image4 from '$lib/client/images/flowers.jpg?enhanced';
+	import image5 from '$lib/client/images/whale.jpg?enhanced';
+	import image6 from '$lib/client/images/lantern.jpg?enhanced';
 </script>
 
 <Hero></Hero>

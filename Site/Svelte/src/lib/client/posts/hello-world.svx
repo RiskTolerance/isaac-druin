@@ -4,8 +4,8 @@ date: 2024-01-15
 ---
 
 <script>
-  import Image from '$lib/components/global/Image.svelte';
-  import image from '$lib/images/mountains.jpg?enhanced';
+  import Image from '$lib/client/components/global/Image.svelte';
+  import image from '$lib/client/images/mountains.jpg?enhanced';
 </script>
 
 <Image src={image} alt={'this is an image!'}></Image>
