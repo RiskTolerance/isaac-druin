@@ -1,3 +1,1 @@
-import Image from '$client/blocks/global/Image.svelte'
-
-export { Image };
+export {default as Image} from '$blocks/global/Image.svelte'

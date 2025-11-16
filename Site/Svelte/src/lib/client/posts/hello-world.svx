@@ -4,11 +4,11 @@ date: 2024-01-15
 ---
 
 <script>
-  import Image from '$lib/client/components/global/Image.svelte';
-  import image from '$lib/client/images/mountains.jpg?enhanced';
+  import { Image } from '$blocks/global';
+  import { mountains } from '$images';
 </script>
 
-<Image src={image} alt={'this is an image!'}></Image>
+<Image src={mountains} alt={'this is an image!'}></Image>
 
 <div class="container prose mx-auto">
 

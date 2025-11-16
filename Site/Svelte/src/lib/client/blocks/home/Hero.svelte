@@ -1,7 +1,7 @@
 <script lang="ts">
 </script>
 
-<div class="container mx-auto pl-[calc(20%)]">
+<div class="font-display container mx-auto pl-[calc(20%)]">
 	<p>Hi! My name is</p>
 	<p style="font-size: 4rem; padding-left: 2rem;">Isaac Druin</p>
 	<div class="h-12"></div>

@@ -1,6 +1,4 @@
-import Blog from '$blocks/home/Blog.svelte'
-import Felix from '$blocks/home/Felix.svelte'
-import Hero from '$blocks/home/Hero.svelte'
-import Projects from '$blocks/home/Projects.svelte'
-
-export { Blog, Felix, Hero, Projects };
+export { default as Blog } from '$blocks/home/Blog.svelte';
+export { default as Felix } from '$blocks/home/Felix.svelte';
+export { default as Hero } from '$blocks/home/Hero.svelte';
+export { default as Projects } from '$blocks/home/Projects.svelte';
