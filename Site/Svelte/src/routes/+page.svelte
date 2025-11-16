@@ -1,15 +1,7 @@
 <script lang="ts">
-	import Blog from '$lib/client/blocks/home/Blog.svelte';
-	import Felix from '$lib/client/blocks/home/Felix.svelte';
-	import Hero from '$lib/client/blocks/home/Hero.svelte';
-	import Projects from '$lib/client/blocks/home/Projects.svelte';
-	import Image from '$lib/client/components/global/Image.svelte';
-	import image from '$lib/client/images/mountains.jpg?enhanced';
-	import image2 from '$lib/client/images/mountains2.jpg?enhanced';
-	import image3 from '$lib/client/images/faces.jpg?enhanced';
-	import image4 from '$lib/client/images/flowers.jpg?enhanced';
-	import image5 from '$lib/client/images/whale.jpg?enhanced';
-	import image6 from '$lib/client/images/lantern.jpg?enhanced';
+	import { Blog, Felix, Hero, Projects } from '$blocks/home';
+	import { Image } from '$blocks/global';
+	import { faces, flowers, lantern, mountains, mountains2, whale } from '$images';
 </script>
 
 <Hero></Hero>
@@ -22,12 +14,12 @@
 			<h1 class="font-bold">hi</h1>
 		</div>
 
-		<Image src={image} alt={'this is an image!'}></Image>
-		<Image src={image2} alt={'this is an image!'}></Image>
-		<Image src={image3} alt={'this is an image!'}></Image>
-		<Image src={image4} alt={'this is an image!'}></Image>
-		<Image src={image5} alt={'this is an image!'}></Image>
-		<Image src={image6} alt={'this is an image!'}></Image>
+		<Image src={faces} alt={'this is an image!'}></Image>
+		<Image src={flowers} alt={'this is an image!'}></Image>
+		<Image src={lantern} alt={'this is an image!'}></Image>
+		<Image src={mountains} alt={'this is an image!'}></Image>
+		<Image src={mountains2} alt={'this is an image!'}></Image>
+		<Image src={whale} alt={'this is an image!'}></Image>
 		<p class="prose">
 			<img
 				class="float-left mt-4 mr-4 -mb-1 aspect-square w-1/2 object-cover"
