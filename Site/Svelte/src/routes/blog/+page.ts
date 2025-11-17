@@ -1,3 +1,5 @@
+export const prerender = true;
+
 import type { PageLoad } from './$types';
 import { getAllPosts } from '$client/posts/posts';
 

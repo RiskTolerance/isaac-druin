@@ -1,3 +1,5 @@
+export const prerender = true;
+
 import type { PageLoad } from './$types';
 import { getAllProjects } from '$client/posts/projects';
 

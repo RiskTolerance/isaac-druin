@@ -1,9 +1,20 @@
 <script lang="ts">
 	import { marked } from 'marked';
 
-	let { md, class: className }: { md: string; class?: string } = $props();
+	marked.setOptions({
+		gfm: true,
+		breaks: true
+	});
 
-	let parsedMarkdown = marked.parse(md);
+	let {
+		md = '',
+		inline = false
+	}: {
+		md?: string;
+		inline?: boolean;
+	} = $props();
+
+	const parsedMarkdown = inline ? marked.parseInline(md ?? '') : marked.parse(md ?? '');
 </script>
 
 {@html parsedMarkdown}

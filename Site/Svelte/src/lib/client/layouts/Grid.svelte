@@ -7,15 +7,21 @@
 	}: {
 		children: any;
 		class?: string;
-		columns: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
+		columns: 1 | 2 | 4 | 6 | 8 | 10 | 12;
 		gap?: string;
 	} = $props();
+
+	const responsiveColumnClasses = {
+		1: 'grid-cols-1',
+		2: 'grid-cols-1 lg:grid-cols-2',
+		4: 'grid-cols-1 lg:grid-cols-4',
+		6: 'grid-cols-1 sm:grid-cols-4 lg:grid-cols-6',
+		8: 'grid-cols-1 sm:grid-cols-4 lg:grid-cols-8',
+		10: 'grid-cols-2 sm:grid-cols-4 lg:grid-cols-10',
+		12: 'grid-cols-2 sm:grid-cols-6 lg:grid-cols-12'
+	};
 </script>
 
-<div
-	style="display: grid; grid-template-columns: repeat({columns}, minmax(0, 1fr));"
-	id="grid"
-	class="{gap} {className}"
->
+<div id="grid" class="{gap} {className} grid {responsiveColumnClasses[columns]}">
 	{@render children()}
 </div>
