@@ -1,10 +1,30 @@
 <script lang="ts">
 	import { Container, Card, Grid } from '$layouts';
-	import { RichText } from '$components';
+	import { RichText, Marked } from '$components';
+	import { Image } from '$blocks';
+	import { mountains } from '$images';
 </script>
 
 <Container>
 	<h1>Examples of library usage</h1>
+</Container>
+
+<Container>
+	<RichText>
+		<Image src={mountains} alt="mountains" />
+		<Marked
+			md="
+# Hello, world!
+## Does this work?
+
+Lorem ipsum dolor sit amet consectetur adipisicing elit. At dolore excepturi veniam
+tempora eveniet similique, accusamus error vel consectetur ducimus assumenda, distinctio,
+odit natus dolor incidunt sequi voluptates delectus amet ex sunt. Mollitia itaque ducimus
+distinctio ipsum officiis optio fugiat, porro iure molestias deleniti voluptatum esse
+corrupti? Quae, harum fuga.
+		"
+		></Marked>
+	</RichText>
 </Container>
 
 <Container class="space-y-4">

@@ -1,22 +1,13 @@
----
-title: Hello, World!
-date: 2024-01-15
----
+<script lang="ts">
+	import { RichText } from '$components';
+	import { Marked } from '$components';
+	import { Image } from '$blocks';
+	import { mountains } from '$images';
 
-<script>
-  import { Image } from '$blocks';
-  import { mountains } from '$images';
-</script>
-
-<Image src={mountains} alt={'this is an image!'}></Image>
-
-<div class="container prose mx-auto">
-
+	const content = `
 # Hello, World!
 
 ## We're Back, Baby - or - A Series of Unfortunate Events - or - A Summary of the Last Five Years
-
-
 
 Rewind to 2020. I was having trouble finding employment. While there are options, South Dakota isn't exactly the bustling epicenter of Graphic Design opportunity. I distictly remember driving across the state for an interview only to be told there wasn't enough time for me to relocate. It was a bleak time - I felt as though my formal education was for nothing. So I decided to leverage another interest and try a new direction.
 
@@ -53,4 +44,13 @@ That's the simple bullet-point list. And I feel comfortable at any stage. Hopful
 After three years at Truxedo, I was unbelievably fortunate to find a job at [Paulsen](https://www.paulsen.agency/). And that's where I'm at today. Once again, I was blessed to find myself with great leadership and role models, along with the freedom and flexibility to dive down rabbit holes and find new and exciting ways to solve problems. I don't get to be abstract while descirbing Paulsen, the skills I use day-to-day are the same skills that I use while I dabble at home. It's a beautiful thing (to me) that the things I love to do in my free time directly intersect with the things I do at work.
 
 So, hello world! Thanks for reading! Thanks for catching up and we'll see what comes next!
-</div>
+`;
+</script>
+
+<RichText>
+	<Image src={mountains} alt="this is an image!" class="mb-8 h-[50vh] w-full object-cover" />
+	<div class="p-4 mx-auto bg-neutral-950 -translate-y-[25vh]">
+		<Marked md={content} />
+	</div>
+</RichText>
+

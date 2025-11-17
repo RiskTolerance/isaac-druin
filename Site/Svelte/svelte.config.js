@@ -1,12 +1,10 @@
 import adapter from 'svelte-adapter-bun';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
-import { mdsvex } from 'mdsvex';
 
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-	preprocess: [mdsvex(),vitePreprocess()],
-	extensions: ['.svelte', '.svx'],
+	preprocess: [vitePreprocess()],
 	kit: {
 		adapter: adapter({
 			precompress: true,

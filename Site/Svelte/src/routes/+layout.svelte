@@ -6,6 +6,7 @@
 	let { children } = $props();
 </script>
 
+<!-- prose-md -->
 <Navigation></Navigation>
 <div class="w-screen overflow-x-hidden">
 	{@render children()}

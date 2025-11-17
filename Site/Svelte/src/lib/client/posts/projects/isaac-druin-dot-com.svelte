@@ -1,8 +1,8 @@
----
-title: This Site (The One You're On)
-date: 2024-01-15
----
+<script lang="ts">
+	import { RichText } from '$components';
+	import { Marked } from '$components';
 
+	const content = `
 One of the first sites I tried to build was a personal website with a blog and projects. The site actually looked a lot like this one and obviously the structure is similar. But this site is special because I wanted to challenge myself through constraint and the knowledge that I've gained over the past five years.
 
 Modern web development takes a lot for granted. We assume that:
@@ -19,13 +19,13 @@ So this is the setup.
 
 ### Frontend 
 
-For the frontend I'm using [SvelteKit](). It precompresses the code, [optimizes the images](https://svelte.dev/docs/kit/images#sveltejs-enhanced-img), and handles a [whole laudary list](https://svelte.dev/docs/kit/performance) of additional optimizations. SvelteKit is a full-stack framework, meaning it handles the frontend *and* the backend, so we'll be talking about it again soon.
+For the frontend I'm using [SvelteKit](https://svelte.dev/docs/kit). It precompresses the code, [optimizes the images](https://svelte.dev/docs/kit/images#sveltejs-enhanced-img), and handles a [whole laudary list](https://svelte.dev/docs/kit/performance) of additional optimizations. SvelteKit is a full-stack framework, meaning it handles the frontend *and* the backend, so we'll be talking about it again soon.
 
 While there are CMS options that are technically free, there aren't any that:
 - you can run locally with zero performance overhead
 - you can run remotely without impending cost down the road
 
-For the site content, I'm writing it all in [augmented markdown]() files.
+For the site content, I'm writing it all in augmented markdown files.
 
 For fonts, I'm using Google Fonts with [subsetting](https://web.dev/learn/performance/optimize-web-fonts#subset_your_web_fonts). This speeds up the local build because I don't have to serve fonts, and speeds up the site because the characters pulled from Google are the exact characters that I need.
 
@@ -35,22 +35,22 @@ Image optimization is worth touching on in more detail. Since the website is bui
 
 This is actually where it gets crazy. This site is running on a Rasberry Pi Zero 2w. The machine is the size of a stick of gum, is single core, and has a whopping 512MB of RAM. After intalling Pi OS 64bit Lite, there isn't a lot to work with. But we do have a lot of options. The problem is, given the amount of relivent, up-to-date information avalible, those options aren't clear-cut. So it's time to ✨experiment✨.
 
-Tthere are two avenues that we can take:
+There are two avenues that we can take:
 
-1. SvelteKit at runtime. Utilize a JavaScript runtime like Node/Bun/Deno with [adapter-node](). This implies:
+1. SvelteKit at runtime. Utilize a JavaScript runtime like Node/Bun/Deno with adapter-node. This implies:
   - (benefit) We will have a server environment to work with, so we could handle requests (e.g database writes).
   - (drawback) This will use more RAM/CPU than a file server architecture (or, that's my strong assumption)
-2. SvelteKit for build. Use [adapter-static]() to precompile the site down to static assets (HTML/CSS/JavaScript). This implies:
+2. SvelteKit for build. Use adapter-static to precompile the site down to static assets (HTML/CSS/JavaScript). This implies:
   - (benefit) We can use a simple web server to serve our static assets (still assuming this will be more performant).
   - (drawback) No server-side logic unless we run a separate API server and let it handle requests from the client.
 
 For option 1, we have the following JavaScript runtime options:
 
-- [Nodejs]() ([wiki](https://en.wikipedia.org/wiki/Node.js)) - The OG, first released in 2009.
-- [Deno]() ([wiki](https://en.wikipedia.org/wiki/Deno_(software))) - A newcomer, first release in 2018.
-- [Bun]() ([wiki](https://en.wikipedia.org/wiki/Bun_(software))) - The definitive new kid, first released in 2021.
+- [Nodejs](https://nodejs.org/) - The OG, first released in 2009.
+- [Deno](https://deno.com/) - A newcomer, first release in 2018.
+- [Bun](https://bun.sh/) - The definitive new kid, first released in 2021.
 
-This post is getting a bit long, so I'm going to break out the testing phase into another post: [Testing Node, Deno and Bun in a Constrained Environment]().
+This post is getting a bit long, so I'm going to break out the testing phase into another post.
 
 And the winner is: (spoiler, click/tap to reveal): 
 
@@ -58,21 +58,25 @@ And the winner is: (spoiler, click/tap to reveal):
 
 For option 2, we can build the static assets and serve them with a web server. There are actually dozens of options but I don't have infintiate time. Based on my research, these are the top contenders for this use-case:
 
-- [Nginx]() ([wiki](https://en.wikipedia.org/wiki/Nginx)) - Tried and true, first released in 2004.
-- [Caddy]() ([wiki]()) - 
-- [Lighttpd] ([wiki]()) -
+- [Nginx](https://nginx.org/) - Tried and true, first released in 2004.
+- [Caddy](https://caddyserver.com/) - Modern and easy to configure
+- [Lighttpd](https://www.lighttpd.net/) - Lightweight and fast
 
-Additional testing post: [Testing Nginx, Caddy and Lighttpd in a Constrained Environment]().
+Additional testing post coming soon.
 
-And the winnder is:
+And the winner is:
 
 >! NGINX!
 
-
-### Deplyment
-
-
+### Deployment
 
 ### DNS 
 
-This is where I'm just cheating. We're using [Cloudflared]() to create a tunnel for our 
+This is where I'm just cheating. We're using Cloudflared to create a tunnel for our site.
+`;
+</script>
+
+<RichText>
+	<Marked md={content} />
+</RichText>
+
