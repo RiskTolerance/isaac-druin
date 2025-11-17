@@ -4,7 +4,7 @@ date: 2024-01-15
 ---
 
 <script>
-  import { Image } from '$blocks/global';
+  import { Image } from '$blocks';
   import { mountains } from '$images';
 </script>
 

@@ -1,7 +1,7 @@
 
 import type { EntryGenerator, RouteParams, PageLoad } from './$types';
 import type { Snippet } from 'svelte';
-const posts = import.meta.glob('/src/lib/client/posts/*.svx', { eager: true });
+const posts = import.meta.glob('/src/lib/client/posts/blog/*.svx', { eager: true });
 
 export const entries: EntryGenerator = () => {
 	return Object.keys(posts)

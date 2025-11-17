@@ -1,6 +1,6 @@
 import type { PageLoad } from './$types';
 
-const posts = import.meta.glob('/src/lib/posts/*.svx', { eager: true });
+const posts = import.meta.glob('/src/lib/posts/blog/*.svx', { eager: true });
 
 export interface PostMetadata {
 	title: string;
