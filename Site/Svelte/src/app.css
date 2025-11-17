@@ -1,8 +1,35 @@
 @import 'tailwindcss';
 @import '@fontsource-variable/bodoni-moda';
+@import './theme.css';
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --font-display: 'Bodoni Moda Variable', serif;
+}
+
+body {
+  @apply font-sans;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @apply font-display;
+}
+
+h1 {
+  @apply text-2xl lg:text-4xl font-bold;
+}
+
+h2 {
+  @apply text-xl lg:text-3xl font-bold;
+}
+
+h3 {
+  @apply text-xl lg:text-2xl font-bold;
+}
+
+.card {
+  @apply rounded-md  p-8 shadow-md;
 }

@@ -1,11 +1,13 @@
 <script lang="ts">
-	import Footer from '$blocks/layout/Footer.svelte';
-	import Navigation from '$blocks/layout/Navigation.svelte';
+	import Footer from '$client/blocks/Footer.svelte';
+	import Navigation from '$client/blocks/Navigation.svelte';
 	import '../app.css';
 
 	let { children } = $props();
 </script>
 
 <Navigation></Navigation>
-{@render children()}
+<div class="w-screen overflow-x-hidden">
+	{@render children()}
+</div>
 <Footer></Footer>

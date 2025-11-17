@@ -21,10 +21,11 @@ const config = {
 			'$blocks': './src/lib/client/blocks',
 			'$components': './src/lib/client/components',
 			'$images': './src/lib/client/images',
-			'$posts': './src/lib/client/posts',
-			'$projects': './src/lib/client/projects',
+			'$project': './src/lib/client/projects',
+			'$blog': './src/lib/client/blog',
 			'$server': './src/lib/server',
 			'$remotes': './src/lib/remotes',
+			'$layouts': './src/lib/client/layouts',
 		}
 	}
 };
