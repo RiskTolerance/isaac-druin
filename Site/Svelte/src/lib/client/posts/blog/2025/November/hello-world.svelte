@@ -5,14 +5,22 @@
 	import { mountains } from '$images';
 </script>
 
-<RichText>
-	<Image src={mountains} alt="this is an image!" class="mb-8 h-[50vh] w-full object-cover" />
-	<div class="mx-auto -translate-y-[25vh] bg-neutral-950 p-4">
-		<Marked
-			md={`
-# Hello, World!
+<Image
+	src={mountains}
+	alt="this is an image!"
+	class="mb-8 h-[25vh] w-full object-cover md:h-[50vh]"
+/>
 
-## We're Back, Baby - or - A Series of Unfortunate Events - or - A Summary of the Last Five Years
+<RichText class="mx-auto max-w-3xl bg-neutral-950 md:-translate-y-[25vh] md:p-8">
+	<Marked
+		md={`
+## "We're Back, Baby" 
+## - or - 
+## "A Series of Unfortunate Events" 
+## - or - 
+## "A Summary of the Last Five Years"
+
+It has a been a hot second, if you cound five years as "a hot second". I first purchased isaacdruin.com in 2019, and published the site soon after. 
 
 Rewind to 2020. I was having trouble finding employment. While there are options, South Dakota isn't exactly the bustling epicenter of Graphic Design opportunity. I distictly remember driving across the state for an interview only to be told there wasn't enough time for me to relocate. It was a bleak time - I felt as though my formal education was for nothing. So I decided to leverage another interest and try a new direction.
 
@@ -50,6 +58,5 @@ After three years at Truxedo, I was unbelievably fortunate to find a job at [Pau
 
 So, hello world! Thanks for reading! Thanks for catching up and we'll see what comes next!
 	`}
-		/>
-	</div>
+	/>
 </RichText>

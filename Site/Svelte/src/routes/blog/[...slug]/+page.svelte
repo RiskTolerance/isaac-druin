@@ -6,7 +6,7 @@
 	const PostComponent = data.component as Component;
 </script>
 
-<Container class="flex flex-col items-center">
+<Container class="">
 	<header class="prose mb-8">
 		<h1 class="mb-2 text-4xl font-bold">{data.metadata.title}</h1>
 		{#if data.metadata.date}
@@ -26,5 +26,6 @@
 			</div>
 		{/if}
 	</header>
+
 	<PostComponent />
 </Container>
