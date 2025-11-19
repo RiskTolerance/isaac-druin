@@ -1,5 +1,5 @@
-const postComponents = import.meta.glob('/src/lib/client/posts/blog/**/*.svelte', { eager: true });
-const postMetadata = import.meta.glob('/src/lib/client/posts/blog/**/*.json', { eager: true, import: 'default' });
+const postComponents = import.meta.glob(['/src/lib/client/posts/blog/**/*.svelte', '!/src/lib/client/posts/blog/**/_*.svelte'], { eager: true });
+const postMetadata = import.meta.glob(['/src/lib/client/posts/blog/**/*.json', '!/src/lib/client/posts/blog/**/_*.json'], { eager: true, import: 'default' });
 
 export interface PostMetadata {
 	title: string;

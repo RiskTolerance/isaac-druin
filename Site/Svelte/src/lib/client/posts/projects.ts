@@ -1,5 +1,5 @@
-const projectComponents = import.meta.glob('/src/lib/client/posts/projects/**/*.svelte', { eager: true });
-const projectMetadata = import.meta.glob('/src/lib/client/posts/projects/**/*.json', { eager: true, import: 'default' });
+const projectComponents = import.meta.glob(['/src/lib/client/posts/projects/**/*.svelte', '!/src/lib/client/posts/projects/**/_*.svelte'], { eager: true });
+const projectMetadata = import.meta.glob(['/src/lib/client/posts/projects/**/*.json', '!/src/lib/client/posts/projects/**/_*.json'], { eager: true, import: 'default' });
 
 export interface ProjectMetadata {
 	title: string;
@@ -23,7 +23,8 @@ export interface ProjectEntry {
 export function getAllProjects(): ProjectEntry[] {
 	return Object.entries(projectComponents)
 		.map(([path, module]) => {
-			// Extract slug from path: /src/lib/client/posts/projects/isaac-druin-dot-com.svelte -> isaac-druin-dot-com
+
+			// Extract slug from path
 			const slug = path
 				.replace('/src/lib/client/posts/projects/', '')
 				.replace(/\.svelte$/, '');

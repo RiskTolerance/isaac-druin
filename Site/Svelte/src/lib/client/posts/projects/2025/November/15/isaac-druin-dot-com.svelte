@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { RichText } from '$components';
 	import { Marked } from '$components';
+	import Chart from './_Chart.svelte';
 
 	const content = `
 One of the first sites I tried to build was a personal website with a blog and projects. The site actually looked a lot like this one and obviously the structure is similar. But this site is special because I wanted to challenge myself through constraint and the knowledge that I've gained over the past five years.
@@ -78,5 +79,5 @@ This is where I'm just cheating. We're using Cloudflared to create a tunnel for 
 
 <RichText>
 	<Marked md={content} />
+	<Chart />
 </RichText>
-
