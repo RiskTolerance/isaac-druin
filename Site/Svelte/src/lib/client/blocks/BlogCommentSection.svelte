@@ -1,15 +1,21 @@
 <script lang="ts">
 	import { postComment, getComment } from '$remotes/comment.remote';
 	import { page } from '$app/state';
-	const slug = page.url.pathname.split('/').pop() ? '';
-	console.log(slug);
+	import { FormButton } from '$components';
+
+	const slug = page.url.pathname.split('/').pop() ?? '';
+	const { author, content } = postComment.fields;
 </script>
 
-<form {...postComment}>
-	<input type="hidden" name="slug" value={slug} />
-	<input type="text" name="author" placeholder="Author" />
-	<input type="text" name="content" placeholder="Content" />
-	<button class="bg-white" type="submit">Submit</button>
+<form class="mx-auto flex w-fit flex-col gap-4" {...postComment} enctype="multipart/form-data">
+	<input type="hidden" value={slug} />
+	<label>
+		<input {...author.as('text')} placeholder="John Doe" /> Author
+	</label>
+	<label>
+		<textarea {...content.as('text')} placeholder="Write something nice :)"></textarea> Content
+	</label>
+	<FormButton />
 </form>
 
 <div>

@@ -1,0 +1,9 @@
+label {
+	@apply flex flex-col-reverse gap-2 text-white w-100;
+}
+
+label input,
+textarea {
+	@apply border border-white bg-transparent text-white p-2;
+}
+

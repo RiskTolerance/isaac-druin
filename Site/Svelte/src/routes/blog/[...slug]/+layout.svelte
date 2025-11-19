@@ -5,5 +5,6 @@
 
 <div>
 	{@render children()}
+
 	<BlogCommentSection />
 </div>
