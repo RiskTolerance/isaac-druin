@@ -72,19 +72,20 @@ export const moderateComment = async ({author, content}: {author: string, conten
       }
     ],
     temperature: 0.5,
-    max_completion_tokens: 40,
     model: 'openai/gpt-oss-20b',
     stream: false,
     reasoning_effort: 'high'
-  })
+  });
+
+  console.log(moderate.choices[0]);
 
     if (!moderate.choices[0]?.message?.content) {
-      return new Error('No content returned from Groq');
+      throw new Error('No content returned from Groq');
     }
 
     return JSON.parse(moderate.choices[0].message.content) as ModerateCommentResponse;
   } catch (error) {
     console.error('Groq API error:', error);
-    return new Error(`Failed to moderate comment: ${error instanceof Error ? error.message : 'Unknown error'}`);
+    throw new Error(`Failed to moderate comment: ${error instanceof Error ? error.message : 'Unknown error'}`);
   }
 }

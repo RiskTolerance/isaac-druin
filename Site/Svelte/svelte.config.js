@@ -10,6 +10,9 @@ const config = {
 			precompress: true,
 			strict: true
 		}),
+		experimental: {
+			remoteFunctions: true
+		},
 		prerender: {
 			crawl: true,
 			handleHttpError: 'fail'
@@ -24,6 +27,11 @@ const config = {
 			'$server': './src/lib/server',
 			'$remotes': './src/lib/remotes',
 			'$layouts': './src/lib/client/layouts',
+		}
+	},
+	compilerOptions: {
+		experimental: {
+			async: true
 		}
 	}
 };

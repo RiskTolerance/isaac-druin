@@ -1,9 +1,9 @@
 <script lang="ts">
 	let { children }: { children: any } = $props();
-	import CommentForm from '$blocks/CommentForm.svelte';
+	import BlogCommentSection from '$client/blocks/BlogCommentSection.svelte';
 </script>
 
 <div>
 	{@render children()}
-	<CommentForm />
+	<BlogCommentSection />
 </div>
