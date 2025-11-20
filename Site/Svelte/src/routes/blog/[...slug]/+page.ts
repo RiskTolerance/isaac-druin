@@ -1,5 +1,3 @@
-export const prerender = true;
-
 import type { EntryGenerator, PageLoad } from './$types';
 import { getAllPosts, getPostBySlug } from '$client/posts/posts';
 import { error } from '@sveltejs/kit';

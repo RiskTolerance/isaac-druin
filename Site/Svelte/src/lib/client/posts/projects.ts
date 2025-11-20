@@ -1,3 +1,4 @@
+// spell-checker: disable
 const projectComponents = import.meta.glob(['/src/lib/client/posts/projects/**/*.svelte', '!/src/lib/client/posts/projects/**/_*.svelte'], { eager: true });
 const projectMetadata = import.meta.glob(['/src/lib/client/posts/projects/**/*.json', '!/src/lib/client/posts/projects/**/_*.json'], { eager: true, import: 'default' });
 

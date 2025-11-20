@@ -1,3 +1,4 @@
+<!-- spell-checker: disable -->
 <script lang="ts">
 	import { RichText } from '$components';
 	import { Marked } from '$components';
@@ -9,10 +10,10 @@ One of the first sites I tried to build was a personal website with a blog and p
 Modern web development takes a lot for granted. We assume that:
 - everyone that views our site has high speed internet
 - the hardware running our site is essentially limitless
-- we will be paying for various services, trading established implemention and ease of use for money
+- we will be paying for various services, trading established implementation and ease of use for money
 
 I wanted to remove those assumptions for this site. So I constrained myself with the following:
-- I would optimize this site to every degree possible. Loosly inspired by sites like [mother fucking website](https://motherfuckingwebsite.com/) and [the best motherfucking website](https://thebestmotherfucking.website/) (no, those aren't porn sites), I wanted to build something that feels modern but is performant as possible.
+- I would optimize this site to every degree possible. Loosely inspired by sites like [mother fucking website](https://motherfuckingwebsite.com/) and [the best motherfucking website](https://thebestmotherfucking.website/) (no, those aren't porn sites), I wanted to build something that feels modern but is performant as possible.
 - I would run the website locally, on the absolutely weakest hardware I could find that (I *hope*) will still perform under reasonable stress.
 - I will not pay for anything outside of the site domain or use a service that could end up charging me at some scaling point.
 
@@ -20,7 +21,7 @@ So this is the setup.
 
 ### Frontend 
 
-For the frontend I'm using [SvelteKit](https://svelte.dev/docs/kit). It precompresses the code, [optimizes the images](https://svelte.dev/docs/kit/images#sveltejs-enhanced-img), and handles a [whole laudary list](https://svelte.dev/docs/kit/performance) of additional optimizations. SvelteKit is a full-stack framework, meaning it handles the frontend *and* the backend, so we'll be talking about it again soon.
+For the frontend I'm using [SvelteKit](https://svelte.dev/docs/kit). It pre compresses the code, [optimizes the images](https://svelte.dev/docs/kit/images#sveltejs-enhanced-img), and handles a [whole laundry list](https://svelte.dev/docs/kit/performance) of additional optimizations. SvelteKit is a full-stack framework, meaning it handles the frontend *and* the backend, so we'll be talking about it again soon.
 
 While there are CMS options that are technically free, there aren't any that:
 - you can run locally with zero performance overhead
@@ -34,7 +35,7 @@ Image optimization is worth touching on in more detail. Since the website is bui
 
 ### Backend
 
-This is actually where it gets crazy. This site is running on a Rasberry Pi Zero 2w. The machine is the size of a stick of gum, is single core, and has a whopping 512MB of RAM. After intalling Pi OS 64bit Lite, there isn't a lot to work with. But we do have a lot of options. The problem is, given the amount of relivent, up-to-date information avalible, those options aren't clear-cut. So it's time to ✨experiment✨.
+This is actually where it gets crazy. This site is running on a Raspberry Pi Zero 2w. The machine is the size of a stick of gum, is single core, and has a whopping 512MB of RAM. After installing Pi OS 64bit Lite, there isn't a lot to work with. But we do have a lot of options. The problem is, given the amount of relevant, up-to-date information available, those options aren't clear-cut. So it's time to ✨experiment✨.
 
 There are two avenues that we can take:
 
@@ -57,7 +58,7 @@ And the winner is: (spoiler, click/tap to reveal):
 
 >! BUN!
 
-For option 2, we can build the static assets and serve them with a web server. There are actually dozens of options but I don't have infintiate time. Based on my research, these are the top contenders for this use-case:
+For option 2, we can build the static assets and serve them with a web server. There are actually dozens of options but I don't have infinite time. Based on my research, these are the top contenders for this use-case:
 
 - [Nginx](https://nginx.org/) - Tried and true, first released in 2004.
 - [Caddy](https://caddyserver.com/) - Modern and easy to configure

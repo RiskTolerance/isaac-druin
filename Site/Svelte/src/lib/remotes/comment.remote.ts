@@ -1,3 +1,4 @@
+// spell-checker: disable
 import { query, form } from '$app/server';
 import { eq } from 'drizzle-orm';
 import { comment } from '$server/db/schema';
