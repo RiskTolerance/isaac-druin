@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Image, Hero } from '$blocks';
 	import { faces, flowers, lantern, mountains, mountains2, whale } from '$images';
-	import { RichText } from '$components';
+	import { Prose } from '$components';
 	import { onMount } from 'svelte';
 	import { ArrowRight } from '@lucide/svelte';
 
@@ -26,7 +26,7 @@
 <Hero></Hero>
 <div class="relative container mx-auto my-[calc(15vh)] h-[calc(85vh)] gap-8">
 	<div bind:this={scrollContainer} class=" h-full columns-md overflow-x-scroll">
-		<RichText>
+		<Prose>
 			<Image src={faces} alt={'this is an image!'}></Image>
 			<p class="prose">
 				Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi aperiam, enim velit labore
@@ -74,6 +74,6 @@
 				Saepe sit praesentium voluptatum pariatur quod minima ex mollitia soluta. Voluptate officiis
 				amet consequuntur sapiente aut.
 			</p>
-		</RichText>
+		</Prose>
 	</div>
 </div>

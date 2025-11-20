@@ -1,16 +1,16 @@
 <script lang="ts">
-	import { Container, Card, Grid } from '$layouts';
-	import { RichText, Marked } from '$components';
+	import { BaseLayout, CardLayout, GridLayout } from '$layouts';
+	import { Prose, Marked } from '$components';
 	import { Image } from '$blocks';
 	import { mountains } from '$images';
 </script>
 
-<Container>
+<BaseLayout>
 	<h1>Examples of library usage</h1>
-</Container>
+</BaseLayout>
 
-<Container>
-	<RichText>
+<BaseLayout>
+	<Prose>
 		<Image src={mountains} alt="mountains" />
 		<Marked
 			md="
@@ -24,31 +24,31 @@ distinctio ipsum officiis optio fugiat, porro iure molestias deleniti voluptatum
 corrupti? Quae, harum fuga.
 		"
 		></Marked>
-	</RichText>
-</Container>
+	</Prose>
+</BaseLayout>
 
-<Container class="space-y-4">
+<BaseLayout class="space-y-4">
 	<h2>Wrapper Components</h2>
-	<p>Wrapper components are used to wrap content in a container and apply a consistent layout.</p>
-	<Grid columns={12}>
-		<Card class="col-span-12">
+	<p>Wrapper components are used to wrap content in a BaseLayout and apply a consistent layout.</p>
+	<GridLayout columns={12}>
+		<CardLayout class="col-span-12">
 			<p>0</p>
-		</Card>
+		</CardLayout>
 		{#each [1, 2, 3] as item}
-			<Card class="col-span-4">
+			<CardLayout class="col-span-4">
 				<p>{item}</p>
-			</Card>
+			</CardLayout>
 		{/each}
 		{#each [...Array(12).keys()] as item}
-			<Card class="col-span-2">
+			<CardLayout class="col-span-2">
 				<p class="text-xs">{item}</p>
-			</Card>
+			</CardLayout>
 		{/each}
-	</Grid>
-</Container>
+	</GridLayout>
+</BaseLayout>
 
-<Container>
-	<RichText class="mx-auto">
+<BaseLayout>
+	<Prose class="mx-auto">
 		<span class="text-lg font-bold">This is a rich text component.</span>
 		<span>
 			<p>Headings:</p>
@@ -133,5 +133,5 @@ corrupti? Quae, harum fuga.
 				</tbody>
 			</table>
 		</span>
-	</RichText>
-</Container>
+	</Prose>
+</BaseLayout>

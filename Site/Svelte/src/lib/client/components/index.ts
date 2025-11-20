@@ -1,4 +1,4 @@
-export {default as RichText } from '$components/RichText.svelte'
+export {default as Prose } from '$client/components/Prose.svelte'
 export {default as Marked } from '$components/Marked.svelte'
 export {default as BlogCard } from '$components/cards/BlogCard.svelte'
 export {default as ProjectCard } from '$components/cards/ProjectCard.svelte'

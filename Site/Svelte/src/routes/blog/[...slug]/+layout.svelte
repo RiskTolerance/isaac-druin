@@ -2,12 +2,15 @@
 	import { browser } from '$app/environment';
 	let { children }: { children: any } = $props();
 	import BlogCommentSection from '$client/blocks/BlogCommentSection.svelte';
+	import { BaseLayout, ProseLayout } from '$layouts';
 </script>
 
-<div>
+<BaseLayout>
 	{@render children()}
 
 	{#if browser}
-		<BlogCommentSection />
+		<ProseLayout>
+			<BlogCommentSection />
+		</ProseLayout>
 	{/if}
-</div>
+</BaseLayout>

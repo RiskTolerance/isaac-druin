@@ -1,3 +1,10 @@
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-display: 'Bodoni Moda Variable', serif;
+}
+
 @theme {
   /* Light theme colors */
   --color-brand-body-light: var(--color-neutral-800);

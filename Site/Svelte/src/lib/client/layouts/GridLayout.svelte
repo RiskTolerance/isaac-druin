@@ -2,13 +2,11 @@
 	let {
 		children,
 		class: className,
-		columns,
-		gap = 'gap-4'
+		columns
 	}: {
 		children: any;
 		class?: string;
 		columns: 1 | 2 | 4 | 6 | 8 | 10 | 12;
-		gap?: string;
 	} = $props();
 
 	const responsiveColumnClasses = {
@@ -22,6 +20,6 @@
 	};
 </script>
 
-<div id="grid" class="{gap} {className} grid {responsiveColumnClasses[columns]}">
+<div id="grid" class="layout-grid {className} {responsiveColumnClasses[columns]}">
 	{@render children()}
 </div>

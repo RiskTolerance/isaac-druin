@@ -27,6 +27,7 @@ const config = {
 			'$server': './src/lib/server',
 			'$remotes': './src/lib/remotes',
 			'$layouts': './src/lib/client/layouts',
+			'$css': './src/lib/css',
 		}
 	},
 	compilerOptions: {

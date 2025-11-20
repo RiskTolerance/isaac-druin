@@ -1,6 +1,6 @@
 <!-- spell-checker: disable -->
 <script lang="ts">
-	import { RichText } from '$components';
+	import { Prose } from '$components';
 	import { Marked } from '$components';
 	import { Image } from '$blocks';
 	import { mountains } from '$images';
@@ -8,7 +8,9 @@
 
 <Image src={mountains} alt="this is an image!" class="h-[25vh] w-full object-cover  md:h-[50vh]" />
 
-<RichText class="-mt[12.5vh] relative z-10 bg-neutral-50 md:-mt-[25vh] md:p-8 dark:bg-neutral-950">
+<Prose
+	class="-mt[12.5vh] relative z-10 mx-auto max-w-3xl bg-neutral-50 md:-mt-[25vh] md:p-8 dark:bg-neutral-950"
+>
 	<Marked
 		md={`
 ## "We're Back, Baby" 
@@ -62,4 +64,4 @@ After three years at Truxedo, I was unbelievably fortunate to find a job at [Pau
 So, hello world! Thanks for reading! Thanks for catching up and we'll see what comes next!
 	`}
 	/>
-</RichText>
+</Prose>

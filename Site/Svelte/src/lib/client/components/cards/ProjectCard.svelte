@@ -1,6 +1,5 @@
 <script lang="ts">
-	import { Card } from '$layouts';
-
+	import { CardLayout } from '$layouts';
 	let {
 		slug,
 		metadata
@@ -17,7 +16,7 @@
 </script>
 
 <a href="/projects/{slug}" class="group transition-colors">
-	<Card>
+	<CardLayout>
 		<article class="border-b border-neutral-800 pb-6">
 			<h2 class="mb-2 text-2xl font-bold">
 				{metadata.title}
@@ -44,5 +43,5 @@
 				{/if}
 			</div>
 		</article>
-	</Card>
+	</CardLayout>
 </a>

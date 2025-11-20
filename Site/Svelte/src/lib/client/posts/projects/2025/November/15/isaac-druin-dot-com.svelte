@@ -1,7 +1,8 @@
 <!-- spell-checker: disable -->
 <script lang="ts">
-	import { RichText } from '$components';
+	import { Prose } from '$components';
 	import { Marked } from '$components';
+	import { ProseLayout } from '$layouts';
 	import Chart from './_Chart.svelte';
 
 	const content = `
@@ -78,7 +79,9 @@ This is where I'm just cheating. We're using Cloudflared to create a tunnel for 
 `;
 </script>
 
-<RichText>
-	<Marked md={content} />
-	<Chart />
-</RichText>
+<ProseLayout>
+	<Prose>
+		<Marked md={content} />
+		<Chart />
+	</Prose>
+</ProseLayout>

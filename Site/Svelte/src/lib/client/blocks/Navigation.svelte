@@ -1,11 +1,11 @@
 <script lang="ts">
-	import { Container } from '$layouts';
+	import { BaseLayout } from '$layouts';
 </script>
 
-<Container>
+<BaseLayout>
 	<nav class="mx-auto flex w-fit gap-4">
 		<a href="/">Home</a>
 		<a href="/projects">Projects</a>
 		<a href="/blog">Blog</a>
 	</nav>
-</Container>
+</BaseLayout>
