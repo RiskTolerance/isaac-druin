@@ -1,5 +1,5 @@
 label {
-	@apply flex flex-col-reverse gap-2 text-white w-100;
+	@apply flex flex-col-reverse gap-2 text-white w-md;
 }
 
 label input,
