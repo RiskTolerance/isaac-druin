@@ -27,9 +27,10 @@ corrupti? Quae, harum fuga.
 	</Prose>
 </BaseLayout>
 
-<BaseLayout class="space-y-4">
-	<h2>Wrapper Components</h2>
-	<p>Wrapper components are used to wrap content in a BaseLayout and apply a consistent layout.</p>
+<BaseLayout>
+	<h2>Layout Components</h2>
+	<p>Layout components are used to wrap content and apply a consistent layout.</p>
+	<h3>Grid Layout</h3>
 	<GridLayout columns={12}>
 		<CardLayout class="col-span-12">
 			<p>0</p>

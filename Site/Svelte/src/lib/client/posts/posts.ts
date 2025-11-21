@@ -1,11 +1,12 @@
 const postComponents = import.meta.glob(['/src/lib/client/posts/blog/**/*.svelte', '!/src/lib/client/posts/blog/**/_*.svelte'], { eager: true });
-const postMetadata = import.meta.glob(['/src/lib/client/posts/blog/**/*.json', '!/src/lib/client/posts/blog/**/_*.json'], { eager: true, import: 'default' });
-
+const postMetadata = import.meta.glob(['/src/lib/client/posts/blog/**/*.ts', '!/src/lib/client/posts/blog/**/_*.ts'], { eager: true });
+import type { Picture } from 'vite-imagetools';
 export interface PostMetadata {
 	title: string;
 	date: string;
 	excerpt?: string;
 	tags?: string[];
+	featuredImage?: Picture;
 	[key: string]: unknown;
 }
 
@@ -16,7 +17,7 @@ export interface PostEntry {
 }
 
 /**
- * Get all blog posts by loading .svelte components and their paired .json metadata files.
+ * Get all blog posts by loading .svelte components and their paired .ts metadata files.
  * Slug is derived from the file path (e.g., "2025/January/1-12-25")
  */
 export function getAllPosts(): PostEntry[] {
@@ -28,12 +29,14 @@ export function getAllPosts(): PostEntry[] {
 				.replace(/\.svelte$/, '');
 
 			// Find corresponding metadata file
-			const metaPath = path.replace(/\.svelte$/, '.json');
-			const metadata = postMetadata[metaPath] as PostMetadata | undefined;
+			const metaPath = path.replace(/\.svelte$/, '.ts');
+			const metadataModule = postMetadata[metaPath] as { metadata: PostMetadata } | undefined;
 
-			if (!metadata) {
-				throw new Error(`Missing metadata file for ${path}. Expected ${metaPath}`);
+			if (!metadataModule || !metadataModule.metadata) {
+				throw new Error(`Missing metadata file for ${path}. Expected ${metaPath} with exported 'metadata'`);
 			}
+
+			const metadata = metadataModule.metadata;
 
 			return {
 				slug,

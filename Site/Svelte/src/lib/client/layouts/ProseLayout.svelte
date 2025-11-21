@@ -2,6 +2,6 @@
 	let { children, class: className }: { children: any; class?: string } = $props();
 </script>
 
-<div class="layout-prose {className}">
+<div class="prose-layout {className}">
 	{@render children()}
 </div>

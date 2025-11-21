@@ -20,6 +20,6 @@
 	};
 </script>
 
-<div id="grid" class="layout-grid {className} {responsiveColumnClasses[columns]}">
+<div id="grid" class="grid-layout {className} {responsiveColumnClasses[columns]}">
 	{@render children()}
 </div>

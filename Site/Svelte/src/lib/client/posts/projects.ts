@@ -1,6 +1,8 @@
 // spell-checker: disable
 const projectComponents = import.meta.glob(['/src/lib/client/posts/projects/**/*.svelte', '!/src/lib/client/posts/projects/**/_*.svelte'], { eager: true });
-const projectMetadata = import.meta.glob(['/src/lib/client/posts/projects/**/*.json', '!/src/lib/client/posts/projects/**/_*.json'], { eager: true, import: 'default' });
+const projectMetadata = import.meta.glob(['/src/lib/client/posts/projects/**/*.ts', '!/src/lib/client/posts/projects/**/_*.ts'], { eager: true });
+
+import type { Picture } from 'vite-imagetools';
 
 export interface ProjectMetadata {
 	title: string;
@@ -8,6 +10,7 @@ export interface ProjectMetadata {
 	excerpt?: string;
 	tags?: string[];
 	url?: string;
+	featuredImage?: Picture;
 	[key: string]: unknown;
 }
 
@@ -18,7 +21,7 @@ export interface ProjectEntry {
 }
 
 /**
- * Get all projects by loading .svelte components and their paired .json metadata files.
+ * Get all projects by loading .svelte components and their paired .ts metadata files.
  * Slug is derived from the file path (e.g., "isaac-druin-dot-com")
  */
 export function getAllProjects(): ProjectEntry[] {
@@ -31,12 +34,14 @@ export function getAllProjects(): ProjectEntry[] {
 				.replace(/\.svelte$/, '');
 
 			// Find corresponding metadata file
-			const metaPath = path.replace(/\.svelte$/, '.json');
-			const metadata = projectMetadata[metaPath] as ProjectMetadata | undefined;
+			const metaPath = path.replace(/\.svelte$/, '.ts');
+			const metadataModule = projectMetadata[metaPath] as { metadata: ProjectMetadata } | undefined;
 
-			if (!metadata) {
-				throw new Error(`Missing metadata file for ${path}. Expected ${metaPath}`);
+			if (!metadataModule || !metadataModule.metadata) {
+				throw new Error(`Missing metadata file for ${path}. Expected ${metaPath} with exported 'metadata'`);
 			}
+
+			const metadata = metadataModule.metadata;
 
 			return {
 				slug,

@@ -1,7 +1,23 @@
 <script lang="ts">
-	let { children, class: className }: { children: any; class?: string } = $props();
+	import { Image } from '$blocks';
+	import type { Picture } from 'vite-imagetools';
+	let {
+		children,
+		class: className,
+		image
+	}: { children: any; class?: string; image?: Picture } = $props();
 </script>
 
-<div class="layout-card bg-neutral-100 dark:bg-neutral-900 {className}">
-	{@render children()}
+<div class="group relative overflow-clip">
+	<!-- background image -->
+	{#if image}
+		<Image
+			src={image}
+			alt="background"
+			class="absolute h-full w-full object-cover opacity-20 transition-transform duration-200 group-hover:scale-105"
+		/>
+	{/if}
+	<div class="card-layout {className}">
+		{@render children()}
+	</div>
 </div>
