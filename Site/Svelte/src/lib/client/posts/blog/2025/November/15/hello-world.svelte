@@ -1,7 +1,6 @@
 <!-- spell-checker: disable -->
 <script lang="ts">
-	import { Prose } from '$components';
-	import { Marked } from '$components';
+	import { Prose, Marked } from '$components';
 	import { Image } from '$blocks';
 	import { mountains } from '$images';
 </script>
@@ -13,11 +12,7 @@
 >
 	<Marked
 		md={`
-## "We're Back, Baby" 
-## - or - 
-## "A Series of Unfortunate Events" 
-## - or - 
-## "A Summary of the Last Five Years"
+## "We're Back, Baby" <br> - or - <br> "A Series of Unfortunate Events" <br> - or - <br> "A Summary of the Last Five Years"
 
 Oh, hey there.
 
