@@ -18,7 +18,7 @@
 		illustrator,
 		photoshop,
 		blender,
-		gsap,
+		gsap as gsapIcon,
 		cloudflare,
 		docker,
 		vercel,
@@ -27,6 +27,26 @@
 		mastra,
 		cursor
 	} from '$images/icons';
+
+	import { gsap } from 'gsap';
+	import { Flip } from 'gsap/Flip';
+	import { DrawSVGPlugin } from 'gsap/DrawSVGPlugin';
+	import { ScrollTrigger } from 'gsap/ScrollTrigger';
+	// ScrollSmoother requires ScrollTrigger
+	import { ScrollSmoother } from 'gsap/ScrollSmoother';
+	import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+	import { SplitText } from 'gsap/SplitText';
+	import { TextPlugin } from 'gsap/TextPlugin';
+
+	gsap.registerPlugin(
+		DrawSVGPlugin,
+		Flip,
+		ScrollTrigger,
+		ScrollSmoother,
+		ScrollToPlugin,
+		SplitText,
+		TextPlugin
+	);
 	import { X } from '@lucide/svelte';
 
 	const frontend = [
@@ -53,7 +73,7 @@
 		{
 			name: 'GSAP',
 			shortDescription: 'A JavaScript library for creating animations.',
-			icon: gsap
+			icon: gsapIcon
 		}
 	];
 
@@ -154,19 +174,132 @@
 	let expandedSkill: HTMLElement;
 	let expandedSkillBackdrop: HTMLElement;
 	let innerHeight: number = $state(0);
+	let scrollY: number = $state(0);
 
-	const getTopOrBottom = (e: MouseEvent) => {
-		const y = e.clientY;
-		return y > innerHeight / 2 ? 'bottom' : 'top';
-	};
+	// Store references for reverse animation
+	let originalCard: HTMLElement | null = $state(null);
+	let skillElements: { icon: HTMLElement; heading: HTMLElement; description: HTMLElement } | null =
+		$state(null);
 
 	const openExpandedSkill = (e: MouseEvent) => {
+		const clickedElement = (e.target as HTMLElement).closest('button') as HTMLElement;
+		if (!clickedElement) return;
+
+		// Get skill card elements
+		const heading = clickedElement.querySelector('.skill-name') as HTMLElement | null;
+		const description = clickedElement.querySelector(
+			'.skill-short-description'
+		) as HTMLElement | null;
+		const icon = clickedElement.querySelector('.skill-icon') as HTMLElement | null;
+		if (!icon || !heading || !description) return;
+
+		// Get target slots in expanded view
+		const iconSlot = expandedSkill.querySelector('#expanded-skill-image');
+		const nameSlot = expandedSkill.querySelector('#expanded-skill-name');
+		const descriptionSlot = expandedSkill.querySelector('#expanded-skill-short-description');
+		if (!iconSlot || !nameSlot || !descriptionSlot) return;
+
+		// Calculate positions
+		const isClickingFromTop = e.clientY < innerHeight / 2;
+		const clickedElementY = clickedElement.getBoundingClientRect().top + scrollY;
+		const scrollOffset = isClickingFromTop ? innerHeight / 4 : (innerHeight / 4) * 3;
+
+		// Capture initial state before DOM changes
+		gsap.set([icon, heading, description], { clearProps: 'transition' });
+		const skillItemState = Flip.getState([icon, heading, description]);
+
+		// Position and show expanded container
+		expandedSkill.style.top = isClickingFromTop ? 'auto' : '48px';
+		expandedSkill.style.bottom = isClickingFromTop ? '48px' : 'auto';
+		expandedSkill.style.opacity = '0';
 		expandedSkill.style.display = 'block';
-		expandedSkillBackdrop.style.display = 'block';
+
+		// Store references for reverse animation
+		originalCard = clickedElement;
+		skillElements = { icon, heading, description };
+
+		// Move elements to new positions
+		iconSlot.appendChild(icon);
+		nameSlot.appendChild(heading);
+		descriptionSlot.appendChild(description);
+
+		// Build and play animation timeline
+		const tl = gsap.timeline({ paused: true });
+
+		tl.to(window, {
+			scrollTo: { y: clickedElementY, offsetY: scrollOffset },
+			duration: 0.2,
+			ease: 'power2.inOut'
+		});
+
+		tl.to(expandedSkill, { opacity: 1, duration: 0.3 }, '<');
+
+		tl.add(
+			Flip.from(skillItemState, {
+				duration: 0.5,
+				ease: 'power2.inOut'
+			}),
+			'<'
+		);
+
+		tl.play().then(() => {
+			expandedSkillBackdrop.style.display = 'block';
+		});
+	};
+
+	const closeExpandedSkill = () => {
+		if (!originalCard || !skillElements) {
+			expandedSkill.style.display = 'none';
+			expandedSkillBackdrop.style.display = 'none';
+			return;
+		}
+
+		const { icon, heading, description } = skillElements;
+
+		// Get current state before moving elements back
+		gsap.set([icon, heading, description], { clearProps: 'transition' });
+		const currentState = Flip.getState([icon, heading, description]);
+
+		// Find original card containers (elements were moved, so find by structure)
+		const cardContainer = originalCard.querySelector('div.flex'); // The main flex container
+		const proseContainer = originalCard.querySelector('div.prose'); // The prose container for text
+
+		if (!cardContainer || !proseContainer) {
+			expandedSkill.style.display = 'none';
+			expandedSkillBackdrop.style.display = 'none';
+			return;
+		}
+
+		// Move elements back to original positions (icon first, then prose content)
+		cardContainer.insertBefore(icon, cardContainer.firstChild);
+		proseContainer.insertBefore(heading, proseContainer.firstChild || null);
+		proseContainer.appendChild(description);
+
+		// Build reverse animation timeline
+		const tl = gsap.timeline({ paused: true });
+
+		tl.to(expandedSkill, { opacity: 0, duration: 0.3 });
+
+		tl.add(
+			Flip.from(currentState, {
+				duration: 0.5,
+				ease: 'power2.inOut'
+			}),
+			'<'
+		);
+
+		tl.call(() => {
+			expandedSkill.style.display = 'none';
+			expandedSkillBackdrop.style.display = 'none';
+			originalCard = null;
+			skillElements = null;
+		});
+
+		tl.play();
 	};
 </script>
 
-<svelte:window bind:innerHeight />
+<svelte:window bind:innerHeight bind:scrollY />
 
 <Image src={mountains} alt="this is an image!" class="h-[25vh] w-full object-cover  md:h-[50vh]" />
 
@@ -262,28 +395,32 @@ The "AI" is the part of the application that the user sees and interacts with. I
 <div
 	id="expanded-skill"
 	bind:this={expandedSkill}
-	class="fixed top-12 left-1/2 z-20 flex h-[80vh] w-[90vw] max-w-3xl -translate-x-1/2 flex-col overflow-y-scroll bg-amber-300 p-4 md:h-[50vh] md:p-8"
+	class="fixed left-1/2 z-20 flex w-[90vw] max-w-4xl -translate-x-1/2 flex-col bg-black p-4 outline outline-gray-300 md:h-[50vh] md:p-8"
+	style="display: none; opacity: 0;"
 >
 	<div class="absolute top-0 right-0 flex h-12 w-12 items-center justify-center">
-		<X
-			class="h-8 w-8 text-white"
-			onclick={() => {
-				expandedSkill.style.display = 'none';
-			}}
-		/>
+		<X class="h-8 w-8 text-white" onclick={closeExpandedSkill} />
 	</div>
-	<div class="mx-auto mb-4 flex h-24 w-full bg-gray-500">
-		<div id="expanded-skill-image" class="mr-4 aspect-square h-full bg-red-500"></div>
-		<div class="flex h-full w-full flex-col gap-2 bg-blue-400 p-2">
-			<div id="expanded-skill-name" class="h-1/2 w-full bg-red-400">hi</div>
-			<div id="expanded-skill-short-description" class="h-1/2 w-full bg-red-400"></div>
+	<div class="mx-auto mb-4 flex h-24 w-full">
+		<div
+			id="expanded-skill-image"
+			class="mr-4 flex aspect-square h-full items-center justify-center"
+		></div>
+		<div class="flex h-full w-full flex-col gap-2 p-2">
+			<div id="expanded-skill-name" class="flex h-1/2 w-full"></div>
+			<div id="expanded-skill-short-description" class="h-1/2 w-full"></div>
 		</div>
 	</div>
-	<div
-		id="expanded-skill-description"
-		class="prose mx-auto flex w-full max-w-full justify-center bg-green-400"
-	>
-		hi
+	<div id="expanded-skill-description" class="prose mx-auto flex w-full max-w-full justify-center">
+		<p>
+			Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque vitae similique dolorem dicta
+			quas? Aspernatur, fugiat! Dolore, eaque blanditiis fuga reprehenderit porro consectetur totam
+			veniam inventore pariatur suscipit laboriosam minus dicta cupiditate, recusandae odio modi
+			corrupti repellendus ea debitis ad. Quas dolorum, tempore velit quae vel eaque nam? Vero
+			eligendi esse, ipsam porro dolores saepe eum velit, reprehenderit maiores commodi consequatur
+			dignissimos veniam soluta, adipisci officia doloribus recusandae ut! Cumque aperiam magnam
+			atque debitis reiciendis consequuntur provident suscipit natus corrupti?
+		</p>
 	</div>
 </div>
 
@@ -291,9 +428,7 @@ The "AI" is the part of the application that the user sees and interacts with. I
 	bind:this={expandedSkillBackdrop}
 	id="expanded-skill-backdrop"
 	class="fixed top-0 right-0 bottom-0 left-0 z-10 bg-black/50"
-	onclick={() => {
-		expandedSkill.style.display = 'none';
-		expandedSkillBackdrop.style.display = 'none';
-	}}
+	style="display: none;"
+	onclick={closeExpandedSkill}
 	aria-label="Close expanded skill"
 ></button>
