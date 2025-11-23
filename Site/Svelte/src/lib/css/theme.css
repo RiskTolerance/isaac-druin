@@ -3,205 +3,282 @@
 
 @theme {
   --font-display: 'Bodoni Moda Variable', serif;
+  --font-code: 'Fira Code Variable', monospace;
 }
 
 @theme {
+  /* Brand Colors */
+  --color-brandGreen-50: oklch(0.962 0.02 172.69);
+  --color-brandGreen-100: oklch(0.916 0.047 172.94);
+  --color-brandGreen-200: oklch(0.838 0.05 173.61);
+  --color-brandGreen-300: oklch(0.762 0.047 171.59);
+  --color-brandGreen-400: oklch(0.693 0.042 173.84);
+  --color-brandGreen-500: oklch(0.617 0.037 172.66);
+  --color-brandGreen-600: oklch(0.539 0.033 171.82);
+  --color-brandGreen-700: oklch(0.462 0.028 172.66);
+  --color-brandGreen-800: oklch(0.35 0.02 175.79);
+  --color-brandGreen-900: oklch(0.249 0.016 168.6);
+  --color-brandGreen-950: oklch(0.187 0.012 166.98);
+
+
+  --color-brandYellow-50: oklch(0.966 0.04 88.18);
+  --color-brandYellow-100: oklch(0.93 0.089 89.91);
+  --color-brandYellow-200: oklch(0.859 0.174 95.21);
+  --color-brandYellow-300: oklch(0.767 0.155 95.2);
+  --color-brandYellow-400: oklch(0.682 0.138 95.48);
+  --color-brandYellow-500: oklch(0.585 0.118 94.9);
+  --color-brandYellow-600: oklch(0.5 0.101 95.45);
+  --color-brandYellow-700: oklch(0.405 0.082 95.12);
+  --color-brandYellow-800: oklch(0.32 0.065 95.33);
+  --color-brandYellow-900: oklch(0.224 0.046 95.66);
+  --color-brandYellow-950: oklch(0.176 0.036 93.21);
+
+
+  --color-brandGray-50: oklch(0.975 0.002 228.43);
+  --color-brandGray-100: oklch(0.93 0.008 228.74);
+  --color-brandGray-200: oklch(0.844 0.017 230.9);
+  --color-brandGray-300: oklch(0.757 0.02 227.33);
+  --color-brandGray-400: oklch(0.662 0.016 229.06);
+  --color-brandGray-500: oklch(0.576 0.014 229.05);
+  --color-brandGray-600: oklch(0.491 0.012 229.04);
+  --color-brandGray-700: oklch(0.404 0.01 225.25);
+  --color-brandGray-800: oklch(0.309 0.008 223.63);
+  --color-brandGray-900: oklch(0.224 0.005 219.63);
+  --color-brandGray-950: oklch(0.176 0.004 229);
+
   /* Light theme colors */
-  --color-brand-body-light: var(--color-neutral-800);
-  --color-brand-headings-light: var(--color-neutral-900);
-  --color-brand-lead-light: var(--color-neutral-700);
-  --color-brand-links-light: var(--color-neutral-900);
-  --color-brand-bold-light: var(--color-neutral-900);
-  --color-brand-counters-light: var(--color-neutral-600);
-  --color-brand-bullets-light: var(--color-neutral-400);
-  --color-brand-hr-light: var(--color-neutral-300);
-  --color-brand-quotes-light: var(--color-neutral-900);
-  --color-brand-quote-borders-light: var(--color-neutral-300);
-  --color-brand-captions-light: var(--color-neutral-700);
-  --color-brand-code-light: var(--color-neutral-900);
-  --color-brand-pre-code-light: var(--color-neutral-100);
-  --color-brand-pre-bg-light: var(--color-neutral-900);
-  --color-brand-th-borders-light: var(--color-neutral-300);
-  --color-brand-td-borders-light: var(--color-neutral-200);
+  --brandBodyLight: var(--color-brandGray-800);
+  --brandHeadingsLight: var(--color-brandGray-900);
+  --brandLeadLight: var(--color-brandGray-700);
+  --brandLinksLight: var(--color-brandGray-900);
+  --brandBoldLight: var(--color-brandGray-900);
+  --brandCountersLight: var(--color-brandGray-600);
+  --brandBulletsLight: var(--color-brandGray-400);
+  --brandHrLight: var(--color-brandGray-300);
+  --brandQuotesLight: var(--color-brandGray-900);
+  --brandBordersLight: var(--color-brandGray-300);
+  --brandCaptionsLight: var(--color-brandGray-700);
+  --brandCodeLight: var(--color-brandGray-900);
+  --brandProCodeLight: var(--color-brandGray-100);
+  --brandPreBgLight: var(--color-brandGray-900);
+  --brandThBordersLight: var(--color-brandGray-300);
+  --brandTdBordersLight: var(--color-neutral-200);
   
   /* Dark theme colors */
-  --color-brand-body-dark: var(--color-neutral-200);
-  --color-brand-headings-dark: var(--color-neutral-100);
-  --color-brand-lead-dark: var(--color-neutral-300);
-  --color-brand-links-dark: var(--color-neutral-100);
-  --color-brand-bold-dark: var(--color-neutral-100);
-  --color-brand-counters-dark: var(--color-neutral-400);
-  --color-brand-bullets-dark: var(--color-neutral-600);
-  --color-brand-hr-dark: var(--color-neutral-700);
-  --color-brand-quotes-dark: var(--color-neutral-100);
-  --color-brand-quote-borders-dark: var(--color-neutral-700);
-  --color-brand-captions-dark: var(--color-neutral-300);
-  --color-brand-code-dark: var(--color-neutral-100);
-  --color-brand-pre-code-dark: var(--color-neutral-900);
-  --color-brand-pre-bg-dark: var(--color-neutral-100);
-  --color-brand-th-borders-dark: var(--color-neutral-700);
-  --color-brand-td-borders-dark: var(--color-neutral-800);
+  --brandBodyDark: var(--color-brandGray-50);
+  --brandHeadingsDark: var(--color-brandGray-100);
+  --brandLeadDark: var(--color-brandGray-300);
+  --brandLinksDark: var(--color-brandGray-100);
+  --brandBoldDark: var(--color-brandGray-100);
+  --brandCountersDark: var(--color-brandGray-400);
+  --brandBulletsDark: var(--color-brandGray-600);
+  --brandHrDark: var(--color-brandGray-700);
+  --brandQuotesDark: var(--color-brandGray-100);
+  --brandBordersDark: var(--color-brandGray-700);
+  --brandCaptionsDark: var(--color-brandGray-300);
+  --brandCodeDark: var(--color-brandGray-100);
+  --brandProCodeDark: var(--color-brandGray-900);
+  --brandPreBgDark: var(--color-brandGray-100);
+  --brandThBordersDark: var(--color-brandGray-700);
+  --brandTdBordersDark: var(--color-brandGray-800);
+  
+  /* Highlight.js code theme colors */
+  --hljs-bg: oklch(0.36 0.04 248.97 / 1);
+  --hljs-bg-light: oklch(0.40 0.04 249 / 1);
+  --hljs-bg-selection: oklch(0.63 0.02 202.37 / 1);
+  --hljs-fg: oklch(0.91 0 0 / 1);
+  --hljs-fg-light: oklch(0.97 0 0 / 1);
+  --hljs-fg-dark: oklch(0.81 0.01 236.59 / 1);
+  --hljs-comment: oklch(0.71 0.02 201.31 / 1);
+  --hljs-variable: oklch(0.63 0.19 29.44 / 1);
+  --hljs-number: oklch(0.70 0.16 55.54 / 1);
+  --hljs-class: oklch(0.84 0.17 91.77 / 1);
+  --hljs-string: oklch(0.75 0.18 152.33 / 1);
+  --hljs-support: oklch(0.71 0.13 174.20 / 1);
+  --hljs-function: oklch(0.65 0.13 242.69 / 1);
+  --hljs-keyword: oklch(0.58 0.15 315.32 / 1);
+  --hljs-meta: oklch(0.60 0.13 43.62 / 1);
+  --hljs-operator-opacity: 0.7;
 }
 
 @utility prose-brand-light {
-  --tw-prose-body: var(--color-brand-body-light);
-  --tw-prose-headings: var(--color-brand-headings-light);
-  --tw-prose-lead: var(--color-brand-lead-light);
-  --tw-prose-links: var(--color-brand-links-light);
-  --tw-prose-bold: var(--color-brand-bold-light);
-  --tw-prose-counters: var(--color-brand-counters-light);
-  --tw-prose-bullets: var(--color-brand-bullets-light);
-  --tw-prose-hr: var(--color-brand-hr-light);
-  --tw-prose-quotes: var(--color-brand-quotes-light);
-  --tw-prose-quote-borders: var(--color-brand-quote-borders-light);
-  --tw-prose-captions: var(--color-brand-captions-light);
-  --tw-prose-code: var(--color-brand-code-light);
-  --tw-prose-pre-code: var(--color-brand-pre-code-light);
-  --tw-prose-pre-bg: var(--color-brand-pre-bg-light);
-  --tw-prose-th-borders: var(--color-brand-th-borders-light);
-  --tw-prose-td-borders: var(--color-brand-td-borders-light);
-  --tw-prose-invert-body: var(--color-brand-body-dark);
-  --tw-prose-invert-headings: var(--color-brand-headings-dark);
-  --tw-prose-invert-lead: var(--color-brand-lead-dark);
-  --tw-prose-invert-links: var(--color-brand-links-dark);
-  --tw-prose-invert-bold: var(--color-brand-bold-dark);
-  --tw-prose-invert-counters: var(--color-brand-counters-dark);
-  --tw-prose-invert-bullets: var(--color-brand-bullets-dark);
-  --tw-prose-invert-hr: var(--color-brand-hr-dark);
-  --tw-prose-invert-quotes: var(--color-brand-quotes-dark);
-  --tw-prose-invert-quote-borders: var(--color-brand-quote-borders-dark);
-  --tw-prose-invert-captions: var(--color-brand-captions-dark);
-  --tw-prose-invert-code: var(--color-brand-code-dark);
-  --tw-prose-invert-pre-code: var(--color-brand-pre-code-dark);
-  --tw-prose-invert-pre-bg: var(--color-brand-pre-bg-dark);
-  --tw-prose-invert-th-borders: var(--color-brand-th-borders-dark);
-  --tw-prose-invert-td-borders: var(--color-brand-td-borders-dark);
+  --tw-prose-body: var(--brandBodyLight);
+  --tw-prose-headings: var(--brandHeadingsLight);
+  --tw-prose-lead: var(--brandLeadLight);
+  --tw-prose-links: var(--brandLinksLight);
+  --tw-prose-bold: var(--brandBoldLight);
+  --tw-prose-counters: var(--brandCountersLight);
+  --tw-prose-bullets: var(--brandBulletsLight);
+  --tw-prose-hr: var(--brandHrLight);
+  --tw-prose-quotes: var(--brandQuotesLight);
+  --tw-prose-quote-borders: var(--brandBordersLight);
+  --tw-prose-captions: var(--brandCaptionsLight);
+  --tw-prose-code: var(--brandCodeLight);
+  --tw-prose-pre-code: var(--brandProCodeLight);
+  --tw-prose-pre-bg: var(--brandPreBgLight);
+  --tw-prose-th-borders: var(--brandThBordersLight);
+  --tw-prose-td-borders: var(--brandTdBordersLight);
+  --tw-prose-invert-body: var(--brandBodyDark);
+  --tw-prose-invert-headings: var(--brandHeadingsDark);
+  --tw-prose-invert-lead: var(--brandLeadDark);
+  --tw-prose-invert-links: var(--brandLinksDark);
+  --tw-prose-invert-bold: var(--brandBoldDark);
+  --tw-prose-invert-counters: var(--brandCountersDark);
+  --tw-prose-invert-bullets: var(--brandBulletsDark);
+  --tw-prose-invert-hr: var(--brandHrDark);
+  --tw-prose-invert-quotes: var(--brandQuotesDark);
+  --tw-prose-invert-quote-borders: var(--brandBordersDark);
+  --tw-prose-invert-captions: var(--brandCaptionsDark);
+  --tw-prose-invert-code: var(--brandCodeDark);
+  --tw-prose-invert-pre-code: var(--brandProCodeDark);
+  --tw-prose-invert-pre-bg: var(--brandPreBgDark);
+  --tw-prose-invert-th-borders: var(--brandThBordersDark);
+  --tw-prose-invert-td-borders: var(--brandTdBordersDark);
 }
 
 @utility prose-brand-dark {
-  --tw-prose-body: var(--color-brand-body-dark);
-  --tw-prose-headings: var(--color-brand-headings-dark);
-  --tw-prose-lead: var(--color-brand-lead-dark);
-  --tw-prose-links: var(--color-brand-links-dark);
-  --tw-prose-bold: var(--color-brand-bold-dark);
-  --tw-prose-counters: var(--color-brand-counters-dark);
-  --tw-prose-bullets: var(--color-brand-bullets-dark);
-  --tw-prose-hr: var(--color-brand-hr-dark);
-  --tw-prose-quotes: var(--color-brand-quotes-dark);
-  --tw-prose-quote-borders: var(--color-brand-quote-borders-dark);
-  --tw-prose-captions: var(--color-brand-captions-dark);
-  --tw-prose-code: var(--color-brand-code-dark);
-  --tw-prose-pre-code: var(--color-brand-pre-code-dark);
-  --tw-prose-pre-bg: var(--color-brand-pre-bg-dark);
-  --tw-prose-th-borders: var(--color-brand-th-borders-dark);
-  --tw-prose-td-borders: var(--color-brand-td-borders-dark);
-  --tw-prose-invert-body: var(--color-brand-body-light);
-  --tw-prose-invert-headings: var(--color-brand-headings-light);
-  --tw-prose-invert-lead: var(--color-brand-lead-light);
-  --tw-prose-invert-links: var(--color-brand-links-light);
-  --tw-prose-invert-bold: var(--color-brand-bold-light);
-  --tw-prose-invert-counters: var(--color-brand-counters-light);
-  --tw-prose-invert-bullets: var(--color-brand-bullets-light);
-  --tw-prose-invert-hr: var(--color-brand-hr-light);
-  --tw-prose-invert-quotes: var(--color-brand-quotes-light);
-  --tw-prose-invert-quote-borders: var(--color-brand-quote-borders-light);
-  --tw-prose-invert-captions: var(--color-brand-captions-light);
-  --tw-prose-invert-code: var(--color-brand-code-light);
-  --tw-prose-invert-pre-code: var(--color-brand-pre-code-light);
-  --tw-prose-invert-pre-bg: var(--color-brand-pre-bg-light);
-  --tw-prose-invert-th-borders: var(--color-brand-th-borders-light);
-  --tw-prose-invert-td-borders: var(--color-brand-td-borders-light);
+  --tw-prose-body: var(--brandBodyDark);
+  --tw-prose-headings: var(--brandHeadingsDark);
+  --tw-prose-lead: var(--brandLeadDark);
+  --tw-prose-links: var(--brandLinksDark);
+  --tw-prose-bold: var(--brandBoldDark);
+  --tw-prose-counters: var(--brandCountersDark);
+  --tw-prose-bullets: var(--brandBulletsDark);
+  --tw-prose-hr: var(--brandHrDark);
+  --tw-prose-quotes: var(--brandQuotesDark);
+  --tw-prose-quote-borders: var(--brandBordersDark);
+  --tw-prose-captions: var(--brandCaptionsDark);
+  --tw-prose-code: var(--brandCodeDark);
+  --tw-prose-pre-code: var(--brandProCodeDark);
+  --tw-prose-pre-bg: var(--brandPreBgDark);
+  --tw-prose-th-borders: var(--brandThBordersDark);
+  --tw-prose-td-borders: var(--brandTdBordersDark);
+  --tw-prose-invert-body: var(--brandBodyLight);
+  --tw-prose-invert-headings: var(--brandHeadingsLight);
+  --tw-prose-invert-lead: var(--brandLeadLight);
+  --tw-prose-invert-links: var(--brandLinksLight);
+  --tw-prose-invert-bold: var(--brandBoldLight);
+  --tw-prose-invert-counters: var(--brandCountersLight);
+  --tw-prose-invert-bullets: var(--brandBulletsLight);
+  --tw-prose-invert-hr: var(--brandHrLight);
+  --tw-prose-invert-quotes: var(--brandQuotesLight);
+  --tw-prose-invert-quote-borders: var(--brandBordersLight);
+  --tw-prose-invert-captions: var(--brandCaptionsLight);
+  --tw-prose-invert-code: var(--brandCodeLight);
+  --tw-prose-invert-pre-code: var(--brandProCodeLight);
+  --tw-prose-invert-pre-bg: var(--brandPreBgLight);
+  --tw-prose-invert-th-borders: var(--brandThBordersLight);
+  --tw-prose-invert-td-borders: var(--brandTdBordersLight);
 }
 
 @utility text-brand-light {
   p {
-    color: var(--color-brand-body-light);
+    color: var(--brandBodyLight);
   }
   h1, h2, h3, h4, h5, h6 {
-    color: var(--color-brand-headings-light);
+    color: var(--brandHeadingsLight);
   }
   a {
-    color: var(--color-brand-links-light);
+    color: var(--brandLinksLight);
   }
   strong, b {
-    color: var(--color-brand-bold-light);
+    color: var(--brandBoldLight);
   }
   code {
-    color: var(--color-brand-code-light);
+    color: var(--brandCodeLight);
   }
   pre code {
-    color: var(--color-brand-pre-code-light);
+    color: var(--brandProCodeLight);
   }
   pre {
-    background-color: var(--color-brand-pre-bg-light);
+    background-color: var(--brandPreBgLight);
   }
   blockquote {
-    color: var(--color-brand-quotes-light);
-    border-color: var(--color-brand-quote-borders-light);
+    color: var(--brandQuotesLight);
+    border-color: var(--brandBordersLight);
   }
   figcaption {
-    color: var(--color-brand-captions-light);
+    color: var(--brandCaptionsLight);
   }
   hr {
-    border-color: var(--color-brand-hr-light);
+    border-color: var(--brandHrLight);
   }
   ol li::marker {
-    color: var(--color-brand-counters-light);
+    color: var(--brandCountersLight);
   }
   ul li::marker {
-    color: var(--color-brand-bullets-light);
+    color: var(--brandBulletsLight);
   }
   th {
-    border-color: var(--color-brand-th-borders-light);
+    border-color: var(--brandThBordersLight);
   }
   td {
-    border-color: var(--color-brand-td-borders-light);
+    border-color: var(--brandTdBordersLight);
   }
 }
 
 @utility text-brand-dark {
   p {
-    color: var(--color-brand-body-dark);
+    color: var(--brandBodyDark);
   }
   h1, h2, h3, h4, h5, h6 {
-    color: var(--color-brand-headings-dark);
+    color: var(--brandHeadingsDark);
   }
   a {
-    color: var(--color-brand-links-dark);
+    color: var(--brandLinksDark);
   }
   strong, b {
-    color: var(--color-brand-bold-dark);
+    color: var(--brandBoldDark);
   }
   code {
-    color: var(--color-brand-code-dark);
+    color: var(--brandCodeDark);
   }
   pre code {
-    color: var(--color-brand-pre-code-dark);
+    color: var(--brandProCodeDark);
   }
   pre {
-    background-color: var(--color-brand-pre-bg-dark);
+    background-color: var(--brandPreBgDark);
   }
   blockquote {
-    color: var(--color-brand-quotes-dark);
-    border-color: var(--color-brand-quote-borders-dark);
+    color: var(--brandQuotesDark);
+    border-color: var(--brandBordersDark);
   }
   figcaption {
-    color: var(--color-brand-captions-dark);
+    color: var(--brandCaptionsDark);
   }
   hr {
-    border-color: var(--color-brand-hr-dark);
+    border-color: var(--brandHrDark);
   }
   ol li::marker {
-    color: var(--color-brand-counters-dark);
+    color: var(--brandCountersDark);
   }
   ul li::marker {
-    color: var(--color-brand-bullets-dark);
+    color: var(--brandBulletsDark);
   }
   th {
-    border-color: var(--color-brand-th-borders-dark);
+    border-color: var(--brandThBordersDark);
   }
   td {
-    border-color: var(--color-brand-td-borders-dark);
+    border-color: var(--brandTdBordersDark);
   }
+}
+
+@utility hljs-theme {
+  --hljs-bg: var(--hljs-bg);
+  --hljs-bg-light: var(--hljs-bg-light);
+  --hljs-bg-selection: var(--hljs-bg-selection);
+  --hljs-fg: var(--hljs-fg);
+  --hljs-fg-light: var(--hljs-fg-light);
+  --hljs-fg-dark: var(--hljs-fg-dark);
+  --hljs-comment: var(--hljs-comment);
+  --hljs-variable: var(--hljs-variable);
+  --hljs-number: var(--hljs-number);
+  --hljs-class: var(--hljs-class);
+  --hljs-string: var(--hljs-string);
+  --hljs-support: var(--hljs-support);
+  --hljs-function: var(--hljs-function);
+  --hljs-keyword: var(--hljs-keyword);
+  --hljs-meta: var(--hljs-meta);
+  --hljs-operator-opacity: var(--hljs-operator-opacity);
 }
 

@@ -10,8 +10,8 @@
 	import gsap from 'gsap';
 </script>
 
-<button onclick={onClick} class="group cursor-pointer">
-	<div class=" flex w-full gap-4 p-4">
+<button onclick={onClick} class="flex cursor-pointer flex-col justify-start">
+	<div class="flex w-full cursor-pointer flex-col gap-4 sm:flex-row">
 		<!-- transition-transform duration-200 group-hover:scale-105 -->
 		<img class="skill-icon m-0! h-20 w-20 p-0" src={icon} alt={name} />
 		<div class="prose text-start">

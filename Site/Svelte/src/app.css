@@ -3,7 +3,9 @@
 @plugin '@tailwindcss/forms';
 
 @import '@fontsource-variable/bodoni-moda';
+/* @import '@fontsource-variable/fira-code'; */
 @import '../src/lib/css/theme.css';
 @import '../src/lib/css/typography.css';
 @import '../src/lib/css/forms.css';
 @import '../src/lib/css/layouts.css';
+@import '../src/lib/css/code.css';

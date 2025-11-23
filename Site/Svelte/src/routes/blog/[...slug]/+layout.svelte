@@ -9,8 +9,6 @@
 	{@render children()}
 
 	{#if browser}
-		<ProseLayout>
-			<BlogCommentSection />
-		</ProseLayout>
+		<BlogCommentSection />
 	{/if}
 </BaseLayout>

@@ -2,7 +2,7 @@
 	import { CardLayout } from '$layouts';
 	import type { PostMetadata } from '$client/posts/posts';
 	import type { ProjectMetadata } from '$client/posts/projects';
-
+	import { Chip } from '$components';
 	function isProjectMetadata(meta: PostMetadata | ProjectMetadata): meta is ProjectMetadata {
 		return 'url' in meta;
 	}
@@ -19,16 +19,21 @@
 </script>
 
 <a href="/{routePrefix}/{slug}" class="group transition-colors">
-	<CardLayout image={metadata.featuredImage}>
-		<article class="relative border-b border-neutral-600 pb-6">
-			<div class="relative z-10">
-				<h2 class="mb-2 text-2xl font-bold">
-					{metadata.title}
-				</h2>
-				{#if metadata.excerpt}
-					<p class="mb-3 text-neutral-400">{metadata.excerpt}</p>
-				{/if}
-				<div class="flex items-center gap-4 text-sm text-neutral-400">
+	<CardLayout image={metadata.featuredImage} class="h-full">
+		<article class="border-brandGray-300 relative h-full border-b pb-6">
+			<div class="relative z-10 flex h-full flex-col justify-between">
+				<div>
+					<h2 class="mb-2 text-center text-2xl! font-bold text-balance sm:text-left">
+						{metadata.title}
+					</h2>
+					{#if metadata.excerpt}
+						<p class="mb-3 text-center text-sm text-balance sm:text-left sm:text-wrap">
+							{metadata.excerpt}
+						</p>
+					{/if}
+				</div>
+
+				<div class="text-brandGray-300 flex flex-col items-center gap-4 text-sm sm:flex-row">
 					{#if metadata.date}
 						<time datetime={metadata.date}>
 							{new Date(metadata.date).toLocaleDateString('en-US', {
@@ -41,10 +46,7 @@
 					{#if metadata.tags && Array.isArray(metadata.tags) && metadata.tags.length > 0}
 						<div class="flex gap-2">
 							{#each metadata.tags as tag}
-								<span
-									class="rounded border border-neutral-600 bg-neutral-800 px-2 py-0.5 text-xs text-orange-700"
-									>{tag}</span
-								>
+								<Chip>{tag}</Chip>
 							{/each}
 						</div>
 					{/if}
@@ -53,4 +55,3 @@
 		</article>
 	</CardLayout>
 </a>
-

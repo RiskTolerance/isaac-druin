@@ -9,8 +9,14 @@
 	const { author, content } = postComment.fields;
 </script>
 
-<ProseLayout>
-	<form class="" {...postComment.preflight(commentFormSchema)} enctype="multipart/form-data">
+<div class="mx-auto flex w-full max-w-2xl flex-col gap-4 py-8">
+	<label class="text-3xl font-bold" for="comment-form">Comments</label>
+	<form
+		id="comment-form"
+		class="flex flex-col gap-4"
+		{...postComment.preflight(commentFormSchema)}
+		enctype="multipart/form-data"
+	>
 		<input type="hidden" name="slug" value={slug} />
 
 		<label>
@@ -34,4 +40,4 @@
 			<p>{content}</p>
 		</div>
 	{/each}
-</ProseLayout>
+</div>

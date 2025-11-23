@@ -4,30 +4,8 @@
 	import { Image } from '$blocks';
 	import { mountains } from '$images';
 	import SkillCard from './_SkillCard.svelte';
-	import {
-		sveltekit,
-		bun,
-		tailwind,
-		typescript,
-		postgres,
-		drizzle,
-		sqlite,
-		threejs,
-		figma,
-		groq,
-		illustrator,
-		photoshop,
-		blender,
-		gsap as gsapIcon,
-		cloudflare,
-		docker,
-		vercel,
-		rive,
-		claude,
-		mastra,
-		cursor
-	} from '$images/icons';
 
+	import { frontend, backend, design, ai } from './_stack-items.svelte';
 	import { gsap } from 'gsap';
 	import { Flip } from 'gsap/Flip';
 	import { DrawSVGPlugin } from 'gsap/DrawSVGPlugin';
@@ -48,128 +26,6 @@
 		TextPlugin
 	);
 	import { X } from '@lucide/svelte';
-
-	const frontend = [
-		{
-			name: 'SvelteKit',
-			shortDescription: 'A full-stack framework for building web applications.',
-			icon: sveltekit
-		},
-		{
-			name: 'Typescript',
-			shortDescription: 'A superset of JavaScript that adds static typing.',
-			icon: typescript
-		},
-		{
-			name: 'TailwindCSS',
-			shortDescription: 'A utility-first CSS framework for rapidly building custom designs.',
-			icon: tailwind
-		},
-		{
-			name: 'Three.js',
-			shortDescription: 'A JavaScript library for creating 3D graphics.',
-			icon: threejs
-		},
-		{
-			name: 'GSAP',
-			shortDescription: 'A JavaScript library for creating animations.',
-			icon: gsapIcon
-		}
-	];
-
-	const backend = [
-		{
-			name: 'SvelteKit',
-			shortDescription: 'A full-stack framework for building web applications.',
-			icon: sveltekit
-		},
-		{
-			name: 'Bun',
-			shortDescription: 'A general purpose JavaScript runtime.',
-			icon: bun
-		},
-		{
-			name: 'Drizzle',
-			shortDescription: 'A modern SQL query builder for TypeScript.',
-			icon: drizzle
-		},
-		{
-			name: 'SQLite',
-			shortDescription: 'A lightweight, open source relational database management system.',
-			icon: sqlite
-		},
-		{
-			name: 'PostgreSQL',
-			shortDescription: 'A powerful, open source object-relational database system.',
-			icon: postgres
-		},
-		{
-			name: 'Cloudflare',
-			shortDescription: 'A CDN and DNS service.',
-			icon: cloudflare
-		},
-		{
-			name: 'Vercel',
-			shortDescription: 'A platform for deploying and hosting web applications.',
-			icon: vercel
-		},
-		{
-			name: 'Docker',
-			shortDescription: 'A containerization platform for creating containers.',
-			icon: docker
-		}
-	];
-
-	const design = [
-		{
-			name: 'Illustrator',
-			shortDescription: 'A design tool for creating UI and UX.',
-			icon: illustrator
-		},
-		{
-			name: 'Photoshop',
-			shortDescription: 'A design tool for creating UI and UX.',
-			icon: photoshop
-		},
-		{
-			name: 'Blender',
-			shortDescription: 'A design tool for creating UI and UX.',
-			icon: blender
-		},
-		{
-			name: 'Figma',
-			shortDescription: 'A design tool for creating UI and UX.',
-			icon: figma
-		},
-		{
-			name: 'Rive',
-			shortDescription: 'A design tool for creating UI and UX.',
-			icon: rive
-		}
-	];
-
-	const ai = [
-		{
-			name: 'Claude',
-			shortDescription: 'An AI platform for creating AI models.',
-			icon: claude
-		},
-		{
-			name: 'Groq',
-			shortDescription: 'An AI platform for creating AI models.',
-			icon: groq
-		},
-		{
-			name: 'Cursor',
-			shortDescription: 'An AI platform for creating AI models.',
-			icon: cursor
-		},
-		{
-			name: 'Mastra',
-			shortDescription: 'An AI platform for creating AI models.',
-			icon: mastra
-		}
-	];
 
 	let expandedSkill: HTMLElement;
 	let expandedSkillBackdrop: HTMLElement;
@@ -217,6 +73,11 @@
 		// Store references for reverse animation
 		originalCard = clickedElement;
 		skillElements = { icon, heading, description };
+
+		// assign new z values
+		icon.style.zIndex = '100';
+		heading.style.zIndex = '100';
+		description.style.zIndex = '100';
 
 		// Move elements to new positions
 		iconSlot.appendChild(icon);
@@ -270,6 +131,8 @@
 			return;
 		}
 
+		// return original z values
+
 		// Move elements back to original positions (icon first, then prose content)
 		cardContainer.insertBefore(icon, cardContainer.firstChild);
 		proseContainer.insertBefore(heading, proseContainer.firstChild || null);
@@ -295,7 +158,11 @@
 			skillElements = null;
 		});
 
-		tl.play();
+		tl.play().then(() => {
+			icon.style.zIndex = '0';
+			heading.style.zIndex = '0';
+			description.style.zIndex = '0';
+		});
 	};
 </script>
 
@@ -347,7 +214,7 @@ You will notice that a few items are listed twice (SvelteKit, for example). Thes
 The "frontend" is the part of the application that the user sees and interacts with. It's the UI and the user experience.
 `}
 	/>
-	<div class="grid grid-cols-2 gap-4">
+	<div class="grid grid-cols-2 gap-8">
 		{#each frontend as skill}
 			<SkillCard {...skill} onClick={openExpandedSkill} />
 		{/each}
@@ -360,7 +227,7 @@ The "frontend" is the part of the application that the user sees and interacts w
 The "backend" is the part of the application that the user doesn't see and doesn't interact with. It's the server-side logic and the data.
 `}
 	/>
-	<div class="grid grid-cols-2 gap-4">
+	<div class="grid grid-cols-2 gap-8">
 		{#each backend as skill}
 			<SkillCard {...skill} onClick={openExpandedSkill} />
 		{/each}
@@ -372,7 +239,7 @@ The "backend" is the part of the application that the user doesn't see and doesn
 The "design" is the part of the application that the user sees and interacts with. It's the UI and the user experience.
 	`}
 	/>
-	<div class="grid grid-cols-2 gap-4">
+	<div class="grid grid-cols-2 gap-8">
 		{#each design as skill}
 			<SkillCard {...skill} onClick={openExpandedSkill} />
 		{/each}
@@ -385,7 +252,7 @@ The "design" is the part of the application that the user sees and interacts wit
 The "AI" is the part of the application that the user sees and interacts with. It's the UI and the user experience.
 	`}
 	/>
-	<div class="grid grid-cols-2 gap-4">
+	<div class="grid grid-cols-2 gap-8">
 		{#each ai as skill}
 			<SkillCard {...skill} onClick={openExpandedSkill} />
 		{/each}
@@ -395,7 +262,7 @@ The "AI" is the part of the application that the user sees and interacts with. I
 <div
 	id="expanded-skill"
 	bind:this={expandedSkill}
-	class="fixed left-1/2 z-20 flex w-[90vw] max-w-4xl -translate-x-1/2 flex-col bg-black p-4 outline outline-gray-300 md:h-[50vh] md:p-8"
+	class="fixed left-1/2 z-20 flex w-[90vw] max-w-4xl -translate-x-1/2 flex-col bg-black p-4 outline outline-gray-300 md:p-8"
 	style="display: none; opacity: 0;"
 >
 	<div class="absolute top-0 right-0 flex h-12 w-12 items-center justify-center">

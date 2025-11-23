@@ -8,7 +8,7 @@
 <Image src={mountains} alt="this is an image!" class="h-[25vh] w-full object-cover  md:h-[50vh]" />
 
 <Prose
-	class="-mt[12.5vh] relative z-10 mx-auto max-w-3xl bg-neutral-50 md:-mt-[25vh] md:p-8 dark:bg-neutral-950"
+	class="-mt[12.5vh] dark:bg-brandGreen-900 relative z-10 mx-auto max-w-3xl bg-neutral-50 md:-mt-[25vh] md:p-8"
 >
 	<Marked
 		md={`
@@ -20,7 +20,7 @@ It has a been a hot second, if you count five years as "a hot second". I first p
 
 So, I suppose a recap is in order.
 
-Rewind to 2020. I was having trouble finding employment. My higher education experience was focused on graphic design, so that was my goal. But, while there are options, South Dakota isn't exactly the bustling epicenter of Graphic Design opportunity. As a person with little qualification and even less professional experience, it felt a bit hopeless. 
+Rewind to 2020. I was having trouble finding employment. My higher education experience was focused on graphic design, so that was the goal. But, while there are options, South Dakota isn't exactly the bustling epicenter of Graphic Design opportunity. As a person with little qualification and even less professional experience, it felt a bit hopeless. 
 
 I distinctly remember driving across the state for an interview only to be told they needed someone immediately and that they couldn't afford to wait for me to move. It was a bleak time - I felt as though my formal education was for nothing. So I decided to leverage another interest and try a new direction.
 
@@ -44,11 +44,11 @@ There were no options anymore, just the absolute necessity to find employment. S
 
 In my free time, I continued to plug away at web development. This is where that honeypot concept comes back into play. When I began my web development journey, I thought to myself "I know graphic design, so I'll focus on front-end development", but at this point I had dipped my toes into proper full-stack development and it was/is addictive.
 
-There's something about being able to do something very complex from beginning to end, and a modern business website is that. It requires:
+There's something about being able to do something very complex from beginning to end, and a modern full-stack website is that. It requires:
 
 - Building out a brand identity (logos, colors, fonts, spacing, messaging)
-- Designing the site (Illustrator, Figma, image selection, graphics development)
-- Choosing a "stack" (frontend frameworks, backend frameworks, databases, CDNs, CMS, email, forms, any any project-specific tooling)
+- Designing the site (Illustrator/Figma, image selection, graphics development)
+- Choosing a "stack" (frontend frameworks, backend frameworks, full-stack frameworks, databases, CDNs, CMS, email, forms, any any project-specific tooling)
 - Actually implementing the aforementioned items
 - Deploying the project
 

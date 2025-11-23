@@ -8,13 +8,13 @@
 	}: { children: any; class?: string; image?: Picture } = $props();
 </script>
 
-<div class="group relative overflow-clip">
+<div class="group relative h-full overflow-clip">
 	<!-- background image -->
 	{#if image}
 		<Image
 			src={image}
 			alt="background"
-			class="absolute h-full w-full object-cover opacity-20 transition-transform duration-200 group-hover:scale-105"
+			class="absolute h-full w-full object-cover opacity-30 transition-transform duration-200 group-hover:scale-105"
 		/>
 	{/if}
 	<div class="card-layout {className}">

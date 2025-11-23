@@ -1,0 +1,140 @@
+/* 
+ * Highlight.js Code Theme Styles
+ * Variables are defined in theme.css @theme block
+ * Apply the 'hljs-theme' utility class to use these styles
+ */
+
+/* Base Styles */
+pre code.hljs {
+	display: block;
+	overflow-x: auto;
+	padding: 1em;
+}
+
+code.hljs {
+	padding: 3px 5px;
+}
+
+.hljs {
+	color: var(--hljs-fg);
+	background: var(--hljs-bg);
+}
+
+.hljs::selection,
+.hljs ::selection {
+	background-color: var(--hljs-bg-selection);
+	color: var(--hljs-fg);
+}
+
+/* Purposely do not highlight these things */
+/* .hljs-formula,
+.hljs-params,
+.hljs-property {
+	No styling needed
+} */
+
+/* Comments */
+.hljs-comment {
+	color: var(--hljs-comment);
+}
+
+/* Tags */
+.hljs-tag {
+	color: var(--hljs-fg-dark);
+}
+
+/* Default Foreground, Caret, Delimiters, Operators */
+.hljs-subst,
+.hljs-punctuation,
+.hljs-operator {
+	color: var(--hljs-fg);
+}
+
+.hljs-operator {
+	opacity: var(--hljs-operator-opacity);
+}
+
+/* Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted */
+.hljs-bullet,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-selector-tag,
+.hljs-name,
+.hljs-deletion {
+	color: var(--hljs-variable);
+}
+
+/* Integers, Boolean, Constants, XML Attributes, Markup Link Url */
+.hljs-symbol,
+.hljs-number,
+.hljs-link,
+.hljs-attr,
+.hljs-variable.constant_,
+.hljs-literal {
+	color: var(--hljs-number);
+}
+
+/* Classes, Markup Bold, Search Text Background */
+.hljs-title,
+.hljs-class .hljs-title,
+.hljs-title.class_ {
+	color: var(--hljs-class);
+}
+
+.hljs-strong {
+	font-weight: bold;
+	color: var(--hljs-class);
+}
+
+/* Strings, Inherited Class, Markup Code, Diff Inserted */
+.hljs-code,
+.hljs-addition,
+.hljs-title.class_.inherited__,
+.hljs-string {
+	color: var(--hljs-string);
+}
+
+/* Support, Regular Expressions, Escape Characters, Markup Quotes */
+.hljs-built_in,
+.hljs-doctag,
+.hljs-quote,
+.hljs-keyword.hljs-atrule,
+.hljs-regexp {
+	color: var(--hljs-support);
+}
+
+/* Functions, Methods, Attribute IDs, Headings */
+.hljs-function .hljs-title,
+.hljs-attribute,
+.ruby .hljs-property,
+.hljs-title.function_,
+.hljs-section {
+	color: var(--hljs-function);
+}
+
+/* Keywords, Storage, Selector, Markup Italic, Diff Changed */
+.hljs-type,
+.hljs-template-tag,
+.diff .hljs-meta,
+.hljs-keyword {
+	color: var(--hljs-keyword);
+}
+
+.hljs-emphasis {
+	color: var(--hljs-keyword);
+	font-style: italic;
+}
+
+/* Deprecated, Opening/Closing Embedded Language Tags */
+.hljs-meta,
+.hljs-meta .hljs-keyword,
+.hljs-meta .hljs-string {
+	color: var(--hljs-meta);
+}
+
+/* For v10 compatible themes */
+.hljs-meta .hljs-keyword,
+.hljs-meta-keyword {
+	font-weight: bold;
+}
+
