@@ -7,6 +7,6 @@
 	const ProjectComponent = data.component as Component;
 </script>
 
-<PostHeader {...data.metadata} />
+<PostHeader metadata={data.metadata} />
 
 <ProjectComponent />

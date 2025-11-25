@@ -79,9 +79,9 @@ This is where I'm just cheating. We're using Cloudflared to create a tunnel for 
 `;
 </script>
 
-<ProseLayout>
-	<Prose>
-		<Marked md={content} />
-		<Chart />
-	</Prose>
-</ProseLayout>
+<Prose
+	class="-mt[12.5vh] dark:bg-brandGreen-800 relative z-10 mx-auto max-w-3xl bg-neutral-50 p-8 md:-mt-[25vh]"
+>
+	<Marked md={content} />
+	<Chart />
+</Prose>

@@ -1,8 +1,6 @@
 <!-- spell-checker: disable -->
 <script lang="ts">
 	import { Prose, Marked, Note } from '$components';
-	import { Image } from '$blocks';
-	import { mountains } from '$images';
 	import SkillCard from './_SkillCard.svelte';
 
 	import { frontend, backend, design, ai } from './_stack-items.svelte';
@@ -168,10 +166,8 @@
 
 <svelte:window bind:innerHeight bind:scrollY />
 
-<Image src={mountains} alt="this is an image!" class="h-[25vh] w-full object-cover  md:h-[50vh]" />
-
 <Prose
-	class="-mt[12.5vh] relative z-10 mx-auto max-w-3xl bg-neutral-50 md:-mt-[25vh] md:p-8 dark:bg-neutral-950"
+	class="-mt[12.5vh] dark:bg-brandGreen-800 relative z-10 mx-auto max-w-3xl bg-neutral-50 md:-mt-[25vh] md:p-8"
 >
 	<Marked
 		md={`

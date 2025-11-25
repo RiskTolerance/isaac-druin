@@ -1,7 +1,6 @@
 <!-- spell-checker: disable -->
 <script lang="ts">
 	import { Prose, Marked, HighlightCode } from '$components';
-	import { ProseLayout } from '$layouts';
 
 	import { gsap } from 'gsap';
 	import { Bounce } from 'gsap';
@@ -16,7 +15,7 @@
 	const ballBounce = () => {
 		// Calculate the distance from bottom to top
 		// Since ball is positioned at bottom-0, we need to move it up
-		const containerHeight = ballContainer.clientHeight;
+		const containerHeight = ballContainer.clientHeight - 20;
 		const ballHeight = ball.clientHeight;
 		const moveUpDistance = -(containerHeight - ballHeight);
 
@@ -77,11 +76,12 @@
 
 <svelte:window onresize={ballBounceSetup} />
 
-<ProseLayout>
-	<Prose class="mx-auto">
-		<Marked
-			md={`
-If you take a look my last post, [The Stack](/the-stack), you will notice that something is missing. A CMS (Content Management System). The CMS might as well be the butter to the web framework bread - it creates an environment which eases the creation of content for a site.
+<Prose
+	class="-mt[12.5vh] dark:bg-brandGreen-800 relative z-10 mx-auto max-w-3xl bg-neutral-50 p-8 md:-mt-[25vh]"
+>
+	<Marked
+		md={`
+If you take a look my last post, [The Stack](/blog/2025/November/21/the-stack), you will notice that something is missing. A CMS (Content Management System). The CMS might as well be the butter to the web framework bread - it creates an environment which eases the creation of content for a site.
 
 When I started learning web development, I quite honestly couldn't fathom why anyone would want a CMS. I could only see downsides. A few examples (which are still valid, in my opinion):
 
@@ -89,22 +89,22 @@ When I started learning web development, I quite honestly couldn't fathom why an
 - CMS content types (with some exceptions) are built through the CMS's UI. This usually feels clunky.
 - A CMS introduces constraints. One-off content becomes problematic because your frontend needs to fit the shape of your CMS data. What if I want a bouncing ball in the middle of my post? Sure, you could add a bouncing ball content type, but one-off content becomes visual noise in the CMS.
     `}
-		/>
-	</Prose>
+	/>
+</Prose>
+<div
+	bind:this={ballContainer}
+	class="bg-brandGray-900 relative mx-auto h-[12vh] w-full max-w-3xl px-8 md:h-[20vh]"
+>
 	<div
-		bind:this={ballContainer}
-		class="relative mx-auto h-[12vh] w-full max-w-4xl px-8 md:h-[20vh]"
-	>
-		<div
-			bind:this={ball}
-			id="ball"
-			class="absolute bottom-0 left-0 aspect-square h-12 w-12 rounded-full bg-red-400 md:h-20 md:w-20"
-		></div>
-	</div>
-	<Prose class="mx-auto">
-		<Marked
-			md={`
-But, when I started learning web development I was thinking a lot more about myself and what I wanted as oppposed to the end user and what they needed. Sure, this site doesn't have a CMS, but it's running with some serious self-imposed [constraints](/projects/isaac-druin-dot-com) and the only content editor is me.
+		bind:this={ball}
+		id="ball"
+		class="bg-brandGreen-300 absolute bottom-0 left-0 aspect-square h-12 w-12 rounded-full md:h-20 md:w-20"
+	></div>
+</div>
+<Prose class="dark:bg-brandGreen-900 mx-auto max-w-3xl p-8">
+	<Marked
+		md={`
+But, when I started learning web development I was thinking a lot more about myself and what I wanted as oppposed to the end user and what they needed. Sure, this site doesn't have a CMS, but it's running with some serious self-imposed [constraints](/projects/2025/November/15/isaac-druin-dot-com) and the only content editor is me.
 
 So, I've been on a quest to find the CMS that works with the aforementioned downsides. The reason I didn't include a CMS in my stack is simply because I haven't settled on one yet, though I think I'm getting close. Here is my "perfect CMS" checklist:
 
@@ -119,11 +119,11 @@ OK, I'll admit, that's a tall order. But like I said, there are a _lot_ of optio
 So far, the closest I've come is [SanityCMS](https://www.sanity.io/). There is no self-hosted option (and thus, no additional programming language), but the base tier is free. It handles images and all that jazz. But the crown jewel is the content modeling. Here's an example of a basic blog post:
 
 		`}
-		/>
+	/>
 
-		<HighlightCode
-			code={`
-const post = {
+	<HighlightCode
+		class="max-w-3xl"
+		code={`const post = {
 	title: 'Post',
 	name: 'post',
 	type: 'document',
@@ -162,8 +162,7 @@ const post = {
 }
 
 export default post`}
-		></HighlightCode>
-	</Prose>
+	></HighlightCode>
+</Prose>
 
-	<div>Sanity declaration here</div>
-</ProseLayout>
+<div>Sanity declaration here</div>

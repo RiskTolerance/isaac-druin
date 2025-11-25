@@ -1,14 +1,10 @@
 <!-- spell-checker: disable -->
 <script lang="ts">
 	import { Prose, Marked } from '$components';
-	import { Image } from '$blocks';
-	import { mountains } from '$images';
 </script>
 
-<Image src={mountains} alt="this is an image!" class="h-[25vh] w-full object-cover  md:h-[50vh]" />
-
 <Prose
-	class="-mt[12.5vh] dark:bg-brandGreen-900 relative z-10 mx-auto max-w-3xl bg-neutral-50 md:-mt-[25vh] md:p-8"
+	class="-mt[12.5vh] dark:bg-brandGreen-800 relative z-10 mx-auto max-w-3xl bg-neutral-50 md:-mt-[25vh] md:p-8"
 >
 	<Marked
 		md={`

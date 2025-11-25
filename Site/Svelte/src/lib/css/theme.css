@@ -2,11 +2,10 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
+  /* Fonts */
   --font-display: 'Bodoni Moda Variable', serif;
   --font-code: 'Fira Code Variable', monospace;
-}
 
-@theme {
   /* Brand Colors */
   --color-brandGreen-50: oklch(0.962 0.02 172.69);
   --color-brandGreen-100: oklch(0.916 0.047 172.94);
@@ -46,6 +45,24 @@
   --color-brandGray-900: oklch(0.224 0.005 219.63);
   --color-brandGray-950: oklch(0.176 0.004 229);
 
+  /* Highlight.js code theme colors */
+  --hljs-bg: var(--color-brandGray-950);
+  --hljs-bg-light: var(--color-brandGray-900);
+  --hljs-bg-selection: var(--color-brandGreen-800);
+  --hljs-fg: var(--color-brandGray-50);
+  --hljs-fg-light: var(--color-brandGray-50);
+  --hljs-fg-dark: var(--color-brandGray-300);
+  --hljs-comment: var(--color-brandGray-500);
+  --hljs-variable: var(--color-brandYellow-400);
+  --hljs-number: var(--color-brandYellow-500);
+  --hljs-class: var(--color-brandYellow-300);
+  --hljs-string: var(--color-brandGreen-300);
+  --hljs-support: var(--color-brandGreen-400);
+  --hljs-function: var(--color-brandGreen-500);
+  --hljs-keyword: var(--color-brandYellow-600);
+  --hljs-meta: var(--color-brandGray-400);
+  --hljs-operator-opacity: 1;
+
   /* Light theme colors */
   --brandBodyLight: var(--color-brandGray-800);
   --brandHeadingsLight: var(--color-brandGray-900);
@@ -60,7 +77,7 @@
   --brandCaptionsLight: var(--color-brandGray-700);
   --brandCodeLight: var(--color-brandGray-900);
   --brandProCodeLight: var(--color-brandGray-100);
-  --brandPreBgLight: var(--color-brandGray-900);
+  --brandPreBgLight: var(--color-brandGray-50);
   --brandThBordersLight: var(--color-brandGray-300);
   --brandTdBordersLight: var(--color-neutral-200);
   
@@ -82,23 +99,7 @@
   --brandThBordersDark: var(--color-brandGray-700);
   --brandTdBordersDark: var(--color-brandGray-800);
   
-  /* Highlight.js code theme colors */
-  --hljs-bg: oklch(0.36 0.04 248.97 / 1);
-  --hljs-bg-light: oklch(0.40 0.04 249 / 1);
-  --hljs-bg-selection: oklch(0.63 0.02 202.37 / 1);
-  --hljs-fg: oklch(0.91 0 0 / 1);
-  --hljs-fg-light: oklch(0.97 0 0 / 1);
-  --hljs-fg-dark: oklch(0.81 0.01 236.59 / 1);
-  --hljs-comment: oklch(0.71 0.02 201.31 / 1);
-  --hljs-variable: oklch(0.63 0.19 29.44 / 1);
-  --hljs-number: oklch(0.70 0.16 55.54 / 1);
-  --hljs-class: oklch(0.84 0.17 91.77 / 1);
-  --hljs-string: oklch(0.75 0.18 152.33 / 1);
-  --hljs-support: oklch(0.71 0.13 174.20 / 1);
-  --hljs-function: oklch(0.65 0.13 242.69 / 1);
-  --hljs-keyword: oklch(0.58 0.15 315.32 / 1);
-  --hljs-meta: oklch(0.60 0.13 43.62 / 1);
-  --hljs-operator-opacity: 0.7;
+
 }
 
 @utility prose-brand-light {
@@ -262,23 +263,3 @@
     border-color: var(--brandTdBordersDark);
   }
 }
-
-@utility hljs-theme {
-  --hljs-bg: var(--hljs-bg);
-  --hljs-bg-light: var(--hljs-bg-light);
-  --hljs-bg-selection: var(--hljs-bg-selection);
-  --hljs-fg: var(--hljs-fg);
-  --hljs-fg-light: var(--hljs-fg-light);
-  --hljs-fg-dark: var(--hljs-fg-dark);
-  --hljs-comment: var(--hljs-comment);
-  --hljs-variable: var(--hljs-variable);
-  --hljs-number: var(--hljs-number);
-  --hljs-class: var(--hljs-class);
-  --hljs-string: var(--hljs-string);
-  --hljs-support: var(--hljs-support);
-  --hljs-function: var(--hljs-function);
-  --hljs-keyword: var(--hljs-keyword);
-  --hljs-meta: var(--hljs-meta);
-  --hljs-operator-opacity: var(--hljs-operator-opacity);
-}
-
