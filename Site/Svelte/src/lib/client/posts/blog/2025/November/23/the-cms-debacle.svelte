@@ -81,6 +81,13 @@
 >
 	<Marked
 		md={`
+# This is an H1
+## This is an H2
+### This is an H3
+#### This is an H4
+##### This is **an H5**
+###### This is _an H6_
+
 If you take a look my last post, [The Stack](/blog/2025/November/21/the-stack), you will notice that something is missing. A CMS (Content Management System). The CMS might as well be the butter to the web framework bread - it creates an environment which eases the creation of content for a site.
 
 When I started learning web development, I quite honestly couldn't fathom why anyone would want a CMS. I could only see downsides. A few examples (which are still valid, in my opinion):
@@ -101,7 +108,7 @@ When I started learning web development, I quite honestly couldn't fathom why an
 		class="bg-brandGreen-300 absolute bottom-0 left-0 aspect-square h-12 w-12 rounded-full md:h-20 md:w-20"
 	></div>
 </div>
-<Prose class="dark:bg-brandGreen-900 mx-auto max-w-3xl p-8">
+<Prose class="dark:bg-brandGreen-800 mx-auto max-w-3xl p-8">
 	<Marked
 		md={`
 But, when I started learning web development I was thinking a lot more about myself and what I wanted as oppposed to the end user and what they needed. Sure, this site doesn't have a CMS, but it's running with some serious self-imposed [constraints](/projects/2025/November/15/isaac-druin-dot-com) and the only content editor is me.
@@ -122,7 +129,7 @@ So far, the closest I've come is [SanityCMS](https://www.sanity.io/). There is n
 	/>
 
 	<HighlightCode
-		class="max-w-3xl"
+		class=" max-w-3xl"
 		code={`const post = {
 	title: 'Post',
 	name: 'post',
@@ -161,7 +168,11 @@ So far, the closest I've come is [SanityCMS](https://www.sanity.io/). There is n
 	},
 }
 
-export default post`}
+export default post
+
+let myFunction = () => {
+	return 'Hello, world!';
+}`}
 	></HighlightCode>
 </Prose>
 

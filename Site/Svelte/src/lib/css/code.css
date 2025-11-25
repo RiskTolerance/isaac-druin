@@ -138,3 +138,10 @@ code.hljs {
 	font-weight: bold;
 }
 
+pre {
+	background-color: var(--hljs-bg);
+}
+
+code, .language-javascript {
+	color: var(--hljs-fg-dark);
+}
