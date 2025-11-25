@@ -1,11 +1,15 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
+	import { page } from '$app/state';
+	import BlogCommentSection from '$blocks/BlogCommentSection.svelte';
+	import { BaseLayout } from '$layouts';
+	import { PostHeader } from '$components';
 	let { children }: { children: any } = $props();
-	import BlogCommentSection from '$client/blocks/BlogCommentSection.svelte';
-	import { BaseLayout, ProseLayout } from '$layouts';
 </script>
 
 <BaseLayout>
+	<PostHeader metadata={page.data.metadata} />
+
 	{@render children()}
 
 	{#if browser}

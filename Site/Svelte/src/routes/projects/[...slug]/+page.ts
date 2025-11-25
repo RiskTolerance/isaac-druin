@@ -1,6 +1,5 @@
-import type { EntryGenerator, PageLoad } from './$types';
-import { getAllProjects, getProjectBySlug } from '$client/posts/projects';
-import { error } from '@sveltejs/kit';
+import type { EntryGenerator } from './$types';
+import { getAllProjects } from '$client/posts/projects';
 
 export const entries: EntryGenerator = () => {
 	const projects = getAllProjects();
@@ -13,20 +12,5 @@ export const entries: EntryGenerator = () => {
 				slug: String(project.slug)
 			};
 		});
-};
-
-export const load: PageLoad = ({ params }) => {
-	// For catch-all routes, params.slug is an array, join it back to a string
-	const slug = Array.isArray(params.slug) ? params.slug.join('/') : String(params.slug);
-	const project = getProjectBySlug(slug);
-
-	if (!project) {
-		throw error(404, `Project not found: ${slug}`);
-	}
-
-	return {
-		component: project.component,
-		metadata: project.metadata
-	};
 };
 
