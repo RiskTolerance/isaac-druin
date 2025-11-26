@@ -46,21 +46,22 @@
   --color-brandGray-950: oklch(0.176 0.004 229);
 
   /* Highlight.js code theme colors */
-  --hljs-bg: var(--color-brandGray-950);
-  --hljs-bg-light: var(--color-brandGray-900);
-  --hljs-bg-selection: var(--color-brandGreen-800);
-  --hljs-fg: var(--color-brandGray-50);
-  --hljs-fg-light: var(--color-brandGray-50);
-  --hljs-fg-dark: var(--color-brandGray-300);
-  --hljs-comment: var(--color-brandGray-500);
-  --hljs-variable: var(--color-brandYellow-400);
-  --hljs-number: var(--color-brandYellow-500);
-  --hljs-class: var(--color-brandYellow-300);
-  --hljs-string: var(--color-brandGreen-300);
-  --hljs-support: var(--color-brandGreen-400);
-  --hljs-function: var(--color-brandGreen-500);
-  --hljs-keyword: var(--color-brandYellow-600);
-  --hljs-meta: var(--color-brandGray-400);
+  /* using red for elements that haven't shown up, yet */
+  --hljs-bg: var(--color-brandGray-900);
+  --hljs-bg-light: var(--color-red-500);
+  --hljs-bg-selection: var(--color-red-500);
+  --hljs-fg: var(--color-red-500);
+  --hljs-fg-light: var(--color-brandGray-900);
+  --hljs-fg-dark: var(--color-purple-300);
+  --hljs-comment: var(--color-brandGray-200);
+  --hljs-variable: var(--color-red-500);
+  --hljs-number: var(--color-brandGreen-400);
+  --hljs-class: var(--color-red-500);
+  --hljs-string: var(--color-brandYellow-300);
+  --hljs-support: var(--color-red-500);
+  --hljs-function: var(--color-emerald-400);
+  --hljs-keyword: var(--color-purple-400);
+  --hljs-meta: var(--color-red-500);
   --hljs-operator-opacity: 1;
 
   /* Light theme colors */
@@ -79,7 +80,7 @@
   --brandProCodeLight: var(--color-brandGray-100);
   --brandPreBgLight: var(--color-brandGray-50);
   --brandThBordersLight: var(--color-brandGray-300);
-  --brandTdBordersLight: var(--color-neutral-200);
+  --brandTdBordersLight: var(--color-brandGray-200);
   
   /* Dark theme colors */
   --brandBodyDark: var(--color-brandGray-50);
@@ -98,8 +99,6 @@
   --brandPreBgDark: var(--color-brandGray-100);
   --brandThBordersDark: var(--color-brandGray-700);
   --brandTdBordersDark: var(--color-brandGray-800);
-  
-
 }
 
 @utility prose-brand-light {
