@@ -2,20 +2,29 @@
 	import { page } from '$app/state';
 	import { BaseLayout } from '$layouts';
 
+	import { onMount } from 'svelte';
 	import { gsap } from 'gsap';
 	import { Flip } from 'gsap/Flip';
-	import { onMount } from 'svelte';
 	gsap.registerPlugin(Flip);
 
 	let home: HTMLElement | undefined = $state();
 	let projects: HTMLElement | undefined = $state();
 	let blog: HTMLElement | undefined = $state();
 	let highlight: HTMLElement | undefined = $state();
+	let mounted = $state(false);
 
-	let selected = $derived.by(() => {
+	// String-based selection for SSR-friendly class application
+	let selectedRoute = $derived.by(() => {
 		const path = page.url.pathname;
-		if (path.startsWith('/blog')) return blog;
-		if (path.startsWith('/projects')) return projects;
+		if (path.startsWith('/blog')) return 'blog';
+		if (path.startsWith('/projects')) return 'projects';
+		return 'home';
+	});
+
+	// Element-based selection for Flip animation
+	let selected = $derived.by(() => {
+		if (selectedRoute === 'blog') return blog;
+		if (selectedRoute === 'projects') return projects;
 		return home;
 	});
 
@@ -28,25 +37,24 @@
 		});
 	};
 
+	// Position highlight once on mount - no animation, just place it
 	onMount(() => {
-		if (highlight) {
-			selected?.appendChild(highlight);
-			highlight.classList.toggle('hidden');
+		if (highlight && selected) {
+			selected.appendChild(highlight);
+			highlight.classList.remove('invisible');
+			mounted = true;
 		}
 	});
 </script>
-
-<span bind:this={highlight} class="highlight bg-brandGreen-200 absolute inset-0 -z-10 hidden"
-></span>
 
 <BaseLayout>
 	<nav class="mx-auto flex w-fit gap-4">
 		<a onclick={() => motherFlippin(home)} href="/">
 			<span
 				bind:this={home}
-				class="navBtn transition-colors duration-300 {selected === home
-					? 'text-brandGray-800'
-					: ''}"
+				class="navBtn transition-colors duration-300"
+				class:text-brandGray-800={selectedRoute === 'home'}
+				class:bg-brandGreen-200={!mounted && selectedRoute === 'home'}
 			>
 				Home
 			</span></a
@@ -54,21 +62,24 @@
 		<a onclick={() => motherFlippin(projects)} href="/projects"
 			><span
 				bind:this={projects}
-				class="navBtn transition-colors duration-300 {selected === projects
-					? 'text-brandGray-800'
-					: ''}">Projects</span
+				class="navBtn transition-colors duration-300"
+				class:text-brandGray-800={selectedRoute === 'projects'}
+				class:bg-brandGreen-200={!mounted && selectedRoute === 'projects'}>Projects</span
 			></a
 		>
 		<a onclick={() => motherFlippin(blog)} href="/blog"
 			><span
 				bind:this={blog}
-				class="navBtn transition-colors duration-300 {selected === blog
-					? 'text-brandGray-800'
-					: ''}">Blog</span
+				class="navBtn transition-colors duration-300"
+				class:text-brandGray-800={selectedRoute === 'blog'}
+				class:bg-brandGreen-200={!mounted && selectedRoute === 'blog'}>Blog</span
 			></a
 		>
 	</nav>
 </BaseLayout>
+
+<span bind:this={highlight} class="highlight bg-brandGreen-200 invisible absolute inset-0 -z-10"
+></span>
 
 <style>
 	.navBtn {
