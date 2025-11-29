@@ -5,6 +5,7 @@
   /* Fonts */
   --font-display: 'Bodoni Moda Variable', serif;
   --font-code: 'Fira Code Variable', monospace;
+  --font-metro: 'Metropolis', sans-serif;
 
   /* Brand Colors */
   --color-brandGreen-50: oklch(0.962 0.02 172.69);

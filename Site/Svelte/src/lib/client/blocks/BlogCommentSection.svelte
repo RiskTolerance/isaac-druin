@@ -3,7 +3,6 @@
 	import { page } from '$app/state';
 	import { FormButton } from '$components';
 	import { commentFormSchema } from '$lib/schemas/comment';
-	import { ProseLayout } from '$layouts';
 
 	const slug = page.url.pathname.split('/').pop() ?? '';
 	const { author, content } = postComment.fields;

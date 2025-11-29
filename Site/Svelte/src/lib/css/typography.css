@@ -17,3 +17,7 @@ h2 {
 h3 {
   @apply text-xl lg:text-2xl font-bold text-balance;
 }
+
+code, pre {
+  @apply font-code;
+}
