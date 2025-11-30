@@ -39,7 +39,7 @@
 				style="letter-spacing:-0.4rem; text-shadow: {Math.floor(shadowOffest)}px {Math.floor(
 					shadowOffest
 				)}px 0px var(--color-brandGreen-800);"
-				class="font-dmSans txtShadow z-10 text-center text-nowrap"
+				class="font-dmSans txtShadow text-brandGreen-50 z-10 text-center text-nowrap"
 			>
 				Photographer
 			</p>

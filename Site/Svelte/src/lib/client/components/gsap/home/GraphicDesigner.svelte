@@ -112,7 +112,16 @@
 				opacity: 0,
 				duration: 0.4,
 				ease: 'back.out(1.7)',
-				rotation: -180
+				rotation: -180,
+				transformOrigin: '50% 50%',
+				onComplete: () => {
+					gsap.to(iStar!, {
+						rotation: '+=360',
+						duration: 5,
+						ease: 'none',
+						repeat: -1
+					});
+				}
 			},
 			'-=0.2'
 		);
@@ -122,7 +131,18 @@
 				scale: 0,
 				opacity: 0,
 				duration: 0.4,
-				ease: 'back.out(1.7)'
+				ease: 'back.out(1.7)',
+				transformOrigin: '50% 50%',
+				onComplete: () => {
+					// Use y-position animation instead of scale for smoother motion on small elements
+					gsap.to(iCircle!, {
+						y: -3,
+						duration: 0.8,
+						ease: 'sine.inOut',
+						yoyo: true,
+						repeat: -1
+					});
+				}
 			},
 			'-=0.3'
 		);

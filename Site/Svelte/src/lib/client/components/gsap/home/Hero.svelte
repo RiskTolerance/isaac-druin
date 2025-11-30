@@ -4,8 +4,7 @@
 	import { SplitText } from 'gsap/SplitText';
 	import { Flip } from 'gsap/Flip';
 	import { ScrollTrigger } from 'gsap/ScrollTrigger';
-	import { ScrollSmoother } from 'gsap/ScrollSmoother';
-	gsap.registerPlugin(SplitText, Flip, ScrollSmoother, ScrollTrigger);
+	gsap.registerPlugin(SplitText, Flip, ScrollTrigger);
 	import { GraphicDesigner, UiUxNerd, Photographer } from '$components';
 
 	// vars
@@ -26,13 +25,11 @@
 	onMount(() => {
 		const splitText = SplitText.create(text, { type: 'chars', reduceWhiteSpace: false });
 
-		gsap.set(splitText.chars, { autoAlpha: 0 });
-
 		splitText.chars.forEach((char, i) => {
-			fullStackTimeline.to(
+			fullStackTimeline.from(
 				char,
 				{
-					autoAlpha: 1,
+					autoAlpha: 0,
 					duration: 0.15,
 					onStart: () => {
 						const charState = Flip.getState(cursor);
@@ -55,8 +52,8 @@
 		});
 
 		masterTimeline
-			.add(fullStackTimeline)
-			.add(graphicDesignerTimeline)
+			// .add(fullStackTimeline)
+			// .add(graphicDesignerTimeline)
 			.add(uxuiTimeline)
 			.add(photographerTimeline);
 
@@ -64,7 +61,7 @@
 	});
 </script>
 
-<div id="hero" class="container mx-auto space-y-6 overflow-x-clip md:space-y-2">
+<div id="hero" class="container mx-auto space-y-6 overflow-x-clip select-none md:space-y-2">
 	<div bind:clientWidth={containerWidth} class="flex w-full items-center justify-center">
 		<div
 			bind:this={cursor}
