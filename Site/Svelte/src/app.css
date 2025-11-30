@@ -2,9 +2,12 @@
 @plugin '@tailwindcss/typography';
 @plugin '@tailwindcss/forms';
 
+/* fonts */
 @import '@fontsource-variable/bodoni-moda';
 @import '@fontsource-variable/fira-code';
 @import '@fontsource/metropolis/200.css';
+@import '@fontsource-variable/dm-sans';
+/* sheets */
 @import '../src/lib/css/theme.css';
 @import '../src/lib/css/typography.css';
 @import '../src/lib/css/forms.css';

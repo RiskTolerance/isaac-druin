@@ -51,7 +51,7 @@
 		<span class=" absolute bottom-0 left-0 px-1 py-1 text-xs sm:px-2 sm:text-sm"
 			>contrast: 10.41:1</span
 		>
-		<span>"</span>UI/UX Nerd<span>"</span>
+		<span>"</span>UI/UX Nerd<span>"<span class="font-code!">,</span></span>
 	</p>
 </div>
 

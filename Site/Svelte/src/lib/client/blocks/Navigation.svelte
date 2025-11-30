@@ -48,7 +48,7 @@
 </script>
 
 <BaseLayout>
-	<nav class="mx-auto flex w-fit gap-4">
+	<nav class="mx-auto flex w-fit gap-4 text-base">
 		<a onclick={() => motherFlippin(home)} href="/">
 			<span
 				bind:this={home}

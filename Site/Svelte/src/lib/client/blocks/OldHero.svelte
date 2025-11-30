@@ -5,7 +5,7 @@
 	import { onMount } from 'svelte';
 	gsap.registerPlugin(ScrollTrigger, SplitText);
 
-	import FullStackWebDeveloper from '$components/gsap/home/FullStackWebDeveloper.svelte';
+	import FullStackWebDeveloper from '$client/components/gsap/home/Hero.svelte';
 
 	const titlesArr = [
 		'Full Stack Web Developer',
@@ -34,7 +34,3 @@
 	// Store element refs in an array - access by index or create a Map for named access
 	let titleEls: HTMLElement[] = [];
 </script>
-
-<div class="container mx-auto">
-	<FullStackWebDeveloper timeline={fullStackTimeline} />
-</div>

@@ -12,7 +12,7 @@
 	gsap.registerPlugin(SplitText, Flip);
 
 	import { onMount } from 'svelte';
-	let { timeline }: { timeline: gsap.core.Timeline } = $props();
+	let fullStackTimeline: gsap.core.Timeline = $state(gsap.timeline());
 
 	let text: HTMLElement;
 	let cursor: HTMLElement;
@@ -23,7 +23,7 @@
 		gsap.set(splitText.chars, { autoAlpha: 0 });
 
 		splitText.chars.forEach((char, i) => {
-			timeline.to(
+			fullStackTimeline.to(
 				char,
 				{
 					autoAlpha: 1,
@@ -42,7 +42,7 @@
 	});
 </script>
 
-<div class="space-y-12 md:space-y-4">
+<div class="container mx-auto space-y-12 overflow-x-clip md:space-y-4">
 	<div bind:clientWidth={containerWidth} class="flex w-full items-center justify-center">
 		<div bind:this={cursor} class=" text-brandGreen-300! font-code absolute top-0 left-4 font-bold">
 			|

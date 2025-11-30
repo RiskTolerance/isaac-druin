@@ -8,7 +8,5 @@
 
 <!-- prose-md -->
 <Navigation></Navigation>
-<div class="w-full overflow-x-hidden">
-	{@render children()}
-</div>
+{@render children()}
 <Footer></Footer>
