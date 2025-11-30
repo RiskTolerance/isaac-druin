@@ -42,27 +42,28 @@
 	});
 </script>
 
-<div bind:clientWidth={containerWidth} class="flex w-full items-center justify-center">
-	<div bind:this={cursor} class=" text-brandGreen-300! font-code absolute top-0 left-4 font-bold">
-		|
+<div class="space-y-12 md:space-y-4">
+	<div bind:clientWidth={containerWidth} class="flex w-full items-center justify-center">
+		<div bind:this={cursor} class=" text-brandGreen-300! font-code absolute top-0 left-4 font-bold">
+			|
+		</div>
+		<p
+			bind:clientWidth={textWidth}
+			bind:this={text}
+			style="font-size: calc({(containerWidth / 27) * 1.5}px);"
+			class=" text-brandGreen-50! font-code font-bold"
+		>
+			<span>const</span>&nbsp;titles<span>:</span>&nbsp;string[]&nbsp;<span>=&nbsp;[</span><br
+			/><span>"</span>Full&nbsp;Stack&nbspWeb&nbspDeveloper<span>",</span>
+		</p>
 	</div>
-	<p
-		bind:clientWidth={textWidth}
-		bind:this={text}
-		style="font-size: calc({(containerWidth / 27) * 1.5}px);"
-		class=" text-brandGreen-50! font-code font-bold"
-	>
-		<span>const</span>&nbsp;titles<span>:</span>&nbsp;string[]&nbsp;<span>=&nbsp;[</span><br /><span
-			>"</span
-		>Full&nbsp;Stack&nbspWeb&nbspDeveloper<span>",</span>
-	</p>
+
+	<GraphicDesigner width={textWidth}></GraphicDesigner>
+
+	<UiUxNerd width={textWidth}></UiUxNerd>
+
+	<Photographer width={textWidth}></Photographer>
 </div>
-
-<GraphicDesigner width={textWidth}></GraphicDesigner>
-
-<UiUxNerd width={textWidth}></UiUxNerd>
-
-<Photographer width={textWidth}></Photographer>
 
 <style>
 	p span {

@@ -1,28 +1,56 @@
 <script lang="ts">
 	let { width }: { width: number } = $props();
-	let marginX = $state(0);
-	let marginY = $state(0);
+	let containerW = $state(0);
+	let containerH = $state(0);
+	let contentW = $state(0);
+	let contentH = $state(0);
+	let marginX = $derived((containerW - contentW) / 2);
+	let marginY = $derived((containerH - contentH) / 2);
 </script>
 
 <div
-	style="max-width: {width}px;"
-	class="border-brandGreen-900 pattern relative mx-auto flex w-full justify-center border-4 py-2 sm:py-4"
+	style="max-width: {width}px; padding-block: {contentH * 0.2}px;"
+	class="border-brandGreen-900 pattern relative mx-auto flex w-full justify-center border-4"
+	bind:clientWidth={containerW}
+	bind:clientHeight={containerH}
 >
 	<div
-		class="bg-brandGreen-700 text-brandYellow-200 absolute top-0 left-0 w-fit -translate-x-1/4 px-4 py-1 text-xs sm:py-2 sm:text-sm"
+		style="width: {marginX - 10}px;"
+		class="border-x-brandYellow-200 absolute top-1/3 left-[5px] h-2 -translate-y-1/2 border-x-2 sm:top-1/2 sm:translate-y-0"
 	>
-		margin-inline: {marginX}px;
+		<div class="border-brandYellow-200 absolute top-1/2 w-full -translate-y-1/2 border-y"></div>
+		<div
+			class=" text-brandYellow-200 absolute top-2 left-1/2 z-10 w-fit max-w-full -translate-x-1/2 text-xs sm:text-sm sm:text-nowrap"
+		>
+			margin-inline: {marginX}px;
+		</div>
 	</div>
 	<div
-		class="bg-brandGreen-700 text-brandYellow-200 absolute right-5 bottom-0 w-fit px-4 py-1 text-xs sm:py-2 sm:text-sm"
+		style="height: {contentH * 0.2 - 4}px;"
+		class="border-y-brandYellow-200 -transalte-x-1/2 absolute bottom-[2px] left-1/2 w-2 border-y-2 sm:bottom-[2px]"
 	>
-		margin-block: {marginY}px;
+		<div
+			class="border-brandYellow-200 absolute top-0 left-1/2 h-full -translate-x-1/2 border-x"
+		></div>
+		<div
+			class=" text-brandYellow-200 absolute bottom-[calc(50%+2px)] left-4 z-10 w-fit translate-y-1/2 text-xs text-nowrap sm:text-sm"
+		>
+			margin-block: {marginY}px;
+		</div>
 	</div>
 
 	<p
-		style="font-size: calc({(width / 27) * 2}px);"
-		class="font-metro bg-brandGreen-600 w-fit px-6 py-4"
+		bind:clientHeight={contentH}
+		bind:clientWidth={contentW}
+		style="font-size: calc({(width / 27) * 2.4}px);"
+		class="font-metro bg-brandGreen-800 precision relative w-fit px-3 py-4 sm:px-6"
 	>
+		<span class=" absolute top-0 right-0 px-1 py-1 text-xs text-nowrap sm:px-2 sm:text-sm"
+			>text-rendering: optimizeLegibility;</span
+		>
+		<span class=" absolute bottom-0 left-0 px-1 py-1 text-xs sm:px-2 sm:text-sm"
+			>contrast: 10.41:1</span
+		>
 		<span>"</span>UI/UX Nerd<span>"</span>
 	</p>
 </div>
@@ -34,5 +62,10 @@
 
 	p span {
 		color: var(--color-brandYellow-200);
+		font-family: var(--font-sans);
+	}
+
+	.precision {
+		text-rendering: optimizeLegibility;
 	}
 </style>
