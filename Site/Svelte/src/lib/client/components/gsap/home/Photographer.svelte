@@ -3,8 +3,10 @@
 	let {
 		containerWidth,
 		textWidth,
-		baseFontSize
-	}: { containerWidth: number; textWidth: number; baseFontSize: number } = $props();
+		baseFontSize,
+		timeline
+	}: { containerWidth: number; textWidth: number; baseFontSize: number; timeline: GSAPTimeline } =
+		$props();
 	import { mountains } from '$client/images';
 
 	let shadowOffest = $derived(Math.floor(containerWidth / 120));

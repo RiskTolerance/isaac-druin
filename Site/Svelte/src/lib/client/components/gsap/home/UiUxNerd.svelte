@@ -2,8 +2,10 @@
 	let {
 		containerWidth,
 		textWidth,
-		baseFontSize
-	}: { containerWidth: number; textWidth: number; baseFontSize: number } = $props();
+		baseFontSize,
+		timeline
+	}: { containerWidth: number; textWidth: number; baseFontSize: number; timeline: GSAPTimeline } =
+		$props();
 	let containerW = $state(0);
 	let containerH = $state(0);
 	let contentW = $state(0);

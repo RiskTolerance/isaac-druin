@@ -1,7 +1,11 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import { gsap } from 'gsap';
 	import { SplitText } from 'gsap/SplitText';
 	import { Flip } from 'gsap/Flip';
+	import { ScrollTrigger } from 'gsap/ScrollTrigger';
+	import { ScrollSmoother } from 'gsap/ScrollSmoother';
+	gsap.registerPlugin(SplitText, Flip, ScrollSmoother, ScrollTrigger);
 	import { GraphicDesigner, UiUxNerd, Photographer } from '$components';
 
 	// vars
@@ -11,10 +15,11 @@
 	let baseFontSize = $derived((containerWidth / 27) * 1.5);
 
 	// gsap junk
-	gsap.registerPlugin(SplitText, Flip);
-
-	import { onMount } from 'svelte';
-	let fullStackTimeline: gsap.core.Timeline = $state(gsap.timeline());
+	let masterTimeline: GSAPTimeline = $state(gsap.timeline({ paused: true }));
+	let fullStackTimeline: GSAPTimeline = $state(gsap.timeline());
+	let graphicDesignerTimeline: GSAPTimeline = $state(gsap.timeline());
+	let uxuiTimeline: GSAPTimeline = $state(gsap.timeline());
+	let photographerTimeline: GSAPTimeline = $state(gsap.timeline());
 
 	let text: HTMLElement;
 	let cursor: HTMLElement;
@@ -35,17 +40,36 @@
 						Flip.from(charState, {
 							duration: 0.15
 						});
+					},
+					onComplete: () => {
+						if (i === 0) {
+							cursor.classList.remove('hidden');
+						}
+						if (i === splitText.chars.length - 1) {
+							cursor.classList.add('hidden');
+						}
 					}
 				},
 				i * 0.15
 			);
 		});
+
+		masterTimeline
+			.add(fullStackTimeline)
+			.add(graphicDesignerTimeline)
+			.add(uxuiTimeline)
+			.add(photographerTimeline);
+
+		masterTimeline.play();
 	});
 </script>
 
-<div class="container mx-auto space-y-6 overflow-x-clip md:space-y-2">
+<div id="hero" class="container mx-auto space-y-6 overflow-x-clip md:space-y-2">
 	<div bind:clientWidth={containerWidth} class="flex w-full items-center justify-center">
-		<div bind:this={cursor} class=" text-brandGreen-300! font-code absolute top-0 left-4 font-bold">
+		<div
+			bind:this={cursor}
+			class=" text-brandGreen-300! font-code absolute top-0 left-4 hidden font-bold"
+		>
 			|
 		</div>
 		<p
@@ -60,11 +84,13 @@
 		</p>
 	</div>
 
-	<GraphicDesigner {containerWidth} {textWidth} {baseFontSize}></GraphicDesigner>
+	<GraphicDesigner timeline={graphicDesignerTimeline} {containerWidth} {textWidth} {baseFontSize}
+	></GraphicDesigner>
 
-	<UiUxNerd {containerWidth} {textWidth} {baseFontSize}></UiUxNerd>
+	<UiUxNerd timeline={uxuiTimeline} {containerWidth} {textWidth} {baseFontSize}></UiUxNerd>
 
-	<Photographer {containerWidth} {textWidth} {baseFontSize}></Photographer>
+	<Photographer timeline={photographerTimeline} {containerWidth} {textWidth} {baseFontSize}
+	></Photographer>
 </div>
 
 <style>
