@@ -4,6 +4,12 @@
 		<meta charset="utf-8" />
 		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<script>
+			// Guard against chrome API errors from browser extensions or libraries
+			if (typeof chrome === 'undefined') {
+				window.chrome = {};
+			}
+		</script>
 		%sveltekit.head%
 	</head>
 	<body class="dark text-brand-light dark:text-brand-dark bg-brandGray-50 dark:bg-brandGreen-800" data-sveltekit-preload-data="hover">

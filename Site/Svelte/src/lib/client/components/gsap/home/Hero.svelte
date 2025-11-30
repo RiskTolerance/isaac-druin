@@ -6,7 +6,9 @@
 
 	// vars
 	let containerWidth = $state(0);
+	// text width is determined by a css calc for the text size based on the
 	let textWidth = $state(0);
+	let baseFontSize = $derived((containerWidth / 27) * 1.5);
 
 	// gsap junk
 	gsap.registerPlugin(SplitText, Flip);
@@ -17,7 +19,6 @@
 	let text: HTMLElement;
 	let cursor: HTMLElement;
 	onMount(() => {
-		$inspect(textWidth);
 		const splitText = SplitText.create(text, { type: 'chars', reduceWhiteSpace: false });
 
 		gsap.set(splitText.chars, { autoAlpha: 0 });
@@ -42,7 +43,7 @@
 	});
 </script>
 
-<div class="container mx-auto space-y-12 overflow-x-clip md:space-y-4">
+<div class="container mx-auto space-y-6 overflow-x-clip md:space-y-2">
 	<div bind:clientWidth={containerWidth} class="flex w-full items-center justify-center">
 		<div bind:this={cursor} class=" text-brandGreen-300! font-code absolute top-0 left-4 font-bold">
 			|
@@ -50,23 +51,24 @@
 		<p
 			bind:clientWidth={textWidth}
 			bind:this={text}
-			style="font-size: calc({(containerWidth / 27) * 1.5}px);"
-			class=" text-brandGreen-50! font-code font-bold"
+			style="font-size: {baseFontSize}px;"
+			class=" text-brandGreen-50! font-code font-light"
 		>
 			<span>const</span>&nbsp;titles<span>:</span>&nbsp;string[]&nbsp;<span>=&nbsp;[</span><br
-			/><span>"</span>Full&nbsp;Stack&nbspWeb&nbspDeveloper<span>",</span>
+			/><span>"</span><span class="custom font-bold">Full&nbsp;Stack&nbspWeb&nbspDeveloper</span
+			><span>",</span>
 		</p>
 	</div>
 
-	<GraphicDesigner width={textWidth}></GraphicDesigner>
+	<GraphicDesigner {containerWidth} {textWidth} {baseFontSize}></GraphicDesigner>
 
-	<UiUxNerd width={textWidth}></UiUxNerd>
+	<UiUxNerd {containerWidth} {textWidth} {baseFontSize}></UiUxNerd>
 
-	<Photographer width={textWidth}></Photographer>
+	<Photographer {containerWidth} {textWidth} {baseFontSize}></Photographer>
 </div>
 
 <style>
-	p span {
+	p span:not(.custom) {
 		color: var(--color-brandYellow-300);
 	}
 </style>

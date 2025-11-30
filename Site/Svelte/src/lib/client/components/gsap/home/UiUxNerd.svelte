@@ -1,5 +1,9 @@
 <script lang="ts">
-	let { width }: { width: number } = $props();
+	let {
+		containerWidth,
+		textWidth,
+		baseFontSize
+	}: { containerWidth: number; textWidth: number; baseFontSize: number } = $props();
 	let containerW = $state(0);
 	let containerH = $state(0);
 	let contentW = $state(0);
@@ -9,18 +13,18 @@
 </script>
 
 <div
-	style="max-width: {width}px; padding-block: {contentH * 0.2}px;"
+	style="max-width: {textWidth}px; padding-block: {contentH * 0.2}px;"
 	class="border-brandGreen-900 pattern relative mx-auto flex w-full justify-center border-4"
 	bind:clientWidth={containerW}
 	bind:clientHeight={containerH}
 >
 	<div
 		style="width: {marginX - 10}px;"
-		class="border-x-brandYellow-200 absolute top-1/3 left-[5px] h-2 -translate-y-1/2 border-x-2 sm:top-1/2 sm:translate-y-0"
+		class="border-x-brandYellow-200 absolute top-1/3 left-[5px] z-20 h-2 -translate-y-1/2 border-x-2 sm:top-1/2 sm:translate-y-0"
 	>
 		<div class="border-brandYellow-200 absolute top-1/2 w-full -translate-y-1/2 border-y"></div>
 		<div
-			class=" text-brandYellow-200 absolute top-2 left-1/2 z-10 w-fit max-w-full -translate-x-1/2 text-xs sm:text-sm sm:text-nowrap"
+			class=" text-brandYellow-200 absolute top-2 left-1/2 w-fit max-w-full -translate-x-1/2 text-xs sm:text-sm lg:text-nowrap"
 		>
 			margin-inline: {marginX}px;
 		</div>
@@ -42,16 +46,18 @@
 	<p
 		bind:clientHeight={contentH}
 		bind:clientWidth={contentW}
-		style="font-size: calc({(width / 27) * 2.4}px);"
-		class="font-metro bg-brandGreen-800 precision relative w-fit px-3 py-4 sm:px-6"
+		style="font-size: calc({baseFontSize * 1.2}px);"
+		class="font-metro bg-brandGreen-800 precision relative z-10 w-fit px-3 py-4 sm:px-6"
 	>
-		<span class=" absolute top-0 right-0 px-1 py-1 text-xs text-nowrap sm:px-2 sm:text-sm"
+		<span class=" absolute top-0 right-0 px-1 text-xs text-nowrap sm:px-2 sm:py-1 sm:text-sm"
 			>text-rendering: optimizeLegibility;</span
 		>
 		<span class=" absolute bottom-0 left-0 px-1 py-1 text-xs sm:px-2 sm:text-sm"
 			>contrast: 10.41:1</span
 		>
-		<span>"</span>UI/UX Nerd<span>"<span class="font-code!">,</span></span>
+		<span>"</span>UI/UX Nerd<span
+			>"<span style="font-size: {baseFontSize}px;" class="font-code!">,</span></span
+		>
 	</p>
 </div>
 
@@ -60,7 +66,7 @@
 		background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%239C92AC' fill-opacity='0.4' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
 	}
 
-	p span {
+	p span:not(.custom) {
 		color: var(--color-brandYellow-200);
 		font-family: var(--font-sans);
 	}

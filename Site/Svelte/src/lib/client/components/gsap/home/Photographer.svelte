@@ -1,24 +1,30 @@
 <script lang="ts">
 	import Image from '$client/blocks/Image.svelte';
-	let { width }: { width: number } = $props();
+	let {
+		containerWidth,
+		textWidth,
+		baseFontSize
+	}: { containerWidth: number; textWidth: number; baseFontSize: number } = $props();
 	import { mountains } from '$client/images';
+
+	let shadowOffest = $derived(Math.floor(containerWidth / 120));
 </script>
 
 <div
-	style="max-width: {width}px; font-size: clamp(2.4rem, calc({(width / 27) * 3.4}px), 8rem);"
+	style="max-width: {textWidth}px; font-size: clamp(2.6rem, {baseFontSize * 1.4}px, 8rem);"
 	class="relative mx-auto flex w-full justify-between font-bold italic sm:font-black"
 >
 	<Image
-		class="absolute -top-[5%] right-0 -z-10  aspect-square w-1/8 overflow-clip object-cover object-center"
+		class="absolute top-0 right-0 -z-10  aspect-square w-1/8 overflow-clip object-cover object-center"
 		src={mountains}
 		alt="mountains"
 	></Image>
 	<Image
-		class="absolute -bottom-[5%] left-0 -z-10 aspect-square w-1/8 overflow-clip object-cover object-center"
+		class="absolute bottom-0 left-0 -z-10 aspect-square w-1/8 overflow-clip object-cover object-center"
 		src={mountains}
 		alt="mountains"
 	></Image>
-	<p style="text-shadow: {width / 120}px {width / 120}px 0px var(--color-brandGreen-800);">"</p>
+	<span>"</span>
 	<div class="flex w-full items-center justify-center">
 		<div class="relative w-fit p-2">
 			<Image
@@ -28,8 +34,8 @@
 			></Image>
 
 			<p
-				style="letter-spacing:-0.4rem; text-shadow: {Math.floor(width / 120)}px {Math.floor(
-					width / 120
+				style="letter-spacing:-0.4rem; text-shadow: {Math.floor(shadowOffest)}px {Math.floor(
+					shadowOffest
 				)}px 0px var(--color-brandGreen-800);"
 				class="font-dmSans txtShadow z-10 text-center text-nowrap"
 			>
@@ -38,10 +44,13 @@
 		</div>
 	</div>
 
-	<p style="text-shadow: {width / 120}px {width / 120}px 0px var(--color-brandGreen-800);">
-		"<span
-			style="font-size: calc({(width / 24.5) * 1.5}px);"
-			class="font-code! text-brandYellow-300 not-italic">]</span
-		>
-	</p>
+	<span>
+		"<span style="font-size: {baseFontSize}px;" class="font-code! font-light not-italic">]</span>
+	</span>
 </div>
+
+<style>
+	span:not(.custom) {
+		color: var(--color-brandYellow-300);
+	}
+</style>

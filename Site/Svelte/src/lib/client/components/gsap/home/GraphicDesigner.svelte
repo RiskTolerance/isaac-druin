@@ -1,5 +1,9 @@
 <script lang="ts">
-	let { width }: { width: number } = $props();
+	let {
+		containerWidth,
+		textWidth,
+		baseFontSize
+	}: { containerWidth: number; textWidth: number; baseFontSize: number } = $props();
 	let gBgShape,
 		aBgShape,
 		lQuote,
@@ -13,7 +17,7 @@
 		er: SVGPathElement;
 </script>
 
-<div style="max-width: {width}px;" class="mx-auto">
+<div style="max-width: {textWidth}px;" class="mx-auto">
 	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800.29 87.55">
 		<g>
 			<path
