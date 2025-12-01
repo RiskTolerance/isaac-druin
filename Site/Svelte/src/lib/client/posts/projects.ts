@@ -7,6 +7,7 @@ import type { Picture } from 'vite-imagetools';
 export interface ProjectMetadata {
 	title: string;
 	date?: string;
+	slug?: string;
 	excerpt?: string;
 	tags?: string[];
 	url?: string;
@@ -22,17 +23,11 @@ export interface ProjectEntry {
 
 /**
  * Get all projects by loading .svelte components and their paired .ts metadata files.
- * Slug is derived from the file path (e.g., "isaac-druin-dot-com")
+ * Slug is derived from metadata.slug if provided, otherwise from the filename (e.g., "isaac-druin-dot-com")
  */
 export function getAllProjects(): ProjectEntry[] {
 	return Object.entries(projectComponents)
 		.map(([path, module]) => {
-
-			// Extract slug from path
-			const slug = path
-				.replace('/src/lib/client/posts/projects/', '')
-				.replace(/\.svelte$/, '');
-
 			// Find corresponding metadata file
 			const metaPath = path.replace(/\.svelte$/, '.ts');
 			const metadataModule = projectMetadata[metaPath] as { metadata: ProjectMetadata } | undefined;
@@ -42,6 +37,13 @@ export function getAllProjects(): ProjectEntry[] {
 			}
 
 			const metadata = metadataModule.metadata;
+
+			// Use explicit slug from metadata if provided, otherwise extract from filename
+			const slug = metadata.slug || path
+				.replace('/src/lib/client/posts/projects/', '')
+				.replace(/\.svelte$/, '')
+				.split('/')
+				.pop() || '';
 
 			return {
 				slug,

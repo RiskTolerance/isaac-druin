@@ -4,6 +4,7 @@ import type { Picture } from 'vite-imagetools';
 export interface PostMetadata {
 	title: string;
 	date: string;
+	slug?: string;
 	excerpt?: string;
 	tags?: string[];
 	featuredImage?: Picture;
@@ -18,16 +19,11 @@ export interface PostEntry {
 
 /**
  * Get all blog posts by loading .svelte components and their paired .ts metadata files.
- * Slug is derived from the file path (e.g., "2025/January/1-12-25")
+ * Slug is derived from metadata.slug if provided, otherwise from the filename (e.g., "the-stack")
  */
 export function getAllPosts(): PostEntry[] {
 	return Object.entries(postComponents)
 		.map(([path, module]) => {
-			// Extract slug from path: /src/lib/client/posts/blog/2025/January/1-12-25.svelte -> 2025/January/1-12-25
-			const slug = path
-				.replace('/src/lib/client/posts/blog/', '')
-				.replace(/\.svelte$/, '');
-
 			// Find corresponding metadata file
 			const metaPath = path.replace(/\.svelte$/, '.ts');
 			const metadataModule = postMetadata[metaPath] as { metadata: PostMetadata } | undefined;
@@ -37,6 +33,13 @@ export function getAllPosts(): PostEntry[] {
 			}
 
 			const metadata = metadataModule.metadata;
+
+			// Use explicit slug from metadata if provided, otherwise extract from filename
+			const slug = metadata.slug || path
+				.replace('/src/lib/client/posts/blog/', '')
+				.replace(/\.svelte$/, '')
+				.split('/')
+				.pop() || '';
 
 			return {
 				slug,

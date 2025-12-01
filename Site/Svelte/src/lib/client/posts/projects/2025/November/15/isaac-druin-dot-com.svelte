@@ -2,7 +2,6 @@
 <script lang="ts">
 	import { Prose } from '$components';
 	import { Marked } from '$components';
-	import { ProseLayout } from '$layouts';
 	import Chart from './_Chart.svelte';
 
 	const content = `

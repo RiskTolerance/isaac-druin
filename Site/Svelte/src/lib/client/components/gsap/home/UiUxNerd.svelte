@@ -16,6 +16,7 @@
 	let xRuler: HTMLElement;
 	let xRulerText: HTMLElement | undefined = $state();
 	let yRuler: HTMLElement;
+	let yRulerText: HTMLElement | undefined = $state();
 
 	let containerW = $state(0);
 	let containerH = $state(0);
@@ -50,6 +51,25 @@
 				});
 			}
 		});
+
+		// Set initial position for yRulerText (off-screen to the left)
+		const yTextWidth = yRulerText!.clientWidth;
+		gsap.set(yRulerText!, {
+			x: -yTextWidth - 100 // Start completely off-screen to the left
+		});
+
+		timeline.to(yRuler, {
+			scaleY: 1,
+			duration: 0.5,
+			onComplete: () => {
+				yRuler?.classList.remove('scale-y-0');
+				gsap.to(yRulerText!, {
+					x: 0, // Slide in from the left
+					duration: 0.3,
+					ease: 'power2.out'
+				});
+			}
+		});
 	});
 </script>
 
@@ -81,16 +101,22 @@
 	<div
 		bind:this={yRuler}
 		style="height: {contentH * 0.2 - 4}px;"
-		class="border-y-brandYellow-200 -transalte-x-1/2 absolute bottom-[2px] left-1/2 w-2 border-y-2 sm:bottom-[2px]"
+		class="border-y-brandYellow-200 -transalte-x-1/2 absolute bottom-[2px] left-1/2 w-2 origin-bottom scale-y-0 border-y-2 sm:bottom-[2px]"
 	>
 		<div
 			class="border-brandYellow-200 absolute top-0 left-1/2 h-full -translate-x-1/2 border-x"
 		></div>
-		<p
-			class=" text-brandYellow-200 absolute bottom-[calc(50%+2px)] left-4 z-10 w-fit translate-y-1/2 text-xs text-nowrap sm:text-sm"
+		<div
+			style="height: {yRulerText?.clientHeight ?? 0}px;"
+			class="absolute bottom-[calc(50%+2px)] left-4 w-fit translate-y-1/2 overflow-clip"
 		>
-			margin-block: {marginY}px;
-		</p>
+			<p
+				bind:this={yRulerText}
+				class=" text-brandYellow-200 z-10 w-fit text-xs text-nowrap sm:text-sm"
+			>
+				margin-block: {marginY}px;
+			</p>
+		</div>
 	</div>
 
 	<p
