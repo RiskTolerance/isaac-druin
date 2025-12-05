@@ -26,13 +26,6 @@ code.hljs {
 	color: var(--hljs-fg);
 }
 
-/* Purposely do not highlight these things */
-/* .hljs-formula,
-.hljs-params,
-.hljs-property {
-	No styling needed
-} */
-
 /* Comments */
 .hljs-comment {
 	color: var(--hljs-comment);
@@ -43,213 +36,108 @@ code.hljs {
 	color: var(--hljs-tag);
 }
 
-/* Default Foreground, Caret, Delimiters */
+/* Default Foreground */
 .hljs-subst {
 	color: var(--hljs-fg);
 }
 
-/* Punctuation */
+/* Punctuation & Operators */
 .hljs-punctuation {
 	color: var(--hljs-punctuation);
 }
 
-/* Operators */
 .hljs-operator {
 	color: var(--hljs-operator);
-}
-
-.hljs-operator {
 	opacity: var(--hljs-operator-opacity);
 }
 
 /* Variables */
-.hljs-variable {
+.hljs-variable,
+.hljs-template-variable,
+.hljs-selector-tag,
+.hljs-name,
+.hljs-bullet,
+.hljs-deletion {
 	color: var(--hljs-variable);
 }
 
-/* Template Variables */
-.hljs-template-variable {
-	color: var(--hljs-template-variable);
-}
-
-/* Selector Tags */
-.hljs-selector-tag {
-	color: var(--hljs-selector-tag);
-}
-
-/* Names */
-.hljs-name {
-	color: var(--hljs-name);
-}
-
-/* Bullets */
-.hljs-bullet {
-	color: var(--hljs-bullet);
-}
-
-/* Deletions */
-.hljs-deletion {
-	color: var(--hljs-deletion);
-}
-
-/* Numbers */
-.hljs-number {
-	color: var(--hljs-number);
-}
-
-/* Symbols */
-.hljs-symbol {
-	color: var(--hljs-symbol);
-}
-
-/* Links */
-.hljs-link {
-	color: var(--hljs-link);
-}
-
-/* Literals */
-.hljs-literal {
-	color: var(--hljs-literal);
-}
-
-/* Constant Variables */
+/* Numbers, Symbols, Links, Literals, Attributes */
+.hljs-number,
+.hljs-symbol,
+.hljs-link,
+.hljs-literal,
+.hljs-attr,
+.hljs-attribute,
 .hljs-variable.constant_ {
 	color: var(--hljs-number);
 }
 
-/* XML/HTML Attributes */
-.hljs-attr {
-	color: var(--hljs-attr);
-}
-
-/* Titles */
+/* Titles, Classes, Strong */
 .hljs-title,
 .hljs-class .hljs-title,
-.hljs-title.class_ {
-	color: var(--hljs-title);
-}
-
-/* Classes */
+.hljs-title.class_,
 .hljs-class {
-	color: var(--hljs-class);
+	color: var(--hljs-fg);
 }
 
-/* Strong */
 .hljs-strong {
 	font-weight: bold;
-	color: var(--hljs-strong);
+	color: var(--hljs-fg);
 }
 
-/* Strings */
-.hljs-string {
-	color: var(--hljs-string);
-}
-
-/* Code */
-.hljs-code {
-	color: var(--hljs-code);
-}
-
-/* Additions */
-.hljs-addition {
-	color: var(--hljs-addition);
-}
-
-/* Inherited Classes */
+/* Strings, Code, Additions */
+.hljs-string,
+.hljs-code,
+.hljs-addition,
 .hljs-title.class_.inherited__ {
 	color: var(--hljs-string);
 }
 
-/* Support */
-.hljs-support {
-	color: var(--hljs-support);
-}
-
-/* Built-in */
-.hljs-built_in {
-	color: var(--hljs-built_in);
-}
-
-/* Doc Tags */
-.hljs-doctag {
-	color: var(--hljs-doctag);
-}
-
-/* Quotes */
-.hljs-quote {
-	color: var(--hljs-quote);
-}
-
-/* Regular Expressions */
-.hljs-regexp {
-	color: var(--hljs-regexp);
-}
-
-/* At-rule Keywords */
+/* Support, Built-ins, Doc Tags, Quotes, Regex */
+.hljs-support,
+.hljs-built_in,
+.hljs-doctag,
+.hljs-quote,
+.hljs-regexp,
 .hljs-keyword.hljs-atrule {
 	color: var(--hljs-support);
 }
 
 /* Functions */
 .hljs-function .hljs-title,
-.hljs-title.function_ {
-	color: var(--hljs-function);
-}
-
-/* Attributes */
-.hljs-attribute {
-	color: var(--hljs-attribute);
-}
-
-/* Ruby Properties */
-.ruby .hljs-property {
-	color: var(--hljs-function);
-}
-
-/* Sections */
+.hljs-title.function_,
+.ruby .hljs-property,
 .hljs-section {
-	color: var(--hljs-section);
+	color: var(--hljs-function);
 }
 
-/* Keywords */
-.hljs-keyword {
-	color: var(--hljs-keyword);
-}
-
-/* Types */
-.hljs-type {
-	color: var(--hljs-type);
-}
-
-/* Template Tags */
+/* Keywords, Types, Template Tags */
+.hljs-keyword,
+.hljs-type,
 .hljs-template-tag {
-	color: var(--hljs-template-tag);
-}
-
-/* Diff Meta */
-.diff .hljs-meta {
 	color: var(--hljs-keyword);
 }
 
 /* Emphasis */
 .hljs-emphasis {
-	color: var(--hljs-emphasis);
+	color: var(--hljs-keyword);
 	font-style: italic;
 }
 
-/* Deprecated, Opening/Closing Embedded Language Tags */
+/* Meta */
 .hljs-meta,
 .hljs-meta .hljs-keyword,
-.hljs-meta .hljs-string {
+.hljs-meta .hljs-string,
+.diff .hljs-meta {
 	color: var(--hljs-meta);
 }
 
-/* For v10 compatible themes */
 .hljs-meta .hljs-keyword,
 .hljs-meta-keyword {
 	font-weight: bold;
 }
 
+/* Pre block background */
 pre {
 	background-color: var(--hljs-bg);
 }

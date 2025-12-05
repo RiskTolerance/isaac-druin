@@ -1,4 +1,3 @@
-
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
@@ -21,7 +20,6 @@
   --color-brandGreen-900: oklch(0.249 0.016 168.6);
   --color-brandGreen-950: oklch(0.187 0.012 166.98);
 
-
   --color-brandYellow-50: oklch(0.966 0.04 88.18);
   --color-brandYellow-100: oklch(0.93 0.089 89.91);
   --color-brandYellow-200: oklch(0.859 0.174 95.21);
@@ -33,7 +31,6 @@
   --color-brandYellow-800: oklch(0.32 0.065 95.33);
   --color-brandYellow-900: oklch(0.224 0.046 95.66);
   --color-brandYellow-950: oklch(0.176 0.036 93.21);
-
 
   --color-brandGray-50: oklch(0.975 0.002 228.43);
   --color-brandGray-100: oklch(0.93 0.008 228.74);
@@ -47,471 +44,262 @@
   --color-brandGray-900: oklch(0.224 0.005 219.63);
   --color-brandGray-950: oklch(0.176 0.004 229);
 
+  /* Light theme semantic tokens */
+  --brand-light-body: var(--color-brandGray-800);
+  --brand-light-headings: var(--color-brandGray-900);
+  --brand-light-lead: var(--color-brandGray-700);
+  --brand-light-links: var(--color-brandGray-900);
+  --brand-light-bold: var(--color-brandGray-900);
+  --brand-light-counters: var(--color-brandGray-600);
+  --brand-light-bullets: var(--color-brandGray-400);
+  --brand-light-hr: var(--color-brandGray-300);
+  --brand-light-quotes: var(--color-brandGray-900);
+  --brand-light-borders: var(--color-brandGray-300);
+  --brand-light-captions: var(--color-brandGray-700);
+  --brand-light-code: var(--color-brandGray-900);
+  --brand-light-pre-code: var(--color-brandGray-100);
+  --brand-light-pre-bg: var(--color-brandGray-50);
+  --brand-light-th-borders: var(--color-brandGray-300);
+  --brand-light-td-borders: var(--color-brandGray-200);
 
-  /* Light theme colors */
-  --brandBodyLight: var(--color-brandGray-800);
-  --brandHeadingsLight: var(--color-brandGray-900);
-  --brandLeadLight: var(--color-brandGray-700);
-  --brandLinksLight: var(--color-brandGray-900);
-  --brandBoldLight: var(--color-brandGray-900);
-  --brandCountersLight: var(--color-brandGray-600);
-  --brandBulletsLight: var(--color-brandGray-400);
-  --brandHrLight: var(--color-brandGray-300);
-  --brandQuotesLight: var(--color-brandGray-900);
-  --brandBordersLight: var(--color-brandGray-300);
-  --brandCaptionsLight: var(--color-brandGray-700);
-  --brandCodeLight: var(--color-brandGray-900);
-  --brandProCodeLight: var(--color-brandGray-100);
-  --brandPreBgLight: var(--color-brandGray-50);
-  --brandThBordersLight: var(--color-brandGray-300);
-  --brandTdBordersLight: var(--color-brandGray-200);
-  --brandH1Light: var(--brandHeadingsLight);
-  --brandH2Light: var(--brandHeadingsLight);
-  --brandH3Light: var(--brandHeadingsLight);
-  --brandH4Light: var(--brandHeadingsLight);
-  --brandPLight: var(--brandBodyLight);
-  --brandALight: var(--brandLinksLight);
-  --brandBlockquoteLight: var(--brandQuotesLight);
-  --brandFigureLight: var(--brandBodyLight);
-  --brandFigcaptionLight: var(--brandCaptionsLight);
-  --brandStrongLight: var(--brandBoldLight);
-  --brandEmLight: var(--brandBodyLight);
-  --brandKbdLight: var(--brandCodeLight);
-  --brandPreLight: var(--brandPreBgLight);
-  --brandOlLight: var(--brandBodyLight);
-  --brandUlLight: var(--brandBodyLight);
-  --brandLiLight: var(--brandBodyLight);
-  --brandDlLight: var(--brandBodyLight);
-  --brandDtLight: var(--brandHeadingsLight);
-  --brandDdLight: var(--brandBodyLight);
-  --brandTableLight: var(--brandBodyLight);
-  --brandTheadLight: var(--brandHeadingsLight);
-  --brandTrLight: var(--brandBodyLight);
-  --brandThLight: var(--brandHeadingsLight);
-  --brandTdLight: var(--brandBodyLight);
-  --brandImgLight: var(--brandBodyLight);
-  --brandPictureLight: var(--brandBodyLight);
-  --brandVideoLight: var(--brandBodyLight);
-  
-  /* Dark theme colors */
-  --brandBodyDark: var(--color-brandGreen-50);
-  --brandHeadingsDark: var(--color-brandGreen-100);
-  --brandLeadDark: var(--color-brandGreen-300);
-  --brandLinksDark: var(--color-brandGreen-100);
-  --brandBoldDark: var(--color-brandGreen-100);
-  --brandCountersDark: var(--color-brandGreen-400);
-  --brandBulletsDark: var(--color-brandGreen-200);
-  --brandHrDark: var(--color-brandGreen-700);
-  --brandQuotesDark: var(--color-brandGreen-100);
-  --brandBordersDark: var(--color-brandGreen-700);
-  --brandCaptionsDark: var(--color-brandGreen-300);
-  --brandCodeDark: var(--color-brandGreen-100);
-  --brandProCodeDark: var(--color-brandGreen-900);
-  --brandPreBgDark: var(--color-brandGreen-100);
-  --brandThBordersDark: var(--color-brandGreen-700);
-  --brandTdBordersDark: var(--color-brandGreen-800);
-  --brandH1Dark: var(--brandHeadingsDark);
-  --brandH2Dark: var(--brandHeadingsDark);
-  --brandH3Dark: var(--brandHeadingsDark);
-  --brandH4Dark: var(--brandHeadingsDark);
-  --brandPDark: var(--brandBodyDark);
-  --brandADark: var(--brandLinksDark);
-  --brandBlockquoteDark: var(--brandQuotesDark);
-  --brandFigureDark: var(--brandBodyDark);
-  --brandFigcaptionDark: var(--brandCaptionsDark);
-  --brandStrongDark: var(--brandBoldDark);
-  --brandEmDark: var(--brandBodyDark);
-  --brandKbdDark: var(--brandCodeDark);
-  --brandPreDark: var(--brandPreBgDark);
-  --brandOlDark: var(--brandBodyDark);
-  --brandUlDark: var(--brandBodyDark);
-  --brandLiDark: var(--brandBodyDark);
-  --brandDlDark: var(--brandBodyDark);
-  --brandDtDark: var(--brandHeadingsDark);
-  --brandDdDark: var(--brandBodyDark);
-  --brandTableDark: var(--brandBodyDark);
-  --brandTheadDark: var(--brandHeadingsDark);
-  --brandTrDark: var(--brandBodyDark);
-  --brandThDark: var(--brandHeadingsDark);
-  --brandTdDark: var(--brandBodyDark);
-  --brandImgDark: var(--brandBodyDark);
-  --brandPictureDark: var(--brandBodyDark);
-  --brandVideoDark: var(--brandBodyDark);
+  /* Dark theme semantic tokens */
+  --brand-dark-body: var(--color-brandGreen-50);
+  --brand-dark-headings: var(--color-brandGreen-100);
+  --brand-dark-lead: var(--color-brandGreen-300);
+  --brand-dark-links: var(--color-brandGreen-100);
+  --brand-dark-bold: var(--color-brandGreen-100);
+  --brand-dark-counters: var(--color-brandGreen-400);
+  --brand-dark-bullets: var(--color-brandGreen-200);
+  --brand-dark-hr: var(--color-brandGreen-700);
+  --brand-dark-quotes: var(--color-brandGreen-100);
+  --brand-dark-borders: var(--color-brandGreen-700);
+  --brand-dark-captions: var(--color-brandGreen-300);
+  --brand-dark-code: var(--color-brandGreen-100);
+  --brand-dark-pre-code: var(--color-brandGreen-900);
+  --brand-dark-pre-bg: var(--color-brandGreen-100);
+  --brand-dark-th-borders: var(--color-brandGreen-700);
+  --brand-dark-td-borders: var(--color-brandGreen-800);
 }
 
+/* Prose styling for markdown/rich content (light) */
 @utility prose-brand-light {
-  p {
-    color: var(--brandPLight);
+  p, li, dl, dd, em, ol, ul, table, tr, figure {
+    color: var(--brand-light-body);
   }
   [class~="lead"] {
-    color: var(--brandLeadLight);
+    color: var(--brand-light-lead);
   }
-  h1, h2, h3, h4, h5, h6, th {
-    color: var(--brandHeadingsLight);
+  h1, h2, h3, h4, h5, h6, th, dt, strong, b, thead {
+    color: var(--brand-light-headings);
   }
   a {
-    color: var(--brandALight);
+    color: var(--brand-light-links);
   }
   blockquote {
-    color: var(--brandBlockquoteLight);
-    border-color: var(--brandBordersLight);
-  }
-  figure {
-    color: var(--brandFigureLight);
+    color: var(--brand-light-quotes);
+    border-color: var(--brand-light-borders);
   }
   figcaption {
-    color: var(--brandFigcaptionLight);
+    color: var(--brand-light-captions);
   }
-  strong, b {
-    color: var(--brandStrongLight);
-  }
-  em {
-    color: var(--brandEmLight);
-  }
-  kbd {
-    color: var(--brandKbdLight);
-  }
-  code {
-    color: var(--brandCodeLight);
+  kbd, code {
+    color: var(--brand-light-code);
   }
   pre {
-    background-color: var(--brandPreLight);
+    background-color: var(--brand-light-pre-bg);
   }
   pre code {
-    color: var(--brandProCodeLight);
-  }
-  ol {
-    color: var(--brandOlLight);
-  }
-  ul {
-    color: var(--brandUlLight);
-  }
-  li {
-    color: var(--brandLiLight);
-  }
-  dl {
-    color: var(--brandDlLight);
-  }
-  dt {
-    color: var(--brandDtLight);
-  }
-  dd {
-    color: var(--brandDdLight);
-  }
-  table {
-    color: var(--brandTableLight);
-  }
-  thead {
-    color: var(--brandTheadLight);
-  }
-  tr {
-    color: var(--brandTrLight);
-  }
-  th {
-    color: var(--brandThLight);
-    border-color: var(--brandThBordersLight);
-  }
-  td {
-    color: var(--brandTdLight);
-    border-color: var(--brandTdBordersLight);
-  }
-  img {
-    color: var(--brandImgLight);
-  }
-  picture {
-    color: var(--brandPictureLight);
-  }
-  video {
-    color: var(--brandVideoLight);
+    color: var(--brand-light-pre-code);
   }
   hr {
-    border-color: var(--brandHrLight);
+    border-color: var(--brand-light-hr);
+  }
+  th {
+    border-color: var(--brand-light-th-borders);
+  }
+  td {
+    border-color: var(--brand-light-td-borders);
   }
   ol li::marker {
-    color: var(--brandCountersLight);
+    color: var(--brand-light-counters);
   }
   ul li::marker {
-    color: var(--brandBulletsLight);
+    color: var(--brand-light-bullets);
   }
 }
 
+/* Prose styling for markdown/rich content (dark) */
 @utility prose-brand-dark {
-  p {
-    color: var(--brandPDark);
+  p, li, dl, dd, em, ol, ul, table, tr, figure {
+    color: var(--brand-dark-body);
   }
   [class~="lead"] {
-    color: var(--brandLeadDark);
+    color: var(--brand-dark-lead);
   }
-  h1, h2, h3, h4, h5, h6, th {
-    color: var(--brandHeadingsDark);
+  h1, h2, h3, h4, h5, h6, th, dt, strong, b, thead {
+    color: var(--brand-dark-headings);
   }
   a {
-    color: var(--brandADark);
+    color: var(--brand-dark-links);
   }
   blockquote {
-    color: var(--brandBlockquoteDark);
-    border-color: var(--brandBordersDark);
-  }
-  figure {
-    color: var(--brandFigureDark);
+    color: var(--brand-dark-quotes);
+    border-color: var(--brand-dark-borders);
   }
   figcaption {
-    color: var(--brandFigcaptionDark);
+    color: var(--brand-dark-captions);
   }
-  strong, b {
-    color: var(--brandStrongDark);
-  }
-  em {
-    color: var(--brandEmDark);
-  }
-  kbd {
-    color: var(--brandKbdDark);
-  }
-  code {
-    color: var(--brandCodeDark);
+  kbd, code {
+    color: var(--brand-dark-code);
   }
   pre {
-    background-color: var(--brandPreDark);
+    background-color: var(--brand-dark-pre-bg);
   }
   pre code {
-    color: var(--brandProCodeDark);
-  }
-  ol {
-    color: var(--brandOlDark);
-  }
-  ul {
-    color: var(--brandUlDark);
-  }
-  li {
-    color: var(--brandLiDark);
-  }
-  dl {
-    color: var(--brandDlDark);
-  }
-  dt {
-    color: var(--brandDtDark);
-  }
-  dd {
-    color: var(--brandDdDark);
-  }
-  table {
-    color: var(--brandTableDark);
-  }
-  thead {
-    color: var(--brandTheadDark);
-  }
-  tr {
-    color: var(--brandTrDark);
-  }
-  th {
-    color: var(--brandThDark);
-    border-color: var(--brandThBordersDark);
-  }
-  td {
-    color: var(--brandTdDark);
-    border-color: var(--brandTdBordersDark);
-  }
-  img {
-    color: var(--brandImgDark);
-  }
-  picture {
-    color: var(--brandPictureDark);
-  }
-  video {
-    color: var(--brandVideoDark);
+    color: var(--brand-dark-pre-code);
   }
   hr {
-    border-color: var(--brandHrDark);
+    border-color: var(--brand-dark-hr);
+  }
+  th {
+    border-color: var(--brand-dark-th-borders);
+  }
+  td {
+    border-color: var(--brand-dark-td-borders);
   }
   ol li::marker {
-    color: var(--brandCountersDark);
+    color: var(--brand-dark-counters);
   }
   ul li::marker {
-    color: var(--brandBulletsDark);
+    color: var(--brand-dark-bullets);
   }
 }
 
+/* General text styling for non-prose content (light) */
 @utility text-brand-light {
-  p {
-    color: var(--brandBodyLight);
+  p, li {
+    color: var(--brand-light-body);
   }
-  h1, h2, h3, h4, h5, h6 {
-    color: var(--brandHeadingsLight);
+  h1, h2, h3, h4, h5, h6, strong, b {
+    color: var(--brand-light-headings);
   }
   a {
-    color: var(--brandLinksLight);
-  }
-  strong, b {
-    color: var(--brandBoldLight);
+    color: var(--brand-light-links);
   }
   code {
-    color: var(--brandCodeLight);
-  }
-  pre code {
-    color: var(--brandProCodeLight);
+    color: var(--brand-light-code);
   }
   pre {
-    background-color: var(--brandPreBgLight);
+    background-color: var(--brand-light-pre-bg);
+  }
+  pre code {
+    color: var(--brand-light-pre-code);
   }
   blockquote {
-    color: var(--brandQuotesLight);
-    border-color: var(--brandBordersLight);
+    color: var(--brand-light-quotes);
+    border-color: var(--brand-light-borders);
   }
   figcaption {
-    color: var(--brandCaptionsLight);
+    color: var(--brand-light-captions);
   }
   hr {
-    border-color: var(--brandHrLight);
+    border-color: var(--brand-light-hr);
   }
   ol li::marker {
-    color: var(--brandCountersLight);
+    color: var(--brand-light-counters);
   }
   ul li::marker {
-    color: var(--brandBulletsLight);
-  }
-  li {
-    color: var(--brandBodyLight);
+    color: var(--brand-light-bullets);
   }
   th {
-    border-color: var(--brandThBordersLight);
+    border-color: var(--brand-light-th-borders);
   }
   td {
-    border-color: var(--brandTdBordersLight);
+    border-color: var(--brand-light-td-borders);
   }
 }
 
+/* General text styling for non-prose content (dark) */
 @utility text-brand-dark {
-  p {
-    color: var(--brandBodyDark);
+  p, li {
+    color: var(--brand-dark-body);
   }
-  h1, h2, h3, h4, h5, h6 {
-    color: var(--brandHeadingsDark);
+  h1, h2, h3, h4, h5, h6, strong, b {
+    color: var(--brand-dark-headings);
   }
   a {
-    color: var(--brandLinksDark);
-  }
-  strong, b {
-    color: var(--brandBoldDark);
+    color: var(--brand-dark-links);
   }
   code {
-    color: var(--brandCodeDark);
-  }
-  pre code {
-    color: var(--brandProCodeDark);
+    color: var(--brand-dark-code);
   }
   pre {
-    background-color: var(--brandPreBgDark);
+    background-color: var(--brand-dark-pre-bg);
+  }
+  pre code {
+    color: var(--brand-dark-pre-code);
   }
   blockquote {
-    color: var(--brandQuotesDark);
-    border-color: var(--brandBordersDark);
+    color: var(--brand-dark-quotes);
+    border-color: var(--brand-dark-borders);
   }
   figcaption {
-    color: var(--brandCaptionsDark);
+    color: var(--brand-dark-captions);
   }
   hr {
-    border-color: var(--brandHrDark);
+    border-color: var(--brand-dark-hr);
   }
   ol li::marker {
-    color: var(--brandCountersDark);
+    color: var(--brand-dark-counters);
   }
   ul li::marker {
-    color: var(--brandBulletsDark);
-  }
-  li {
-    color: var(--brandBodyDark);
+    color: var(--brand-dark-bullets);
   }
   th {
-    border-color: var(--brandThBordersDark);
+    border-color: var(--brand-dark-th-borders);
   }
   td {
-    border-color: var(--brandTdBordersDark);
+    border-color: var(--brand-dark-td-borders);
   }
 }
 
+/* Highlight.js theme (light) */
 @utility hljs-theme-light {
   --hljs-bg: var(--color-brandGray-50);
-  --hljs-bg-light: var(--color-brandGray-100);
   --hljs-bg-selection: var(--color-brandGray-200);
   --hljs-fg: var(--color-brandGray-900);
-  --hljs-fg-light: var(--color-brandGray-700);
   --hljs-fg-dark: var(--color-brandGray-950);
   --hljs-comment: var(--color-brandGray-400);
   --hljs-tag: var(--color-brandGray-950);
   --hljs-punctuation: var(--color-brandGray-900);
   --hljs-operator: var(--color-brandGray-900);
   --hljs-variable: var(--color-brandGray-800);
-  --hljs-template-variable: var(--color-brandGray-800);
-  --hljs-selector-tag: var(--color-brandGray-800);
-  --hljs-name: var(--color-brandGray-800);
-  --hljs-bullet: var(--color-brandGray-800);
-  --hljs-deletion: var(--color-brandGray-800);
   --hljs-number: var(--color-brandGreen-600);
-  --hljs-symbol: var(--color-brandGreen-600);
-  --hljs-link: var(--color-brandGreen-600);
-  --hljs-literal: var(--color-brandGreen-600);
-  --hljs-attr: var(--color-brandGreen-600);
-  --hljs-attribute: var(--color-brandGreen-700);
-  --hljs-title: var(--color-brandGray-900);
-  --hljs-class: var(--color-brandGray-900);
-  --hljs-strong: var(--color-brandGray-900);
   --hljs-string: var(--color-brandYellow-700);
-  --hljs-code: var(--color-brandYellow-700);
-  --hljs-addition: var(--color-brandYellow-700);
-  --hljs-support: var(--color-brandGray-700);
-  --hljs-built_in: var(--color-brandGray-700);
-  --hljs-doctag: var(--color-brandGray-700);
-  --hljs-quote: var(--color-brandGray-700);
-  --hljs-regexp: var(--color-brandGray-700);
   --hljs-function: var(--color-brandGreen-700);
   --hljs-keyword: var(--color-brandGray-900);
-  --hljs-type: var(--color-brandGray-900);
-  --hljs-template-tag: var(--color-brandGray-900);
-  --hljs-emphasis: var(--color-brandGray-900);
+  --hljs-support: var(--color-brandGray-700);
   --hljs-meta: var(--color-brandGray-600);
   --hljs-section: var(--color-brandGreen-700);
   --hljs-operator-opacity: 1;
 }
 
+/* Highlight.js theme (dark) */
 @utility hljs-theme-dark {
   --hljs-bg: var(--color-brandGray-900);
-  --hljs-bg-light: var(--color-brandGray-800);
   --hljs-bg-selection: var(--color-brandGray-700);
   --hljs-fg: var(--color-brandGray-100);
-  --hljs-fg-light: var(--color-brandGray-300);
   --hljs-fg-dark: var(--color-brandGray-50);
   --hljs-comment: var(--color-brandGray-400);
   --hljs-tag: var(--color-brandGray-50);
   --hljs-punctuation: var(--color-brandGray-100);
   --hljs-operator: var(--color-brandGray-100);
   --hljs-variable: var(--color-brandGray-200);
-  --hljs-template-variable: var(--color-brandGray-200);
-  --hljs-selector-tag: var(--color-brandGray-200);
-  --hljs-name: var(--color-brandGray-200);
-  --hljs-bullet: var(--color-brandGray-200);
-  --hljs-deletion: var(--color-brandGray-200);
   --hljs-number: var(--color-brandGreen-400);
-  --hljs-symbol: var(--color-brandGreen-400);
-  --hljs-link: var(--color-brandGreen-400);
-  --hljs-literal: var(--color-brandGreen-400);
-  --hljs-attr: var(--color-brandGreen-400);
-  --hljs-attribute: var(--color-brandGreen-400);
-  --hljs-title: var(--color-brandGray-100);
-  --hljs-class: var(--color-brandGray-100);
-  --hljs-strong: var(--color-brandGray-100);
   --hljs-string: var(--color-brandYellow-300);
-  --hljs-code: var(--color-brandYellow-300);
-  --hljs-addition: var(--color-brandYellow-300);
-  --hljs-support: var(--color-brandGray-300);
-  --hljs-built_in: var(--color-brandGray-300);
-  --hljs-doctag: var(--color-brandGray-300);
-  --hljs-quote: var(--color-brandGray-300);
-  --hljs-regexp: var(--color-brandGray-300);
   --hljs-function: var(--color-brandGreen-400);
   --hljs-keyword: var(--color-brandGray-100);
-  --hljs-type: var(--color-brandGray-100);
-  --hljs-template-tag: var(--color-brandGray-100);
-  --hljs-emphasis: var(--color-brandGray-100);
+  --hljs-support: var(--color-brandGray-300);
   --hljs-meta: var(--color-brandGray-400);
   --hljs-section: var(--color-brandGreen-400);
   --hljs-operator-opacity: 1;
