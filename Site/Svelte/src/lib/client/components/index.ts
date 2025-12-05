@@ -11,3 +11,4 @@ export {default as Hero} from '$client/components/gsap/home/Hero.svelte';
 export {default as GraphicDesigner} from '$components/gsap/home/GraphicDesigner.svelte';
 export {default as UiUxNerd} from '$components/gsap/home/UiUxNerd.svelte';
 export {default as Photographer} from '$components/gsap/home/Photographer.svelte';
+export {default as Switch} from '$components/Switch.svelte';

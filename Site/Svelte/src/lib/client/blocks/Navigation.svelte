@@ -3,9 +3,13 @@
 	import { BaseLayout } from '$layouts';
 	import { Settings2 } from '@lucide/svelte';
 	import { globalState } from '$lib/state/global.svelte';
+	import { Switch } from '$components';
 	import { onMount } from 'svelte';
 	import { gsap } from 'gsap';
 	import { Flip } from 'gsap/Flip';
+
+	let toggleSettings = $state(false);
+
 	gsap.registerPlugin(Flip);
 
 	let home: HTMLElement | undefined = $state();
@@ -48,7 +52,7 @@
 	});
 </script>
 
-<BaseLayout class="flex justify-between">
+<BaseLayout class="grid grid-cols-3 place-items-center">
 	<div></div>
 	<nav class="mx-auto flex w-fit gap-4 text-base">
 		<span bind:this={highlight} class="highlight bg-brandGreen-400 invisible absolute inset-0 -z-10"
@@ -80,10 +84,28 @@
 			></a
 		>
 	</nav>
-	<div class="relative">
-		<Settings2 class="stroke-brandGreen-300"></Settings2>
-		<div class="bg-brandGreen-500 absolute right-0 bottom-0 translate-y-full px-4 py-2">
-			<p>hi!!!</p>
+	<div class="relative z-999 justify-self-end">
+		<Settings2
+			onclick={() => {
+				toggleSettings = !toggleSettings;
+			}}
+			class="stroke-brandGreen-300"
+		></Settings2>
+		<div
+			class="bg-brandGreen-500 invisible absolute right-0 bottom-0 translate-y-[calc(100%+12px)] px-4 py-3"
+			class:visible={toggleSettings}
+		>
+			<ul class="space-y-2">
+				<li>
+					<Switch id="toggle-sound" labelText="Sound"></Switch>
+				</li>
+				<li>
+					<Switch id="toggle-dev" labelText="Dev Mode"></Switch>
+				</li>
+				<li>
+					<Switch id="toggle-dark" labelText="Dark Mode"></Switch>
+				</li>
+			</ul>
 		</div>
 	</div>
 </BaseLayout>
