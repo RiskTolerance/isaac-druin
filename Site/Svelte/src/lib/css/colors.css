@@ -1,0 +1,518 @@
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* Fonts */
+  --font-display: 'Bodoni Moda Variable', serif;
+  --font-code: 'Fira Code Variable', monospace;
+  --font-metro: 'Metropolis', sans-serif;
+  --font-dmSans: 'DM Sans Variable', sans-serif;
+
+  /* Brand Colors */
+  --color-brandGreen-50: oklch(0.962 0.02 172.69);
+  --color-brandGreen-100: oklch(0.916 0.047 172.94);
+  --color-brandGreen-200: oklch(0.838 0.05 173.61);
+  --color-brandGreen-300: oklch(0.762 0.047 171.59);
+  --color-brandGreen-400: oklch(0.693 0.042 173.84);
+  --color-brandGreen-500: oklch(0.617 0.037 172.66);
+  --color-brandGreen-600: oklch(0.539 0.033 171.82);
+  --color-brandGreen-700: oklch(0.462 0.028 172.66);
+  --color-brandGreen-800: oklch(0.35 0.02 175.79);
+  --color-brandGreen-900: oklch(0.249 0.016 168.6);
+  --color-brandGreen-950: oklch(0.187 0.012 166.98);
+
+
+  --color-brandYellow-50: oklch(0.966 0.04 88.18);
+  --color-brandYellow-100: oklch(0.93 0.089 89.91);
+  --color-brandYellow-200: oklch(0.859 0.174 95.21);
+  --color-brandYellow-300: oklch(0.767 0.155 95.2);
+  --color-brandYellow-400: oklch(0.682 0.138 95.48);
+  --color-brandYellow-500: oklch(0.585 0.118 94.9);
+  --color-brandYellow-600: oklch(0.5 0.101 95.45);
+  --color-brandYellow-700: oklch(0.405 0.082 95.12);
+  --color-brandYellow-800: oklch(0.32 0.065 95.33);
+  --color-brandYellow-900: oklch(0.224 0.046 95.66);
+  --color-brandYellow-950: oklch(0.176 0.036 93.21);
+
+
+  --color-brandGray-50: oklch(0.975 0.002 228.43);
+  --color-brandGray-100: oklch(0.93 0.008 228.74);
+  --color-brandGray-200: oklch(0.844 0.017 230.9);
+  --color-brandGray-300: oklch(0.757 0.02 227.33);
+  --color-brandGray-400: oklch(0.662 0.016 229.06);
+  --color-brandGray-500: oklch(0.576 0.014 229.05);
+  --color-brandGray-600: oklch(0.491 0.012 229.04);
+  --color-brandGray-700: oklch(0.404 0.01 225.25);
+  --color-brandGray-800: oklch(0.309 0.008 223.63);
+  --color-brandGray-900: oklch(0.224 0.005 219.63);
+  --color-brandGray-950: oklch(0.176 0.004 229);
+
+
+  /* Light theme colors */
+  --brandBodyLight: var(--color-brandGray-800);
+  --brandHeadingsLight: var(--color-brandGray-900);
+  --brandLeadLight: var(--color-brandGray-700);
+  --brandLinksLight: var(--color-brandGray-900);
+  --brandBoldLight: var(--color-brandGray-900);
+  --brandCountersLight: var(--color-brandGray-600);
+  --brandBulletsLight: var(--color-brandGray-400);
+  --brandHrLight: var(--color-brandGray-300);
+  --brandQuotesLight: var(--color-brandGray-900);
+  --brandBordersLight: var(--color-brandGray-300);
+  --brandCaptionsLight: var(--color-brandGray-700);
+  --brandCodeLight: var(--color-brandGray-900);
+  --brandProCodeLight: var(--color-brandGray-100);
+  --brandPreBgLight: var(--color-brandGray-50);
+  --brandThBordersLight: var(--color-brandGray-300);
+  --brandTdBordersLight: var(--color-brandGray-200);
+  --brandH1Light: var(--brandHeadingsLight);
+  --brandH2Light: var(--brandHeadingsLight);
+  --brandH3Light: var(--brandHeadingsLight);
+  --brandH4Light: var(--brandHeadingsLight);
+  --brandPLight: var(--brandBodyLight);
+  --brandALight: var(--brandLinksLight);
+  --brandBlockquoteLight: var(--brandQuotesLight);
+  --brandFigureLight: var(--brandBodyLight);
+  --brandFigcaptionLight: var(--brandCaptionsLight);
+  --brandStrongLight: var(--brandBoldLight);
+  --brandEmLight: var(--brandBodyLight);
+  --brandKbdLight: var(--brandCodeLight);
+  --brandPreLight: var(--brandPreBgLight);
+  --brandOlLight: var(--brandBodyLight);
+  --brandUlLight: var(--brandBodyLight);
+  --brandLiLight: var(--brandBodyLight);
+  --brandDlLight: var(--brandBodyLight);
+  --brandDtLight: var(--brandHeadingsLight);
+  --brandDdLight: var(--brandBodyLight);
+  --brandTableLight: var(--brandBodyLight);
+  --brandTheadLight: var(--brandHeadingsLight);
+  --brandTrLight: var(--brandBodyLight);
+  --brandThLight: var(--brandHeadingsLight);
+  --brandTdLight: var(--brandBodyLight);
+  --brandImgLight: var(--brandBodyLight);
+  --brandPictureLight: var(--brandBodyLight);
+  --brandVideoLight: var(--brandBodyLight);
+  
+  /* Dark theme colors */
+  --brandBodyDark: var(--color-brandGreen-50);
+  --brandHeadingsDark: var(--color-brandGreen-100);
+  --brandLeadDark: var(--color-brandGreen-300);
+  --brandLinksDark: var(--color-brandGreen-100);
+  --brandBoldDark: var(--color-brandGreen-100);
+  --brandCountersDark: var(--color-brandGreen-400);
+  --brandBulletsDark: var(--color-brandGreen-200);
+  --brandHrDark: var(--color-brandGreen-700);
+  --brandQuotesDark: var(--color-brandGreen-100);
+  --brandBordersDark: var(--color-brandGreen-700);
+  --brandCaptionsDark: var(--color-brandGreen-300);
+  --brandCodeDark: var(--color-brandGreen-100);
+  --brandProCodeDark: var(--color-brandGreen-900);
+  --brandPreBgDark: var(--color-brandGreen-100);
+  --brandThBordersDark: var(--color-brandGreen-700);
+  --brandTdBordersDark: var(--color-brandGreen-800);
+  --brandH1Dark: var(--brandHeadingsDark);
+  --brandH2Dark: var(--brandHeadingsDark);
+  --brandH3Dark: var(--brandHeadingsDark);
+  --brandH4Dark: var(--brandHeadingsDark);
+  --brandPDark: var(--brandBodyDark);
+  --brandADark: var(--brandLinksDark);
+  --brandBlockquoteDark: var(--brandQuotesDark);
+  --brandFigureDark: var(--brandBodyDark);
+  --brandFigcaptionDark: var(--brandCaptionsDark);
+  --brandStrongDark: var(--brandBoldDark);
+  --brandEmDark: var(--brandBodyDark);
+  --brandKbdDark: var(--brandCodeDark);
+  --brandPreDark: var(--brandPreBgDark);
+  --brandOlDark: var(--brandBodyDark);
+  --brandUlDark: var(--brandBodyDark);
+  --brandLiDark: var(--brandBodyDark);
+  --brandDlDark: var(--brandBodyDark);
+  --brandDtDark: var(--brandHeadingsDark);
+  --brandDdDark: var(--brandBodyDark);
+  --brandTableDark: var(--brandBodyDark);
+  --brandTheadDark: var(--brandHeadingsDark);
+  --brandTrDark: var(--brandBodyDark);
+  --brandThDark: var(--brandHeadingsDark);
+  --brandTdDark: var(--brandBodyDark);
+  --brandImgDark: var(--brandBodyDark);
+  --brandPictureDark: var(--brandBodyDark);
+  --brandVideoDark: var(--brandBodyDark);
+}
+
+@utility prose-brand-light {
+  p {
+    color: var(--brandPLight);
+  }
+  [class~="lead"] {
+    color: var(--brandLeadLight);
+  }
+  h1, h2, h3, h4, h5, h6, th {
+    color: var(--brandHeadingsLight);
+  }
+  a {
+    color: var(--brandALight);
+  }
+  blockquote {
+    color: var(--brandBlockquoteLight);
+    border-color: var(--brandBordersLight);
+  }
+  figure {
+    color: var(--brandFigureLight);
+  }
+  figcaption {
+    color: var(--brandFigcaptionLight);
+  }
+  strong, b {
+    color: var(--brandStrongLight);
+  }
+  em {
+    color: var(--brandEmLight);
+  }
+  kbd {
+    color: var(--brandKbdLight);
+  }
+  code {
+    color: var(--brandCodeLight);
+  }
+  pre {
+    background-color: var(--brandPreLight);
+  }
+  pre code {
+    color: var(--brandProCodeLight);
+  }
+  ol {
+    color: var(--brandOlLight);
+  }
+  ul {
+    color: var(--brandUlLight);
+  }
+  li {
+    color: var(--brandLiLight);
+  }
+  dl {
+    color: var(--brandDlLight);
+  }
+  dt {
+    color: var(--brandDtLight);
+  }
+  dd {
+    color: var(--brandDdLight);
+  }
+  table {
+    color: var(--brandTableLight);
+  }
+  thead {
+    color: var(--brandTheadLight);
+  }
+  tr {
+    color: var(--brandTrLight);
+  }
+  th {
+    color: var(--brandThLight);
+    border-color: var(--brandThBordersLight);
+  }
+  td {
+    color: var(--brandTdLight);
+    border-color: var(--brandTdBordersLight);
+  }
+  img {
+    color: var(--brandImgLight);
+  }
+  picture {
+    color: var(--brandPictureLight);
+  }
+  video {
+    color: var(--brandVideoLight);
+  }
+  hr {
+    border-color: var(--brandHrLight);
+  }
+  ol li::marker {
+    color: var(--brandCountersLight);
+  }
+  ul li::marker {
+    color: var(--brandBulletsLight);
+  }
+}
+
+@utility prose-brand-dark {
+  p {
+    color: var(--brandPDark);
+  }
+  [class~="lead"] {
+    color: var(--brandLeadDark);
+  }
+  h1, h2, h3, h4, h5, h6, th {
+    color: var(--brandHeadingsDark);
+  }
+  a {
+    color: var(--brandADark);
+  }
+  blockquote {
+    color: var(--brandBlockquoteDark);
+    border-color: var(--brandBordersDark);
+  }
+  figure {
+    color: var(--brandFigureDark);
+  }
+  figcaption {
+    color: var(--brandFigcaptionDark);
+  }
+  strong, b {
+    color: var(--brandStrongDark);
+  }
+  em {
+    color: var(--brandEmDark);
+  }
+  kbd {
+    color: var(--brandKbdDark);
+  }
+  code {
+    color: var(--brandCodeDark);
+  }
+  pre {
+    background-color: var(--brandPreDark);
+  }
+  pre code {
+    color: var(--brandProCodeDark);
+  }
+  ol {
+    color: var(--brandOlDark);
+  }
+  ul {
+    color: var(--brandUlDark);
+  }
+  li {
+    color: var(--brandLiDark);
+  }
+  dl {
+    color: var(--brandDlDark);
+  }
+  dt {
+    color: var(--brandDtDark);
+  }
+  dd {
+    color: var(--brandDdDark);
+  }
+  table {
+    color: var(--brandTableDark);
+  }
+  thead {
+    color: var(--brandTheadDark);
+  }
+  tr {
+    color: var(--brandTrDark);
+  }
+  th {
+    color: var(--brandThDark);
+    border-color: var(--brandThBordersDark);
+  }
+  td {
+    color: var(--brandTdDark);
+    border-color: var(--brandTdBordersDark);
+  }
+  img {
+    color: var(--brandImgDark);
+  }
+  picture {
+    color: var(--brandPictureDark);
+  }
+  video {
+    color: var(--brandVideoDark);
+  }
+  hr {
+    border-color: var(--brandHrDark);
+  }
+  ol li::marker {
+    color: var(--brandCountersDark);
+  }
+  ul li::marker {
+    color: var(--brandBulletsDark);
+  }
+}
+
+@utility text-brand-light {
+  p {
+    color: var(--brandBodyLight);
+  }
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--brandHeadingsLight);
+  }
+  a {
+    color: var(--brandLinksLight);
+  }
+  strong, b {
+    color: var(--brandBoldLight);
+  }
+  code {
+    color: var(--brandCodeLight);
+  }
+  pre code {
+    color: var(--brandProCodeLight);
+  }
+  pre {
+    background-color: var(--brandPreBgLight);
+  }
+  blockquote {
+    color: var(--brandQuotesLight);
+    border-color: var(--brandBordersLight);
+  }
+  figcaption {
+    color: var(--brandCaptionsLight);
+  }
+  hr {
+    border-color: var(--brandHrLight);
+  }
+  ol li::marker {
+    color: var(--brandCountersLight);
+  }
+  ul li::marker {
+    color: var(--brandBulletsLight);
+  }
+  li {
+    color: var(--brandBodyLight);
+  }
+  th {
+    border-color: var(--brandThBordersLight);
+  }
+  td {
+    border-color: var(--brandTdBordersLight);
+  }
+}
+
+@utility text-brand-dark {
+  p {
+    color: var(--brandBodyDark);
+  }
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--brandHeadingsDark);
+  }
+  a {
+    color: var(--brandLinksDark);
+  }
+  strong, b {
+    color: var(--brandBoldDark);
+  }
+  code {
+    color: var(--brandCodeDark);
+  }
+  pre code {
+    color: var(--brandProCodeDark);
+  }
+  pre {
+    background-color: var(--brandPreBgDark);
+  }
+  blockquote {
+    color: var(--brandQuotesDark);
+    border-color: var(--brandBordersDark);
+  }
+  figcaption {
+    color: var(--brandCaptionsDark);
+  }
+  hr {
+    border-color: var(--brandHrDark);
+  }
+  ol li::marker {
+    color: var(--brandCountersDark);
+  }
+  ul li::marker {
+    color: var(--brandBulletsDark);
+  }
+  li {
+    color: var(--brandBodyDark);
+  }
+  th {
+    border-color: var(--brandThBordersDark);
+  }
+  td {
+    border-color: var(--brandTdBordersDark);
+  }
+}
+
+@utility hljs-theme-light {
+  --hljs-bg: var(--color-brandGray-50);
+  --hljs-bg-light: var(--color-brandGray-100);
+  --hljs-bg-selection: var(--color-brandGray-200);
+  --hljs-fg: var(--color-brandGray-900);
+  --hljs-fg-light: var(--color-brandGray-700);
+  --hljs-fg-dark: var(--color-brandGray-950);
+  --hljs-comment: var(--color-brandGray-400);
+  --hljs-tag: var(--color-brandGray-950);
+  --hljs-punctuation: var(--color-brandGray-900);
+  --hljs-operator: var(--color-brandGray-900);
+  --hljs-variable: var(--color-brandGray-800);
+  --hljs-template-variable: var(--color-brandGray-800);
+  --hljs-selector-tag: var(--color-brandGray-800);
+  --hljs-name: var(--color-brandGray-800);
+  --hljs-bullet: var(--color-brandGray-800);
+  --hljs-deletion: var(--color-brandGray-800);
+  --hljs-number: var(--color-brandGreen-600);
+  --hljs-symbol: var(--color-brandGreen-600);
+  --hljs-link: var(--color-brandGreen-600);
+  --hljs-literal: var(--color-brandGreen-600);
+  --hljs-attr: var(--color-brandGreen-600);
+  --hljs-attribute: var(--color-brandGreen-700);
+  --hljs-title: var(--color-brandGray-900);
+  --hljs-class: var(--color-brandGray-900);
+  --hljs-strong: var(--color-brandGray-900);
+  --hljs-string: var(--color-brandYellow-700);
+  --hljs-code: var(--color-brandYellow-700);
+  --hljs-addition: var(--color-brandYellow-700);
+  --hljs-support: var(--color-brandGray-700);
+  --hljs-built_in: var(--color-brandGray-700);
+  --hljs-doctag: var(--color-brandGray-700);
+  --hljs-quote: var(--color-brandGray-700);
+  --hljs-regexp: var(--color-brandGray-700);
+  --hljs-function: var(--color-brandGreen-700);
+  --hljs-keyword: var(--color-brandGray-900);
+  --hljs-type: var(--color-brandGray-900);
+  --hljs-template-tag: var(--color-brandGray-900);
+  --hljs-emphasis: var(--color-brandGray-900);
+  --hljs-meta: var(--color-brandGray-600);
+  --hljs-section: var(--color-brandGreen-700);
+  --hljs-operator-opacity: 1;
+}
+
+@utility hljs-theme-dark {
+  --hljs-bg: var(--color-brandGray-900);
+  --hljs-bg-light: var(--color-brandGray-800);
+  --hljs-bg-selection: var(--color-brandGray-700);
+  --hljs-fg: var(--color-brandGray-100);
+  --hljs-fg-light: var(--color-brandGray-300);
+  --hljs-fg-dark: var(--color-brandGray-50);
+  --hljs-comment: var(--color-brandGray-400);
+  --hljs-tag: var(--color-brandGray-50);
+  --hljs-punctuation: var(--color-brandGray-100);
+  --hljs-operator: var(--color-brandGray-100);
+  --hljs-variable: var(--color-brandGray-200);
+  --hljs-template-variable: var(--color-brandGray-200);
+  --hljs-selector-tag: var(--color-brandGray-200);
+  --hljs-name: var(--color-brandGray-200);
+  --hljs-bullet: var(--color-brandGray-200);
+  --hljs-deletion: var(--color-brandGray-200);
+  --hljs-number: var(--color-brandGreen-400);
+  --hljs-symbol: var(--color-brandGreen-400);
+  --hljs-link: var(--color-brandGreen-400);
+  --hljs-literal: var(--color-brandGreen-400);
+  --hljs-attr: var(--color-brandGreen-400);
+  --hljs-attribute: var(--color-brandGreen-400);
+  --hljs-title: var(--color-brandGray-100);
+  --hljs-class: var(--color-brandGray-100);
+  --hljs-strong: var(--color-brandGray-100);
+  --hljs-string: var(--color-brandYellow-300);
+  --hljs-code: var(--color-brandYellow-300);
+  --hljs-addition: var(--color-brandYellow-300);
+  --hljs-support: var(--color-brandGray-300);
+  --hljs-built_in: var(--color-brandGray-300);
+  --hljs-doctag: var(--color-brandGray-300);
+  --hljs-quote: var(--color-brandGray-300);
+  --hljs-regexp: var(--color-brandGray-300);
+  --hljs-function: var(--color-brandGreen-400);
+  --hljs-keyword: var(--color-brandGray-100);
+  --hljs-type: var(--color-brandGray-100);
+  --hljs-template-tag: var(--color-brandGray-100);
+  --hljs-emphasis: var(--color-brandGray-100);
+  --hljs-meta: var(--color-brandGray-400);
+  --hljs-section: var(--color-brandGreen-400);
+  --hljs-operator-opacity: 1;
+}

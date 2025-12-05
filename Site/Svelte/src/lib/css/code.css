@@ -1,7 +1,7 @@
 /* 
  * Highlight.js Code Theme Styles
- * Variables are defined in theme.css @theme block
- * Apply the 'hljs-theme' utility class to use these styles
+ * Variables are defined in colors.css utility classes (hljs-theme-light, hljs-theme-dark)
+ * Apply the utility classes to the parent element (e.g., <pre>) to use these styles
  */
 
 /* Base Styles */
@@ -40,88 +40,200 @@ code.hljs {
 
 /* Tags */
 .hljs-tag {
-	color: var(--hljs-fg-dark);
+	color: var(--hljs-tag);
 }
 
-/* Default Foreground, Caret, Delimiters, Operators */
-.hljs-subst,
-.hljs-punctuation,
-.hljs-operator {
+/* Default Foreground, Caret, Delimiters */
+.hljs-subst {
 	color: var(--hljs-fg);
+}
+
+/* Punctuation */
+.hljs-punctuation {
+	color: var(--hljs-punctuation);
+}
+
+/* Operators */
+.hljs-operator {
+	color: var(--hljs-operator);
 }
 
 .hljs-operator {
 	opacity: var(--hljs-operator-opacity);
 }
 
-/* Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted */
-.hljs-bullet,
-.hljs-variable,
-.hljs-template-variable,
-.hljs-selector-tag,
-.hljs-name,
-.hljs-deletion {
+/* Variables */
+.hljs-variable {
 	color: var(--hljs-variable);
 }
 
-/* Integers, Boolean, Constants, XML Attributes, Markup Link Url */
-.hljs-symbol,
-.hljs-number,
-.hljs-link,
-.hljs-attr,
-.hljs-variable.constant_,
-.hljs-literal {
+/* Template Variables */
+.hljs-template-variable {
+	color: var(--hljs-template-variable);
+}
+
+/* Selector Tags */
+.hljs-selector-tag {
+	color: var(--hljs-selector-tag);
+}
+
+/* Names */
+.hljs-name {
+	color: var(--hljs-name);
+}
+
+/* Bullets */
+.hljs-bullet {
+	color: var(--hljs-bullet);
+}
+
+/* Deletions */
+.hljs-deletion {
+	color: var(--hljs-deletion);
+}
+
+/* Numbers */
+.hljs-number {
 	color: var(--hljs-number);
 }
 
-/* Classes, Markup Bold, Search Text Background */
+/* Symbols */
+.hljs-symbol {
+	color: var(--hljs-symbol);
+}
+
+/* Links */
+.hljs-link {
+	color: var(--hljs-link);
+}
+
+/* Literals */
+.hljs-literal {
+	color: var(--hljs-literal);
+}
+
+/* Constant Variables */
+.hljs-variable.constant_ {
+	color: var(--hljs-number);
+}
+
+/* XML/HTML Attributes */
+.hljs-attr {
+	color: var(--hljs-attr);
+}
+
+/* Titles */
 .hljs-title,
 .hljs-class .hljs-title,
 .hljs-title.class_ {
+	color: var(--hljs-title);
+}
+
+/* Classes */
+.hljs-class {
 	color: var(--hljs-class);
 }
 
+/* Strong */
 .hljs-strong {
 	font-weight: bold;
-	color: var(--hljs-class);
+	color: var(--hljs-strong);
 }
 
-/* Strings, Inherited Class, Markup Code, Diff Inserted */
-.hljs-code,
-.hljs-addition,
-.hljs-title.class_.inherited__,
+/* Strings */
 .hljs-string {
 	color: var(--hljs-string);
 }
 
-/* Support, Regular Expressions, Escape Characters, Markup Quotes */
-.hljs-built_in,
-.hljs-doctag,
-.hljs-quote,
-.hljs-keyword.hljs-atrule,
-.hljs-regexp {
+/* Code */
+.hljs-code {
+	color: var(--hljs-code);
+}
+
+/* Additions */
+.hljs-addition {
+	color: var(--hljs-addition);
+}
+
+/* Inherited Classes */
+.hljs-title.class_.inherited__ {
+	color: var(--hljs-string);
+}
+
+/* Support */
+.hljs-support {
 	color: var(--hljs-support);
 }
 
-/* Functions, Methods, Attribute IDs, Headings */
+/* Built-in */
+.hljs-built_in {
+	color: var(--hljs-built_in);
+}
+
+/* Doc Tags */
+.hljs-doctag {
+	color: var(--hljs-doctag);
+}
+
+/* Quotes */
+.hljs-quote {
+	color: var(--hljs-quote);
+}
+
+/* Regular Expressions */
+.hljs-regexp {
+	color: var(--hljs-regexp);
+}
+
+/* At-rule Keywords */
+.hljs-keyword.hljs-atrule {
+	color: var(--hljs-support);
+}
+
+/* Functions */
 .hljs-function .hljs-title,
-.hljs-attribute,
-.ruby .hljs-property,
-.hljs-title.function_,
-.hljs-section {
+.hljs-title.function_ {
 	color: var(--hljs-function);
 }
 
-/* Keywords, Storage, Selector, Markup Italic, Diff Changed */
-.hljs-type,
-.hljs-template-tag,
-.diff .hljs-meta,
+/* Attributes */
+.hljs-attribute {
+	color: var(--hljs-attribute);
+}
+
+/* Ruby Properties */
+.ruby .hljs-property {
+	color: var(--hljs-function);
+}
+
+/* Sections */
+.hljs-section {
+	color: var(--hljs-section);
+}
+
+/* Keywords */
 .hljs-keyword {
 	color: var(--hljs-keyword);
 }
 
-.hljs-emphasis {
+/* Types */
+.hljs-type {
+	color: var(--hljs-type);
+}
+
+/* Template Tags */
+.hljs-template-tag {
+	color: var(--hljs-template-tag);
+}
+
+/* Diff Meta */
+.diff .hljs-meta {
 	color: var(--hljs-keyword);
+}
+
+/* Emphasis */
+.hljs-emphasis {
+	color: var(--hljs-emphasis);
 	font-style: italic;
 }
 

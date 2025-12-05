@@ -14,6 +14,7 @@
 	const highlightedCode = hljs.highlight(trimmedCode, { language: language }).value;
 </script>
 
-<pre class="{className} overflow-x-auto rounded-none p-8 font-mono font-semibold"><code
+<pre
+	class="hljs-theme-light dark:hljs-theme-dark {className} overflow-x-auto rounded-none p-8 font-mono font-semibold"><code
 		class="language-{language} ">{@html highlightedCode}</code
 	></pre>

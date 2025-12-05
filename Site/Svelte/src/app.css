@@ -8,7 +8,7 @@
 @import '@fontsource/metropolis/200.css';
 @import '@fontsource-variable/dm-sans';
 /* sheets */
-@import '../src/lib/css/theme.css';
+@import '../src/lib/css/colors.css';
 @import '../src/lib/css/typography.css';
 @import '../src/lib/css/forms.css';
 @import '../src/lib/css/layouts.css';

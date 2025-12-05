@@ -23,7 +23,7 @@
 	</p>
 </div>
 
-<div>
+<div class="prose">
 	<h2>Projects (in order of "hell yeah")</h2>
 	<ul>
 		<li>Personal site for blogging and project tracking.</li>
