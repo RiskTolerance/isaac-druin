@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { page } from '$app/state';
 	import { BaseLayout } from '$layouts';
-
+	import { Settings2 } from '@lucide/svelte';
+	import { globalState } from '$lib/state/global.svelte';
 	import { onMount } from 'svelte';
 	import { gsap } from 'gsap';
 	import { Flip } from 'gsap/Flip';
@@ -47,8 +48,11 @@
 	});
 </script>
 
-<BaseLayout>
+<BaseLayout class="flex justify-between">
+	<div></div>
 	<nav class="mx-auto flex w-fit gap-4 text-base">
+		<span bind:this={highlight} class="highlight bg-brandGreen-400 invisible absolute inset-0 -z-10"
+		></span>
 		<a onclick={() => motherFlippin(home)} href="/">
 			<span
 				bind:this={home}
@@ -76,10 +80,13 @@
 			></a
 		>
 	</nav>
+	<div class="relative">
+		<Settings2 class="stroke-brandGreen-300"></Settings2>
+		<div class="bg-brandGreen-500 absolute right-0 bottom-0 translate-y-full px-4 py-2">
+			<p>hi!!!</p>
+		</div>
+	</div>
 </BaseLayout>
-
-<span bind:this={highlight} class="highlight bg-brandGreen-200 invisible absolute inset-0 -z-10"
-></span>
 
 <style>
 	.navBtn {

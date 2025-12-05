@@ -88,7 +88,7 @@
 ##### This is **an H5**
 ###### This is _an H6_
 
-If you take a look my last post, [The Stack](/blog/2025/November/21/the-stack), you will notice that something is missing. A CMS (Content Management System). The CMS might as well be the butter to the web framework bread - it creates an environment which eases the creation of content for a site.
+If you take a look my last post, [The Stack](/blog/the-stack), you will notice that something is missing. A CMS (Content Management System). The CMS might as well be the butter to the web framework bread - it creates an environment which eases the creation of content for a site.
 
 When I started learning web development, I quite honestly couldn't fathom why anyone would want a CMS. I could only see downsides. A few examples (which are still valid, in my opinion):
 
@@ -111,7 +111,7 @@ When I started learning web development, I quite honestly couldn't fathom why an
 <Prose class="dark:bg-brandGreen-800 mx-auto max-w-3xl p-8">
 	<Marked
 		md={`
-But, when I started learning web development I was thinking a lot more about myself and what I wanted as oppposed to the end user and what they needed. Sure, this site doesn't have a CMS, but it's running with some serious self-imposed [constraints](/projects/2025/November/15/isaac-druin-dot-com) and the only content editor is me.
+But, when I started learning web development I was thinking a lot more about myself and what I wanted as oppposed to the end user and what they needed. Sure, this site doesn't have a CMS, but it's running with some serious self-imposed [constraints](/projects/isaac-druin-dot-com) and the only content editor is me.
 
 So, I've been on a quest to find the CMS that works with the aforementioned downsides. The reason I didn't include a CMS in my stack is simply because I haven't settled on one yet, though I think I'm getting close. Here is my "perfect CMS" checklist:
 
