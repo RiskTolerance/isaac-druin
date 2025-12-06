@@ -6,6 +6,7 @@ export {default as PostHeader } from '$components/PostHeader.svelte'
 export {default as Note } from '$components/Note.svelte'
 export {default as HighlightCode} from '$components/HighlightCode.svelte'
 export {default as Chip} from '$components/Chip.svelte'
+export {default as CopyButton} from '$components/CopyButton.svelte'
 
 export {default as Hero} from '$client/components/gsap/home/Hero.svelte';
 export {default as GraphicDesigner} from '$components/gsap/home/GraphicDesigner.svelte';

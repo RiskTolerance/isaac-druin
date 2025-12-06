@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { onMount, onDestroy } from 'svelte';
 	import { gsap } from 'gsap';
 	import { SplitText } from 'gsap/SplitText';
 	import { Flip } from 'gsap/Flip';
@@ -22,6 +22,7 @@
 
 	let text: HTMLElement;
 	let cursor: HTMLElement;
+
 	onMount(() => {
 		const splitText = SplitText.create(text, { type: 'chars', reduceWhiteSpace: false });
 
@@ -32,6 +33,8 @@
 					autoAlpha: 0,
 					duration: 0.15,
 					onStart: () => {
+						// Safety check: ensure elements still exist before manipulating
+						if (!cursor || !char || !cursor.parentNode) return;
 						const charState = Flip.getState(cursor);
 						char.appendChild(cursor);
 						Flip.from(charState, {
@@ -39,6 +42,8 @@
 						});
 					},
 					onComplete: () => {
+						// Safety check: ensure cursor still exists
+						if (!cursor) return;
 						if (i === 0) {
 							cursor.classList.remove('hidden');
 						}
@@ -52,12 +57,21 @@
 		});
 
 		masterTimeline
-			// .add(fullStackTimeline)
-			// .add(graphicDesignerTimeline)
+			.add(fullStackTimeline)
+			.add(graphicDesignerTimeline)
 			.add(uxuiTimeline)
 			.add(photographerTimeline);
 
 		masterTimeline.play();
+	});
+
+	// Cleanup: kill all GSAP animations when component is destroyed
+	onDestroy(() => {
+		masterTimeline.kill();
+		fullStackTimeline.kill();
+		graphicDesignerTimeline.kill();
+		uxuiTimeline.kill();
+		photographerTimeline.kill();
 	});
 </script>
 

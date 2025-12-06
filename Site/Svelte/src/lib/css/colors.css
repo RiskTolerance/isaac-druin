@@ -130,7 +130,7 @@
 
 /* Prose styling for markdown/rich content (dark) */
 @utility prose-brand-dark {
-  p, li, dl, dd, em, ol, ul, table, tr, figure {
+  p, li, dl, dd, dt, em, ol, ul, table, tr, figure {
     color: var(--brand-dark-body);
   }
   [class~="lead"] {
