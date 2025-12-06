@@ -4,6 +4,7 @@
 	import { SplitText } from 'gsap/SplitText';
 	import { Flip } from 'gsap/Flip';
 	import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
 	gsap.registerPlugin(SplitText, Flip, ScrollTrigger);
 	import { GraphicDesigner, UiUxNerd, Photographer } from '$components';
 
@@ -13,19 +14,22 @@
 	let textWidth = $state(0);
 	let baseFontSize = $derived((containerWidth / 27) * 1.5);
 
-	// gsap junk
+	// gsap junk - initialize timelines immediately
 	let masterTimeline: GSAPTimeline = $state(gsap.timeline({ paused: true }));
 	let fullStackTimeline: GSAPTimeline = $state(gsap.timeline());
 	let graphicDesignerTimeline: GSAPTimeline = $state(gsap.timeline());
 	let uxuiTimeline: GSAPTimeline = $state(gsap.timeline());
 	let photographerTimeline: GSAPTimeline = $state(gsap.timeline());
 
-	let text: HTMLElement;
-	let cursor: HTMLElement;
+	let text: HTMLElement | undefined = $state();
+	let cursor: HTMLElement | undefined = $state();
 
 	onMount(() => {
-		const splitText = SplitText.create(text, { type: 'chars', reduceWhiteSpace: false });
+		if (!cursor || !text) {
+			return new Error('DOM elements not available');
+		}
 
+		const splitText = SplitText.create(text, { type: 'chars', reduceWhiteSpace: false });
 		splitText.chars.forEach((char, i) => {
 			fullStackTimeline.from(
 				char,
@@ -38,7 +42,7 @@
 						const charState = Flip.getState(cursor);
 						char.appendChild(cursor);
 						Flip.from(charState, {
-							duration: 0.15
+							duration: 0.01
 						});
 					},
 					onComplete: () => {
@@ -56,13 +60,23 @@
 			);
 		});
 
+		// Add all timelines to master timeline in sequence
 		masterTimeline
 			.add(fullStackTimeline)
 			.add(graphicDesignerTimeline)
 			.add(uxuiTimeline)
 			.add(photographerTimeline);
 
-		masterTimeline.play();
+		// ONE ScrollTrigger controls the entire sequence
+		ScrollTrigger.create({
+			trigger: '#hero',
+			animation: masterTimeline,
+			pin: true,
+			scrub: 1,
+			start: 'top top',
+			end: '+=5000', // Adjust based on total timeline duration
+			anticipatePin: 1
+		});
 	});
 
 	// Cleanup: kill all GSAP animations when component is destroyed
@@ -75,6 +89,7 @@
 	});
 </script>
 
+<div class="h-96"></div>
 <div id="hero" class="container mx-auto space-y-6 overflow-x-clip select-none md:space-y-2">
 	<div bind:clientWidth={containerWidth} class="flex w-full items-center justify-center">
 		<div

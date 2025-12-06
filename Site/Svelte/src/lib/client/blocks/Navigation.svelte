@@ -8,9 +8,9 @@
 	import { gsap } from 'gsap';
 	import { Flip } from 'gsap/Flip';
 
-	let toggleSettings = $state(false);
-
 	gsap.registerPlugin(Flip);
+
+	let toggleSettings = $state(false);
 
 	let home: HTMLElement | undefined = $state();
 	let projects: HTMLElement | undefined = $state();
@@ -34,6 +34,7 @@
 		if (selectedRoute === 'blog') return blog;
 		if (selectedRoute === 'projects') return projects;
 		if (selectedRoute === 'styleguide') return styleguide;
+		return home;
 	});
 
 	const motherFlippin = (to: HTMLElement | undefined) => {

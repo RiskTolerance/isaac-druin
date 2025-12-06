@@ -27,37 +27,44 @@
 		// primary items
 		timeline.from(graphicDesign!, {
 			duration: 2,
-			drawSVG: 0,
-			onComplete: () => {
-				graphicDesign!.classList.add('fill-brandGreen-50');
-				graphicDesign!.classList.remove('fill-transparent');
-			}
+			drawSVG: 0
 		});
+		timeline.fromTo(
+			graphicDesign!,
+			{ fill: 'oklch(0.962 0.02 172.69 / 0)' }, // brandGreen-50 with 0 opacity
+			{ duration: 0.2, fill: 'oklch(0.962 0.02 172.69 / 1)' }, // brandGreen-50 with full opacity
+			'-=0.2'
+		);
+
 		timeline.from(
-			er,
+			er!,
 			{
 				duration: 2,
-				drawSVG: 0,
-				onComplete: () => {
-					er!.classList.add('fill-brandGreen-50');
-					er!.classList.remove('fill-transparent');
-				}
+				drawSVG: 0
 			},
 			'-=2'
 		);
-		// secondary items
+		timeline.fromTo(
+			er!,
+			{ fill: 'oklch(0.962 0.02 172.69 / 0)' }, // brandGreen-50 with 0 opacity
+			{ duration: 0.2, fill: 'oklch(0.962 0.02 172.69 / 1)' }, // brandGreen-50 with full opacity
+			'-=0.2'
+		);
 
+		// secondary items
 		timeline.from(
 			pDecoration!,
 			{
 				duration: 1,
-				drawSVG: 0,
-				onComplete: () => {
-					pDecoration!.classList.add('fill-brandYellow-300');
-					pDecoration!.classList.remove('fill-transparent');
-				}
+				drawSVG: 0
 			},
 			'-=1'
+		);
+		timeline.fromTo(
+			pDecoration!,
+			{ fill: 'oklch(0.767 0.155 95.2 / 0)' }, // brandYellow-300 with 0 opacity
+			{ duration: 0.2, fill: 'oklch(0.767 0.155 95.2 / 1)' }, // brandYellow-300 with full opacity
+			'-=0.2'
 		);
 		// tertiary items
 		timeline.from(gBgShape!, {
@@ -160,7 +167,7 @@
 	});
 </script>
 
-<div style="max-width: {textWidth}px;" class="mx-auto">
+<div id="steptwo" style="max-width: {textWidth}px;" class="mx-auto">
 	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800.29 87.55">
 		<g>
 			<path
