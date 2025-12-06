@@ -74,7 +74,7 @@
 			pin: true,
 			scrub: 1,
 			start: 'top top',
-			end: '+=5000', // Adjust based on total timeline duration
+			end: '+=8000', // Adjust based on total timeline duration
 			anticipatePin: 1
 		});
 	});

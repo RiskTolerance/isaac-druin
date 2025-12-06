@@ -9,7 +9,6 @@
 
 	onMount(() => {
 		ScrollSmoother.create({
-			content: '#smooooth',
 			smooth: 1,
 			effects: true
 		});
@@ -19,8 +18,10 @@
 </script>
 
 <!-- prose-md -->
-<div id="smooooth">
-	<Navigation></Navigation>
-	{@render children()}
-	<Footer></Footer>
+<Navigation></Navigation>
+<div id="smooth-wrapper">
+	<div id="smooth-content">
+		{@render children()}
+	</div>
 </div>
+<!-- <Footer></Footer> -->
