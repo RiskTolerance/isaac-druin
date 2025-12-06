@@ -1,0 +1,38 @@
+# Verify API Details - Don't Infer
+
+When discussing specific API details, always verify instead of inferring:
+
+## What Requires Verification
+
+- Function names and signatures
+- Configuration option names (e.g., `warningFilter` vs `warningsFilter`)
+- Parameter names and their types
+- Return value semantics (e.g., what `true`/`false` means in a filter function)
+- Type signatures and interfaces
+- Exact syntax for configuration objects
+
+## How to Verify
+
+Use available tools in this order:
+
+1. **MCP documentation servers** (e.g., Svelte MCP, Context7) for official docs
+2. **grep** to search codebase/node_modules for actual usage examples
+3. **codebase_search** to find how it's used in the project
+4. **read_file** to check TypeScript definition files
+5. **web_search** for official documentation
+
+## When Uncertain
+
+- State explicitly: "I'm not certain about [specific detail] - let me check"
+- Then use tools to verify before answering
+- Never present inferred patterns as facts
+
+## Red Flags
+
+If you find yourself thinking:
+
+- "This probably follows pattern X because..."
+- "Similar tools use Y, so this likely uses..."
+- "The naming convention suggests..."
+
+**STOP** and verify instead.

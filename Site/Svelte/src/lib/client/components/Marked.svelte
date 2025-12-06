@@ -6,15 +6,16 @@
 		breaks: true
 	});
 
-	let {
-		md = '',
+	const {
+		md,
 		inline = false
 	}: {
-		md?: string;
+		md: string;
 		inline?: boolean;
 	} = $props();
 
-	const parsedMarkdown = inline ? marked.parseInline(md ?? '') : marked.parse(md ?? '');
+	// svelte ignore svelte(state_referenced_locally)
+	const parsedMarkdown = inline ? marked.parseInline(md) : marked.parse(md);
 </script>
 
 {@html parsedMarkdown}

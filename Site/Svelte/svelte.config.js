@@ -33,6 +33,10 @@ const config = {
 	compilerOptions: {
 		experimental: {
 			async: true
+		},
+		warningFilter: (warning) => {
+			if (warning.code === 'state_referenced_locally') return false;
+			return true;
 		}
 	}
 };
