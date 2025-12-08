@@ -10,9 +10,6 @@ const config = {
 			precompress: true,
 			strict: true
 		}),
-		experimental: {
-			remoteFunctions: true
-		},
 		prerender: {
 			crawl: true,
 			handleHttpError: 'fail'
@@ -31,9 +28,8 @@ const config = {
 		}
 	},
 	compilerOptions: {
-		experimental: {
-			async: true
-		},
+		// experimental.async disabled due to bug with nested layouts + $app/state
+		// See: https://github.com/sveltejs/kit/issues/14798
 		warningFilter: (warning) => {
 			if (warning.code === 'state_referenced_locally') return false;
 			return true;
