@@ -8,6 +8,24 @@
 	gsap.registerPlugin(SplitText, Flip, ScrollTrigger);
 	import { GraphicDesigner, UiUxNerd, Photographer } from '$components';
 
+	// const titlesArr = [
+	// 	'Full Stack Web Developer',
+	// 	'Graphic Designer',
+	// 	'UX|UI Nerd',
+	// 	'3D Artist',
+	// 	'Photographer'
+	// ];
+
+	// const toolsArr = [
+	// 	'SvelteKit',
+	// 	'Tailwind CSS',
+	// 	'GSAP',
+	// 	'Threejs',
+	// 	'Blender',
+	// 	'Illustrator',
+	// 	'Photoshop'
+	// ];
+
 	// vars
 	let containerWidth = $state(0);
 	// text width is determined by a css calc for the text size based on the
@@ -89,7 +107,6 @@
 	});
 </script>
 
-<div class="h-96"></div>
 <div id="hero" class="container mx-auto space-y-6 overflow-x-clip select-none md:space-y-2">
 	<div bind:clientWidth={containerWidth} class="flex w-full items-center justify-center">
 		<div

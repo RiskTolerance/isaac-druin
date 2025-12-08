@@ -7,16 +7,24 @@
 	import { onMount } from 'svelte';
 	import { gsap } from 'gsap';
 	import { Flip } from 'gsap/Flip';
+	import { onClickOutside } from 'runed';
 
 	gsap.registerPlugin(Flip);
 
 	let toggleSettings = $state(false);
+	let settingsContainer = $state<HTMLElement>();
+	let home = $state<HTMLElement>();
+	let projects = $state<HTMLElement>();
+	let blog = $state<HTMLElement>();
+	let highlight = $state<HTMLElement>();
+	let styleguide = $state<HTMLElement>();
 
-	let home: HTMLElement | undefined = $state();
-	let projects: HTMLElement | undefined = $state();
-	let blog: HTMLElement | undefined = $state();
-	let highlight: HTMLElement | undefined = $state();
-	let styleguide: HTMLElement | undefined = $state();
+	onClickOutside(
+		() => settingsContainer,
+		() => {
+			toggleSettings && (toggleSettings = !toggleSettings);
+		}
+	);
 
 	let mounted = $state(false);
 
@@ -94,7 +102,7 @@
 			></a
 		>
 		{#if globalState.devMode}
-			<a onclick={() => motherFlippin(blog)} href="/styleguide"
+			<a onclick={() => motherFlippin(styleguide)} href="/styleguide"
 				><span
 					bind:this={styleguide}
 					class="navBtn transition-colors duration-300"
@@ -104,26 +112,44 @@
 			>
 		{/if}
 	</nav>
-	<div class="relative z-999 justify-self-end">
-		<Settings2
+	<div bind:this={settingsContainer} class="relative z-999 justify-self-end">
+		<button
 			onclick={() => {
 				toggleSettings = !toggleSettings;
 			}}
-			class="stroke-brandGreen-300"
-		></Settings2>
+			class="group hover:bg-brandGreen-300 aspect-square h-full cursor-pointer p-2 transition-colors duration-300"
+		>
+			<Settings2
+				class="stroke-brandGreen-300 group-hover:stroke-brandGreen-900 transition-colors duration-300"
+			></Settings2>
+		</button>
+
 		<div
-			class="bg-brandGreen-500 invisible absolute right-0 bottom-0 translate-y-[calc(100%+12px)] px-4 py-3"
+			class="bg-brandGreen-300 invisible absolute right-0 bottom-0 translate-y-[calc(100%+8px)] px-4 py-3"
 			class:visible={toggleSettings}
 		>
-			<ul class="space-y-2">
+			<ul class=" space-y-2">
 				<li>
-					<Switch id="toggle-sound" labelText="Sound"></Switch>
+					<Switch
+						class="[&>label]:text-brandGreen-900! font-bold"
+						id="toggle-sound"
+						labelText="Sound"
+					></Switch>
 				</li>
 				<li>
-					<Switch bind:checked={globalState.devMode} id="toggle-dev" labelText="Dev Mode"></Switch>
+					<Switch
+						class="[&>label]:text-brandGreen-900! font-bold"
+						bind:checked={globalState.devMode}
+						id="toggle-dev"
+						labelText="Dev Mode"
+					></Switch>
 				</li>
 				<li>
-					<Switch id="toggle-dark" labelText="Dark Mode"></Switch>
+					<Switch
+						class="[&>label]:text-brandGreen-900! font-bold"
+						id="toggle-dark"
+						labelText="Dark Mode"
+					></Switch>
 				</li>
 			</ul>
 		</div>

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { postComment, getComment } from '$remotes/comment.remote';
 	import { page } from '$app/state';
-	import { FormButton } from '$components';
+	import { Button } from '$components';
 	import { commentFormSchema } from '$lib/schemas/comment';
 
 	const slug = page.url.pathname.split('/').pop() ?? '';
@@ -30,7 +30,7 @@
 			{/each}
 			<textarea {...content.as('text')} placeholder="Write something nice :)"></textarea> Content
 		</label>
-		<FormButton />
+		<Button type="submit" />
 	</form>
 
 	{#each await getComment(slug) as { author, content }}

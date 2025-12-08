@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Chip from '$client/components/Chip.svelte';
-	import FormButton from '$client/components/FormButton.svelte';
+	import Button from '$client/components/Button.svelte';
 	import Note from '$client/components/Note.svelte';
 </script>
 
@@ -21,9 +21,9 @@
 		<div>
 			<h2>Button</h2>
 			<div class="mt-4 flex flex-wrap gap-4">
-				<FormButton />
-				<FormButton text="Custom Text" />
-				<FormButton text="Disabled" class="cursor-not-allowed opacity-50" />
+				<Button type="submit" />
+				<Button type="submit" text="Custom Text" />
+				<Button type="submit" text="Disabled" class="cursor-not-allowed opacity-50" />
 			</div>
 		</div>
 

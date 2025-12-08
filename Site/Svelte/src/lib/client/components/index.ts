@@ -1,7 +1,7 @@
 export {default as Prose } from '$client/components/Prose.svelte'
 export {default as Marked } from '$components/Marked.svelte'
 export {default as PostCard } from '$components/cards/PostCard.svelte'
-export {default as FormButton } from '$components/FormButton.svelte'
+export {default as Button } from '$components/Button.svelte'
 export {default as PostHeader } from '$components/PostHeader.svelte'
 export {default as Note } from '$components/Note.svelte'
 export {default as HighlightCode} from '$components/HighlightCode.svelte'
