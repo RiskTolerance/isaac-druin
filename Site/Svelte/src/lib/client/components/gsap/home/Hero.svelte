@@ -41,6 +41,7 @@
 
 	let text: HTMLElement | undefined = $state();
 	let cursor: HTMLElement | undefined = $state();
+	let scrollTriggerInstance: ScrollTrigger | undefined;
 
 	onMount(() => {
 		if (!cursor || !text) {
@@ -86,7 +87,7 @@
 			.add(photographerTimeline);
 
 		// ONE ScrollTrigger controls the entire sequence
-		ScrollTrigger.create({
+		scrollTriggerInstance = ScrollTrigger.create({
 			trigger: '#hero',
 			animation: masterTimeline,
 			pin: true,
@@ -97,8 +98,9 @@
 		});
 	});
 
-	// Cleanup: kill all GSAP animations when component is destroyed
+	// Cleanup: kill all GSAP animations AND ScrollTrigger when component is destroyed
 	onDestroy(() => {
+		scrollTriggerInstance?.kill();
 		masterTimeline.kill();
 		fullStackTimeline.kill();
 		graphicDesignerTimeline.kill();

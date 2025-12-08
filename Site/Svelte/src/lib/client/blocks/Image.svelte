@@ -1,14 +1,23 @@
 <!-- spell-checker: disable -->
 <script lang="ts">
 	import type { Picture } from 'vite-imagetools';
+	import type { Snippet } from 'svelte';
+	import { PUBLIC_ENV } from '$env/static/public';
+
 	let {
 		children,
 		src,
 		alt,
 		class: className
-	}: { children?: any; src: Picture; alt: string; class?: string } = $props();
+	}: { children?: Snippet; src: Picture | string; alt: string; class?: string } = $props();
 </script>
 
-<enhanced:img class={className} {src} {alt}>
-	{@render children()}
-</enhanced:img>
+{#if PUBLIC_ENV === 'production'}
+	<enhanced:img class={className} {src} {alt}>
+		{#if children}
+			{@render children()}
+		{/if}
+	</enhanced:img>
+{:else if typeof src === 'string'}
+	<img class={className} {src} {alt} />
+{/if}

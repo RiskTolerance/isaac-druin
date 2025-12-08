@@ -1,5 +1,7 @@
 <script lang="ts">
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
+
+	let { children } = $props();
 
 	const sections = [
 		{ name: 'Typography', path: '/styleguide/typography' },
@@ -16,7 +18,7 @@
 		<div class="flex flex-wrap gap-2">
 			<a
 				href="/styleguide"
-				class="rounded px-3 py-1 text-sm transition-colors {$page.url.pathname === '/styleguide'
+				class="rounded px-3 py-1 text-sm transition-colors {page.url.pathname === '/styleguide'
 					? 'bg-brandGray-200 dark:bg-brandGreen-800 text-brandGray-900 dark:text-brandGreen-100'
 					: 'hover:bg-brandGray-100 dark:hover:bg-brandGreen-900'}"
 			>
@@ -25,7 +27,7 @@
 			{#each sections as section}
 				<a
 					href={section.path}
-					class="rounded px-3 py-1 text-sm transition-colors {$page.url.pathname === section.path
+					class="rounded px-3 py-1 text-sm transition-colors {page.url.pathname === section.path
 						? 'bg-brandGray-200 dark:bg-brandGreen-800 text-brandGray-900 dark:text-brandGreen-100'
 						: 'hover:bg-brandGray-100 dark:hover:bg-brandGreen-900'}"
 				>
@@ -35,5 +37,5 @@
 		</div>
 	</nav>
 
-	<slot />
+	{@render children()}
 </div>

@@ -58,7 +58,6 @@
 
 		if (xRulerText) {
 			timeline.from(xRulerText, {
-				absolute: true,
 				y: () => -xRulerText!.offsetHeight * 4
 			});
 		}
@@ -70,7 +69,6 @@
 
 		if (yRulerText) {
 			timeline.from(yRulerText, {
-				absolute: true,
 				x: () => -yRulerText!.offsetWidth * 2
 			});
 		}

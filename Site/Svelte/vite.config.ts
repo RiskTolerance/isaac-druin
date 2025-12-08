@@ -4,6 +4,11 @@ import { defineConfig } from 'vite';
 import { enhancedImages } from '@sveltejs/enhanced-img';
 import lucidePreprocess from "vite-plugin-lucide-preprocess";
 
-export default defineConfig({
-	plugins: [lucidePreprocess(), tailwindcss(), sveltekit(), enhancedImages()],
-});
+export default defineConfig(({ mode }) => ({
+	plugins: [
+		lucidePreprocess(),
+		tailwindcss(),
+		sveltekit(),
+		mode === 'production' && enhancedImages()
+	],
+}));

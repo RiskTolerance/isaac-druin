@@ -1,10 +1,10 @@
 <script lang="ts">
-	import { page } from '$app/state';
 	import { BaseLayout } from '$layouts';
 	import { Settings2 } from '@lucide/svelte';
+	import { page } from '$app/state';
 	import { globalState } from '$lib/state/global.svelte';
 	import { Switch } from '$components';
-	import { onMount } from 'svelte';
+	import { onMount, onDestroy } from 'svelte';
 	import { gsap } from 'gsap';
 	import { Flip } from 'gsap/Flip';
 	import { onClickOutside } from 'runed';
@@ -18,6 +18,9 @@
 	let blog = $state<HTMLElement>();
 	let highlight = $state<HTMLElement>();
 	let styleguide = $state<HTMLElement>();
+
+	// Track current Flip animation to kill before starting new one
+	let currentFlipAnimation: GSAPTimeline | undefined;
 
 	onClickOutside(
 		() => settingsContainer,
@@ -48,12 +51,18 @@
 	const motherFlippin = (to: HTMLElement | undefined) => {
 		if (!highlight || !to) return;
 
+		// Kill any running Flip animation before starting a new one
+		currentFlipAnimation?.kill();
+
 		const initial = Flip.getState(highlight);
 
 		to.appendChild(highlight);
 
-		Flip.from(initial, {
-			duration: 0.3
+		currentFlipAnimation = Flip.from(initial, {
+			duration: 0.3,
+			onComplete: () => {
+				currentFlipAnimation = undefined;
+			}
 		});
 	};
 
@@ -64,6 +73,11 @@
 			highlight.classList.remove('invisible');
 			mounted = true;
 		}
+	});
+
+	// Cleanup on destroy (even though root layout should never unmounts)
+	onDestroy(() => {
+		currentFlipAnimation?.kill();
 	});
 </script>
 
@@ -101,16 +115,18 @@
 				class:bg-brandGreen-200={!mounted && selectedRoute === 'blog'}>Blog</span
 			></a
 		>
-		{#if globalState.devMode}
-			<a onclick={() => motherFlippin(styleguide)} href="/styleguide"
-				><span
-					bind:this={styleguide}
-					class="navBtn transition-colors duration-300"
-					class:text-brandGray-800={selectedRoute === 'styleguide'}
-					class:bg-brandGreen-200={!mounted && selectedRoute === 'styleguide'}>Style Guide</span
-				></a
-			>
-		{/if}
+
+		<a
+			class:hidden={!globalState.devMode}
+			onclick={() => motherFlippin(styleguide)}
+			href="/styleguide"
+			><span
+				bind:this={styleguide}
+				class="navBtn transition-colors duration-300"
+				class:text-brandGray-800={selectedRoute === 'styleguide'}
+				class:bg-brandGreen-200={!mounted && selectedRoute === 'styleguide'}>Style Guide</span
+			></a
+		>
 	</nav>
 	<div bind:this={settingsContainer} class="relative z-999 justify-self-end">
 		<button
