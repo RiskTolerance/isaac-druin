@@ -10,15 +10,15 @@
 `;
 </script>
 
-<ProseLayout>
-	<Prose>
-		<!-- Write content in the script as a variable -->
-		<Marked md={content} />
-		<!-- Write content directly in the svelte file -->
-		<Marked
-			md={`
+<Prose
+	class="-mt[12.5vh] dark:bg-brandGreen-800 relative z-10 mx-auto max-w-3xl bg-neutral-50 md:-mt-[25vh] md:p-8"
+>
+	<!-- Write content in the script as a variable -->
+	<Marked md={content} />
+	<!-- Write content directly in the svelte file -->
+	<Marked
+		md={`
 ## Content B
     `}
-		/>
-	</Prose>
-</ProseLayout>
+	/>
+</Prose>
