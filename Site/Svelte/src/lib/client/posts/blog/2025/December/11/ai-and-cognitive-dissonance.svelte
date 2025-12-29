@@ -3,18 +3,29 @@
 	import { Prose } from '$components';
 	import { Marked } from '$components';
 	import { iMadeThis } from '$images';
+	import { onMount } from 'svelte';
+
+	onMount(() => {
+		document.querySelectorAll('a post');
+	});
 </script>
 
 <Prose
-	class="-mt[12.5vh] dark:bg-brandGreen-800 relative z-10 mx-auto max-w-3xl bg-neutral-50 md:-mt-[25vh] md:p-8"
+	class="-mt[12.5vh] dark:bg-brandGreen-800 post relative z-10 mx-auto max-w-3xl bg-neutral-50 md:-mt-[25vh] md:p-8"
 >
 	<Marked
 		md={`
-Cover image: [*Hercules and the Lernaean Hydra*](https://www.artic.edu/artworks/20579/hercules-and-the-lernaean-hydra)
+Cover image: [Hercules and the Lernaean Hydra](https://www.artic.edu/artworks/20579/hercules-and-the-lernaean-hydra)
 
 ### Definitions
 
-- Cognitive Dissonance (I will be abbreviating it as 'CD'): a mental phenomenon in which people unknowingly or subconsciously hold fundamentally conflicting cognitions. [1](https://en.wikipedia.org/wiki/Cognitive_dissonance)
+Cognitive Dissonance: a mental phenomenon in which people unknowingly or subconsciously hold fundamentally conflicting cognitions. [1](https://en.wikipedia.org/wiki/Cognitive_dissonance)
+
+### Abbreviations
+
+CD: Cognitive Dissonance
+
+AI: Artificial Intelligence
 
 ## A Quick Primer
 
@@ -41,7 +52,8 @@ Note: I do not consider myself a student of philosophy or much of a writer - if 
 ## 
     `}
 	/>
-	<Image class="float-right max-h-[600px] p-6" src={iMadeThis} alt="I made this comic"></Image>
+	<Image class="p-6 sm:float-right sm:max-h-[600px]" src={iMadeThis} alt="I made this comic"
+	></Image>
 	<Marked
 		md={`
 ## A Leading Example
@@ -69,15 +81,17 @@ In Greek mythology, the Lernaean Hydra is a monster with many heads. To kill a H
 
 AI has become a CD Hydra. As it becomes applicable to more areas of our lives, we will find ourselves grappling with each "head" and the inconsistency in beliefs and values that it implies. We will be forced to voice opinions for which our actions must align lest we live with the resulting cognitive dissonance of believing one thing while justifying another.
 
-The impossible task arises from the lack of choice. It is a matter of fact that AI is a powerful tool that can accelerate output. You may feel that AI is an affront to the human spirit but simultaneously feel that ignoring it threatens your livelihood. It is a common (and likely true) sentiment that if a person does not learn to utilize AI, they will fall behind their peers who do.
+The impossible task arises from the lack of choice. It is a matter of fact that AI is a powerful tool that can accelerate output. You may feel that AI is an affront to the human spirit but simultaneously feel that ignoring it threatens your livelihood. It is a common (and likely true) sentiment that if a person does not learn to utilize AI, they will fall behind peers who do.
 
 Perhaps if you are retired and sitting on a comfortable nest egg you will manage to dodge the problem entirely, but those who are active in academia or the workforce must face it.
 
+---
+
 ## The ~~Solution~~ Response
 
-AI is young, and although humanity created it, we don't truely understand what's happening when modern LLMs generate output. It is a black box into takes text in and spits it back out. While writing this, I found two sources that address CD as it relates to AI. Both are worth reading if you've found this interesting.
+AI is young, and although humanity created it, we don't truely understand what's happening when modern LLMs generate output. It is a black box into takes text in and spits text back out - the system that does so is so complex that it's very difficult to understand what's actually going on internally even in the simpilest models [5](https://www.youtube.com/watch?v=D8GOeCFFby4). While we don't have a firm understanding of the inner workings of AI, CD was first expressed over 100 years ago by the psychologist Leon Festinger [6](https://en.wikipedia.org/wiki/Leon_Festinger) and humanity has had more time to ponder the idea and how to live with or aleviate the associated sensations. While writing this, I found two relivant sources that address CD as it relates to AI.
 
-[A conceptual exploration of generative AI-induced cognitive dissonance and its emergence in university-level academic writing [5]](https://www.frontiersin.org/journals/artificial-intelligence/articles/10.3389/frai.2025.1573368/full) offers a "call to action" in response to the CD which I believe can be extended to address most AI CD:
+[A conceptual exploration of generative AI-induced cognitive dissonance and its emergence in university-level academic writing [7]](https://www.frontiersin.org/journals/artificial-intelligence/articles/10.3389/frai.2025.1573368/full) offers a "call to action" in response to the CD which I believe can be extended to address most AI CD:
 
 1. Establish AI policies and literacy programs to curb over-reliance
 2. Integrate reflective pedagogy to mitigate ethical dilemmas and preserve confidence
@@ -86,13 +100,24 @@ AI is young, and although humanity created it, we don't truely understand what's
 These approaches can be generalized for individuals and generic AI CD:
 
 1. Learning about AI (effective prompting, creative usage) and how to leverage it effectively (correct/incorrect scenarios) helps to alleviate the dissonance between effort and output.
-2. Comparing and contrasting strict AI output with strict reveiwer output might lead to deeper understanding and a better grasp on the subject, giving the reviewer more confidence in their own abilty to create output that matches or is logically superior to the AI.
-3. Experimenting with workflows which delegate menial or repetative work to the AI while reserving creative and fulfilling tasks for the individual
+2. Comparing and contrasting strict AI output with strict reveiwer output might lead to deeper understanding and a better grasp on the subject, giving the reviewer more confidence in their own abilty to create AI assisted output that is superior to generic AI output.
+3. Experimenting with workflows which delegate menial or repetative work to the AI while reserving creative and fulfilling tasks for the individual.
 
 [Cognitive Dissonance Artificial Intelligence (CD-AI): The Mind at War with Itself.
-Harnessing Discomfort to Sharpen Critical Thinking[6]](https://arxiv.org/pdf/2507.08804) argues that CD should not be viewed as a negative effect and that it should be harnessed 
+Harnessing Discomfort to Sharpen Critical Thinking [8]](https://arxiv.org/pdf/2507.08804) argues that CD should not be viewed as a negative effect and that it should be harnessed for personal growth stating:
 
-But CD is not young, it was first expressed over 100 years ago by the psychologist Leon Festinger [7](https://en.wikipedia.org/wiki/Leon_Festinger) and humanity has had more time to ponder the idea and how to aleviate the associated feelings. 
+> ... cognitive science research suggests that intellectual growth emerges not from immediate clarity but from grappling with contradiction and uncertainty [Festinger 1957; Mercier & Sperber 2017]. Cognitive Dissonance (CD) – the psychological discomfort caused by conflicting beliefs – acts as a powerful driver of reflection, adaptive learning, and epistemic resilience. Individuals who can tolerate ambiguity and endure intellectual discomfort tend to develop stronger reasoning skills, more flexible thinking, and greater decision-making capacity in uncertain environments [Kahan 2017 Stanovich 2018].
+
+Note the citation from 1957. Like I stated, CD has been a topic for cognitive science for a long time. In _The Mind at War with Itself_, the author is focusing on user interactions with AI text generation which diverges from the CD that I'm focusing on. They state that:
+
+1. AI is actually an inhibitor of CD in the sense that it oftan affirms the views of those interacting with it (it is trained to please).
+2. AI is better used as a vehicle for challenging personal views and ideas.
+
+We can utilize AI in both ways. AI can be useful for growth (initiating CD for broader subject matter) and simultaneously an _aleviation_ for fundemental AI CD that is associated with human values _because_ of AI's potential as a tool for growth.
+
+## Summary
+
+
 	`}
 	></Marked>
 </Prose>

@@ -48,7 +48,7 @@
   --brand-light-body: var(--color-brandGray-800);
   --brand-light-headings: var(--color-brandGray-900);
   --brand-light-lead: var(--color-brandGray-700);
-  --brand-light-links: var(--color-brandGray-900);
+  --brand-light-links: var(--color-brandYellow-600);
   --brand-light-bold: var(--color-brandGray-900);
   --brand-light-counters: var(--color-brandGray-600);
   --brand-light-bullets: var(--color-brandGray-400);
@@ -61,15 +61,17 @@
   --brand-light-pre-bg: var(--color-brandGray-50);
   --brand-light-th-borders: var(--color-brandGray-300);
   --brand-light-td-borders: var(--color-brandGray-200);
+  --brand-light-dt: var(--color-brandGray-50);
+  --brand-light-dd: var(--color-brandGray-50);
 
   /* Dark theme semantic tokens */
   --brand-dark-body: var(--color-brandGreen-50);
   --brand-dark-headings: var(--color-brandGreen-100);
   --brand-dark-lead: var(--color-brandGreen-300);
-  --brand-dark-links: var(--color-brandGreen-100);
+  --brand-dark-links: var(--color-brandYellow-200);
   --brand-dark-bold: var(--color-brandGreen-100);
-  --brand-dark-counters: var(--color-brandGreen-400);
-  --brand-dark-bullets: var(--color-brandGreen-200);
+  --brand-dark-counters: var(--color-brandYellow-200);
+  --brand-dark-bullets: var(--color-brandYellow-200);
   --brand-dark-hr: var(--color-brandGreen-700);
   --brand-dark-quotes: var(--color-brandGreen-100);
   --brand-dark-borders: var(--color-brandGreen-700);
@@ -79,6 +81,8 @@
   --brand-dark-pre-bg: var(--color-brandGreen-100);
   --brand-dark-th-borders: var(--color-brandGreen-700);
   --brand-dark-td-borders: var(--color-brandGreen-800);
+  --brand-light-dt: var(--color-brandGray-50);
+  --brand-light-dd: var(--color-brandGray-50);
 }
 
 /* Prose styling for markdown/rich content (light) */
@@ -173,6 +177,12 @@
   ul li::marker {
     color: var(--brand-dark-bullets);
   }
+  dl dt {
+    color: var(--brand-dark-dt)
+  }
+  dl dd {
+    color: var(--brand-dark-dd)
+  }
 }
 
 /* General text styling for non-prose content (light) */
@@ -216,6 +226,12 @@
   }
   td {
     border-color: var(--brand-light-td-borders);
+  }
+  dl dt {
+    color: var(--brand-light-dt)
+  }
+  dl dd {
+    color: var(--brand-light-dd)
   }
 }
 

@@ -21,3 +21,7 @@ h3 {
 code, pre {
   @apply font-code;
 }
+
+/* a {
+  @apply  font-semibold;
+} */

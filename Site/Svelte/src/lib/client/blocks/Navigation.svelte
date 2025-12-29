@@ -8,7 +8,8 @@
 	import { gsap } from 'gsap';
 	import { Flip } from 'gsap/Flip';
 	import { onClickOutside } from 'runed';
-
+	import { goto } from '$app/navigation';
+	import { buttonSound } from '$components/audioHandler.svelte';
 	gsap.registerPlugin(Flip);
 
 	let toggleSettings = $state(false);
@@ -51,6 +52,9 @@
 	const motherFlippin = (to: HTMLElement | undefined) => {
 		if (!highlight || !to) return;
 
+		//play sound if toggled
+		buttonSound();
+
 		// Kill any running Flip animation before starting a new one
 		currentFlipAnimation?.kill();
 
@@ -79,6 +83,13 @@
 	onDestroy(() => {
 		currentFlipAnimation?.kill();
 	});
+
+	$effect(() => {
+		if (!globalState.devMode && page.url.pathname.includes('styleguide')) {
+			motherFlippin(home);
+			goto('/');
+		}
+	});
 </script>
 
 <BaseLayout class="grid grid-cols-3 place-items-center">
@@ -86,15 +97,17 @@
 	<nav class="mx-auto flex w-fit gap-4 text-base">
 		<div
 			bind:this={highlight}
-			class="highlight bg-brandGreen-400 invisible absolute inset-0 -z-10"
+			class="highlight bg-brandYellow-300 invisible absolute inset-0 -z-10"
 		></div>
 
 		<a onclick={() => motherFlippin(home)} href="/">
 			<span
 				bind:this={home}
-				class="navBtn transition-colors duration-300"
-				class:text-brandGray-800={selectedRoute === 'home'}
-				class:bg-brandGreen-200={!mounted && selectedRoute === 'home'}
+				class={[
+					selectedRoute === 'home' && 'text-brandGray-800',
+					!mounted && selectedRoute === 'home' && 'bg-brandGreen-200',
+					'navBtn transition-colors duration-300'
+				]}
 			>
 				Home
 			</span></a
@@ -102,17 +115,21 @@
 		<a onclick={() => motherFlippin(projects)} href="/projects"
 			><span
 				bind:this={projects}
-				class="navBtn transition-colors duration-300"
-				class:text-brandGray-800={selectedRoute === 'projects'}
-				class:bg-brandGreen-200={!mounted && selectedRoute === 'projects'}>Projects</span
+				class={[
+					selectedRoute === 'projects' && 'text-brandGray-800',
+					!mounted && selectedRoute === 'projects' && 'bg-brandGreen-200',
+					'navBtn transition-colors duration-300'
+				]}>Projects</span
 			></a
 		>
 		<a onclick={() => motherFlippin(blog)} href="/blog"
 			><span
 				bind:this={blog}
-				class="navBtn transition-colors duration-300"
-				class:text-brandGray-800={selectedRoute === 'blog'}
-				class:bg-brandGreen-200={!mounted && selectedRoute === 'blog'}>Blog</span
+				class={[
+					selectedRoute === 'blog' && 'text-brandGray-800',
+					!mounted && selectedRoute === 'blog' && 'bg-brandGreen-200',
+					'navBtn transition-colors duration-300'
+				]}>Blog</span
 			></a
 		>
 
@@ -122,9 +139,11 @@
 			href="/styleguide"
 			><span
 				bind:this={styleguide}
-				class="navBtn transition-colors duration-300"
-				class:text-brandGray-800={selectedRoute === 'styleguide'}
-				class:bg-brandGreen-200={!mounted && selectedRoute === 'styleguide'}>Style Guide</span
+				class={[
+					selectedRoute === 'styleguide' && 'text-brandGray-800',
+					!mounted && selectedRoute === 'styleguide' && 'bg-brandGreen-200',
+					'navBtn text-nowrap transition-colors duration-300'
+				]}>Style Guide</span
 			></a
 		>
 	</nav>
@@ -133,10 +152,10 @@
 			onclick={() => {
 				toggleSettings = !toggleSettings;
 			}}
-			class="group hover:bg-brandGreen-300 aspect-square h-full cursor-pointer p-2 transition-colors duration-300"
+			class="group hover:bg-brandYellow-300 aspect-square h-full cursor-pointer p-2 transition-colors duration-300"
 		>
 			<Settings2
-				class="stroke-brandGreen-300 group-hover:stroke-brandGreen-900 transition-colors duration-300"
+				class="stroke-brandYellow-300 group-hover:stroke-brandGreen-900 transition-colors duration-300"
 			></Settings2>
 		</button>
 
@@ -148,6 +167,10 @@
 				<li>
 					<Switch
 						class="[&>label]:text-brandGreen-900! font-bold"
+						bind:checked={globalState.sound}
+						onCheckedChange={(checked) => {
+							checked && buttonSound();
+						}}
 						id="toggle-sound"
 						labelText="Sound"
 					></Switch>
@@ -179,7 +202,7 @@
 		position: relative;
 	}
 	.navBtn:hover {
-		outline-color: var(--color-brandGreen-400);
+		outline-color: var(--color-brandYellow-300);
 		outline-style: dotted;
 		outline-width: 2px;
 	}
