@@ -26,6 +26,18 @@ import claude from '$images/icons/claude.svg';
 import rive from '$images/icons/rive.svg';
 import mastra from '$images/icons/mastra.svg';
 import cursor from '$images/icons/cursor.svg';
+import coolify from '$images/icons/coolify.svg';
+import runed from '$images/icons/runed.svg';
+import bunny from '$images/icons/bunny.svg';
+import github from '$images/icons/github.svg';
+import sentry from '$images/icons/sentry.svg';
+import zod from '$images/icons/zod.svg';
+import effect from '$images/icons/effect.svg';
+import shadcnSvelte from '$images/icons/shadcn-svelte.svg';
+import resend from '$images/icons/resend.svg';
+import digitalOcean from '$images/icons/digital-ocean.svg';
+import betterAuth from '$images/icons/better-auth.svg';
+import vitest from '$images/icons/vitest.svg';
 
 export {
 	blender,
@@ -55,5 +67,17 @@ export {
 	claude,
 	rive,
 	mastra,
-	cursor
+	cursor,
+	coolify,
+	runed,
+	bunny,
+	github,
+	sentry,
+	zod,
+	effect,
+	shadcnSvelte,
+	resend,
+	digitalOcean,
+	betterAuth,
+	vitest
 };

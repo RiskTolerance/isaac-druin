@@ -1,4 +1,3 @@
-// spell-checker: disable
 import Groq from 'groq-sdk';
 import { GROQ_API_KEY } from '$env/static/private';
 

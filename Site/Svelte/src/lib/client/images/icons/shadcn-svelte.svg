@@ -1,0 +1,24 @@
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 256 256">
+  <defs>
+    <style>
+      .st0, .st1 {
+      fill: none;
+      }
+
+      .st2 {
+      fill: #242938;
+      }
+
+      .st1 {
+      stroke: #eb4f27;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-width: 32px;
+      }
+    </style>
+  </defs>
+  <rect class="st2" x="0" y="0" width="256" height="256" rx="60" ry="60" />
+  <rect class="st0" x="31" y="31" width="194" height="194" />
+  <line class="st1" x1="188.62" y1="128" x2="128" y2="188.62" />
+  <line class="st1" x1="176.5" y1="61.31" x2="61.31" y2="176.5" />
+</svg>

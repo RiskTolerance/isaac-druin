@@ -3,8 +3,16 @@
 	import { Prose, Marked, Note } from '$components';
 	import SkillCard from './_SkillCard.svelte';
 
-	import { frontend, backend, design, ai } from './_stack-items.svelte';
+	import {
+		framework,
+		backendCommon,
+		infrastructure,
+		backendCustom,
+		design,
+		ai
+	} from './_stack-items.svelte';
 	import { gsap } from 'gsap';
+	// @ts-ignore - GSAP types have casing inconsistency on Windows (flip.d.ts vs Flip.d.ts)
 	import { Flip } from 'gsap/Flip';
 	import { DrawSVGPlugin } from 'gsap/DrawSVGPlugin';
 	import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -30,37 +38,62 @@
 	let innerHeight: number = $state(0);
 	let scrollY: number = $state(0);
 
+	// Cache expanded skill slots (they never change)
+	let iconSlot: HTMLElement;
+	let nameSlot: HTMLElement;
+	let descriptionSlot: HTMLElement;
+	let longDescriptionSlot: HTMLElement;
+
 	// Store references for reverse animation
 	let originalCard: HTMLElement | null = $state(null);
-	let skillElements: { icon: HTMLElement; heading: HTMLElement; description: HTMLElement } | null =
-		$state(null);
+	let skillElements: {
+		icon: HTMLElement;
+		heading: HTMLElement;
+		description: HTMLElement;
+		longDescription: HTMLElement;
+	} | null = $state(null);
+
+	const hideExpandedSkill = () => {
+		expandedSkill.style.display = 'none';
+		expandedSkillBackdrop.style.display = 'none';
+	};
 
 	const openExpandedSkill = (e: MouseEvent) => {
 		const clickedElement = (e.target as HTMLElement).closest('button') as HTMLElement;
 		if (!clickedElement) return;
 
-		// Get skill card elements
-		const heading = clickedElement.querySelector('.skill-name') as HTMLElement | null;
-		const description = clickedElement.querySelector(
-			'.skill-short-description'
-		) as HTMLElement | null;
-		const icon = clickedElement.querySelector('.skill-icon') as HTMLElement | null;
-		if (!icon || !heading || !description) return;
+		// Cache expanded skill slots on first use
+		if (!iconSlot) {
+			iconSlot = expandedSkill.querySelector('#expanded-skill-image') as HTMLElement;
+			nameSlot = expandedSkill.querySelector('#expanded-skill-name') as HTMLElement;
+			descriptionSlot = expandedSkill.querySelector(
+				'#expanded-skill-short-description'
+			) as HTMLElement;
+			longDescriptionSlot = expandedSkill.querySelector(
+				'#expanded-skill-long-description'
+			) as HTMLElement;
+		}
 
-		// Get target slots in expanded view
-		const iconSlot = expandedSkill.querySelector('#expanded-skill-image');
-		const nameSlot = expandedSkill.querySelector('#expanded-skill-name');
-		const descriptionSlot = expandedSkill.querySelector('#expanded-skill-short-description');
-		if (!iconSlot || !nameSlot || !descriptionSlot) return;
+		// Get skill card elements
+		const heading = clickedElement.querySelector('.skill-name') as HTMLElement;
+		const description = clickedElement.querySelector('.skill-short-description') as HTMLElement;
+		const longDescription = clickedElement.querySelector('.skill-long-description') as HTMLElement;
+		const icon = clickedElement.querySelector('.skill-icon') as HTMLElement;
+
+		// Store element array for reuse
+		const elements = [icon, heading, description, longDescription];
 
 		// Calculate positions
 		const isClickingFromTop = e.clientY < innerHeight / 2;
 		const clickedElementY = clickedElement.getBoundingClientRect().top + scrollY;
-		const scrollOffset = isClickingFromTop ? innerHeight / 4 : (innerHeight / 4) * 3;
+		const scrollOffset = (innerHeight / 4) * (isClickingFromTop ? 1 : 3);
+
+		// Capture and preserve the clicked element's height to prevent collapse
+		clickedElement.style.height = `${clickedElement.offsetHeight}px`;
 
 		// Capture initial state before DOM changes
-		gsap.set([icon, heading, description], { clearProps: 'transition' });
-		const skillItemState = Flip.getState([icon, heading, description]);
+		gsap.set(elements, { clearProps: 'transition' });
+		const skillItemState = Flip.getState(elements);
 
 		// Position and show expanded container
 		expandedSkill.style.top = isClickingFromTop ? 'auto' : '48px';
@@ -70,17 +103,17 @@
 
 		// Store references for reverse animation
 		originalCard = clickedElement;
-		skillElements = { icon, heading, description };
+		skillElements = { icon, heading, description, longDescription };
 
-		// assign new z values
-		icon.style.zIndex = '100';
-		heading.style.zIndex = '100';
-		description.style.zIndex = '100';
+		// Set z-index and show long description
+		gsap.set(elements, { zIndex: '100' });
+		longDescription.classList.remove('hidden');
 
 		// Move elements to new positions
 		iconSlot.appendChild(icon);
 		nameSlot.appendChild(heading);
 		descriptionSlot.appendChild(description);
+		longDescriptionSlot.appendChild(longDescription);
 
 		// Build and play animation timeline
 		const tl = gsap.timeline({ paused: true });
@@ -108,39 +141,34 @@
 
 	const closeExpandedSkill = () => {
 		if (!originalCard || !skillElements) {
-			expandedSkill.style.display = 'none';
-			expandedSkillBackdrop.style.display = 'none';
+			hideExpandedSkill();
 			return;
 		}
 
-		const { icon, heading, description } = skillElements;
+		const { icon, heading, description, longDescription } = skillElements;
+		const animatedElements = [icon, heading, description];
 
-		// Get current state before moving elements back
-		gsap.set([icon, heading, description], { clearProps: 'transition' });
-		const currentState = Flip.getState([icon, heading, description]);
+		// Hide longDescription before moving it back (no animation needed)
+		longDescription.classList.add('hidden');
+
+		// Get current state before moving elements back (exclude longDescription from animation)
+		gsap.set(animatedElements, { clearProps: 'transition' });
+		const currentState = Flip.getState(animatedElements);
 
 		// Find original card containers (elements were moved, so find by structure)
-		const cardContainer = originalCard.querySelector('div.flex'); // The main flex container
-		const proseContainer = originalCard.querySelector('div.prose'); // The prose container for text
+		const cardContainer = originalCard.querySelector('div.flex') as HTMLElement;
+		const proseContainer = originalCard.querySelector('div.prose') as HTMLElement;
 
-		if (!cardContainer || !proseContainer) {
-			expandedSkill.style.display = 'none';
-			expandedSkillBackdrop.style.display = 'none';
-			return;
-		}
-
-		// return original z values
-
-		// Move elements back to original positions (icon first, then prose content)
+		// Move elements back to original positions
 		cardContainer.insertBefore(icon, cardContainer.firstChild);
 		proseContainer.insertBefore(heading, proseContainer.firstChild || null);
 		proseContainer.appendChild(description);
+		proseContainer.appendChild(longDescription);
 
 		// Build reverse animation timeline
 		const tl = gsap.timeline({ paused: true });
 
 		tl.to(expandedSkill, { opacity: 0, duration: 0.3 });
-
 		tl.add(
 			Flip.from(currentState, {
 				duration: 0.5,
@@ -148,18 +176,15 @@
 			}),
 			'<'
 		);
-
 		tl.call(() => {
-			expandedSkill.style.display = 'none';
-			expandedSkillBackdrop.style.display = 'none';
+			hideExpandedSkill();
+			originalCard!.style.height = '';
 			originalCard = null;
 			skillElements = null;
 		});
 
 		tl.play().then(() => {
-			icon.style.zIndex = '0';
-			heading.style.zIndex = '0';
-			description.style.zIndex = '0';
+			gsap.set([icon, heading, description, longDescription], { zIndex: '0' });
 		});
 	};
 </script>
@@ -183,35 +208,34 @@ Developers (likey wihout exception) have their own stack that's independant of e
 
 My stack is the best. If you use something else you're wrong and you should feel bad.
 
-Jokes aside, here are the tools and technologies I use to build my projects. I'm going to group them into four categories:
+Jokes aside, here are the tools and technologies I use to build my projects. I organize my stack into two main sections:
 
-- **Development**: Further broken into **Frontend** and **Backend**. These are frameworks and libraries (code-level tools).
-- **Design**: design software
-- **AI**: AI tools and platforms
-- **Other**: other tools and technologies
+- **Common Stack**: The foundational technologies I use across all projects, broken into Framework, Backend, and Infrastructure layers.
+- **Custom Application Stack Extension**: Additional backend dependencies I add when building business logic and operational software.
 
-You will notice that a few items are listed twice (SvelteKit, for example). These items are general purpose to the point they fit both categories.
+I also use design tools and AI platforms, which I'll cover separately.
 	`}
 	/>
 	<Note>
 		<p class="prose prose-sm max-w-full text-gray-400!">
-			After almost no deliberation, I've decided to leave out any technologies that I would consider
-			as foundational to modern web development. HTML, CSS, JavaScript, Vite, and Nodejs all meet
-			this criteria. If you don't know or use these, you're probably not reading this post (or
-			you're my mom - hi mom!).
+			I've decided to leave out any technologies that I would consider as foundational to modern web
+			development. HTML, CSS, JavaScript, Vite, and Nodejs all meet this criteria. If you don't know
+			or use these, you're probably not reading this post (or you're my mom - hi mom!).
 		</p>
 	</Note>
 	<Marked
 		md={`
-## Development Stack
+## Common Stack
 
-### Frontend
+The common stack represents the foundational technologies I use across all projects. These are organized into three layers: Framework, Backend, and Infrastructure.
 
-The "frontend" is the part of the application that the user sees and interacts with. It's the UI and the user experience.
+### Framework
+
+The framework layer includes the core libraries and tools for building the application frontend and handling common development tasks.
 `}
 	/>
-	<div class="grid grid-cols-2 gap-8">
-		{#each frontend as skill}
+	<div class="grid grid-cols-1 gap-8 sm:grid-cols-2">
+		{#each framework as skill}
 			<SkillCard {...skill} onClick={openExpandedSkill} />
 		{/each}
 	</div>
@@ -220,11 +244,37 @@ The "frontend" is the part of the application that the user sees and interacts w
 		md={`
 ### Backend
 
-The "backend" is the part of the application that the user doesn't see and doesn't interact with. It's the server-side logic and the data.
+The backend layer covers runtime, database, storage, and essential services that power the application.
 `}
 	/>
-	<div class="grid grid-cols-2 gap-8">
-		{#each backend as skill}
+	<div class="grid grid-cols-1 gap-8 sm:grid-cols-2">
+		{#each backendCommon as skill}
+			<SkillCard {...skill} onClick={openExpandedSkill} />
+		{/each}
+	</div>
+
+	<Marked
+		md={`
+### Infrastructure
+
+The infrastructure layer includes hosting, deployment, CI/CD, and content delivery services.
+`}
+	/>
+	<div class="grid grid-cols-1 gap-8 sm:grid-cols-2">
+		{#each infrastructure as skill}
+			<SkillCard {...skill} onClick={openExpandedSkill} />
+		{/each}
+	</div>
+
+	<Marked
+		md={`
+## Custom Application Stack Extension
+
+For business logic, operational software, and anything requiring purpose-built interfaces, I extend the common stack with additional backend dependencies.
+`}
+	/>
+	<div class="grid grid-cols-1 gap-8 sm:grid-cols-2">
+		{#each backendCustom as skill}
 			<SkillCard {...skill} onClick={openExpandedSkill} />
 		{/each}
 	</div>
@@ -235,7 +285,7 @@ The "backend" is the part of the application that the user doesn't see and doesn
 The "design" is the part of the application that the user sees and interacts with. It's the UI and the user experience.
 	`}
 	/>
-	<div class="grid grid-cols-2 gap-8">
+	<div class="grid grid-cols-1 gap-8 sm:grid-cols-2">
 		{#each design as skill}
 			<SkillCard {...skill} onClick={openExpandedSkill} />
 		{/each}
@@ -248,7 +298,7 @@ The "design" is the part of the application that the user sees and interacts wit
 The "AI" is the part of the application that the user sees and interacts with. It's the UI and the user experience.
 	`}
 	/>
-	<div class="grid grid-cols-2 gap-8">
+	<div class="grid grid-cols-1 gap-8 sm:grid-cols-2">
 		{#each ai as skill}
 			<SkillCard {...skill} onClick={openExpandedSkill} />
 		{/each}
@@ -262,7 +312,7 @@ The "AI" is the part of the application that the user sees and interacts with. I
 	style="display: none; opacity: 0;"
 >
 	<div class="absolute top-0 right-0 flex h-12 w-12 items-center justify-center">
-		<X class="h-8 w-8 text-white" onclick={closeExpandedSkill} />
+		<X class="h-8 w-8 cursor-pointer text-white" onclick={closeExpandedSkill} />
 	</div>
 	<div class="mx-auto mb-4 flex h-24 w-full">
 		<div
@@ -274,17 +324,10 @@ The "AI" is the part of the application that the user sees and interacts with. I
 			<div id="expanded-skill-short-description" class="h-1/2 w-full"></div>
 		</div>
 	</div>
-	<div id="expanded-skill-description" class="prose mx-auto flex w-full max-w-full justify-center">
-		<p>
-			Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque vitae similique dolorem dicta
-			quas? Aspernatur, fugiat! Dolore, eaque blanditiis fuga reprehenderit porro consectetur totam
-			veniam inventore pariatur suscipit laboriosam minus dicta cupiditate, recusandae odio modi
-			corrupti repellendus ea debitis ad. Quas dolorum, tempore velit quae vel eaque nam? Vero
-			eligendi esse, ipsam porro dolores saepe eum velit, reprehenderit maiores commodi consequatur
-			dignissimos veniam soluta, adipisci officia doloribus recusandae ut! Cumque aperiam magnam
-			atque debitis reiciendis consequuntur provident suscipit natus corrupti?
-		</p>
-	</div>
+	<div
+		id="expanded-skill-long-description"
+		class="prose mx-auto flex w-full max-w-full justify-center"
+	></div>
 </div>
 
 <button

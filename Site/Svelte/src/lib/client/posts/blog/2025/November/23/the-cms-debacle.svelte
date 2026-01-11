@@ -81,13 +81,6 @@
 >
 	<Marked
 		md={`
-# This is an H1
-## This is an H2
-### This is an H3
-#### This is an H4
-##### This is **an H5**
-###### This is _an H6_
-
 If you take a look my last post, [The Stack](/blog/the-stack), you will notice that something is missing. A CMS (Content Management System). The CMS might as well be the butter to the web framework bread - it creates an environment which eases the creation of content for a site.
 
 When I started learning web development, I quite honestly couldn't fathom why anyone would want a CMS. I could only see downsides. A few examples (which are still valid, in my opinion):
