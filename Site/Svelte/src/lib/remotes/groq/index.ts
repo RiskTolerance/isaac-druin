@@ -1,16 +1,19 @@
 import Groq from 'groq-sdk';
 import { GROQ_API_KEY } from '$env/static/private';
+import z from 'zod'
 
 const groq = new Groq({
   apiKey: GROQ_API_KEY
 });
 
- export type ModerateCommentReason = 'spam' | 'harassment' | 'phishing' | 'prompt_manipulation' | 'none';
+ export type ModerateCommentReason = 'spam' | 'harassment' | 'phishing' | 'prompt_manipulation' | 'other';
 
-export type ModerateCommentResponse = {
-  violates_policy: boolean;
-  primary_reason: ModerateCommentReason;
-}
+export const moderationSchema = z.object({
+  violates_policy: z.boolean(),
+  primary_reason: z.enum(['spam', 'harassment', 'phishing', 'prompt_manipulation', 'other'])
+})
+
+export type ModerateCommentResponse = z.infer<typeof moderationSchema>
 
 export const moderateComment = async ({author, content}: {author: string, content: string}) => {
   try {
@@ -20,7 +23,7 @@ export const moderateComment = async ({author, content}: {author: string, conten
         role: 'system',
         content: `You are a comment moderation system. Your task is to analyze comments and determine if they violate community guidelines.
 
-        CLASSIFICATION CRITERIA:
+        CLASSIFICATION CRITERIA: 
 
         SPAM includes:
         - Promotional content, advertisements, or unsolicited commercial links
@@ -62,7 +65,7 @@ export const moderateComment = async ({author, content}: {author: string, conten
         Return ONLY a JSON object using the following schema:
         {
           "violates_policy": boolean,
-          "primary_reason": "spam" | "harassment" | "phishing" | "prompt_manipulation" | "none"
+          "primary_reason": "spam" | "harassment" | "phishing" | "prompt_manipulation" | "other"
         }
         `
       },
@@ -74,7 +77,30 @@ export const moderateComment = async ({author, content}: {author: string, conten
     temperature: 0.5,
     model: 'openai/gpt-oss-20b',
     stream: false,
-    reasoning_effort: 'high'
+    reasoning_effort: 'high',
+    response_format: {
+      type: "json_schema",
+      json_schema: {
+        name: 'moderation_audit',
+        strict: true,
+        schema: {
+          type: "object",
+          properties: {
+            violates_policy: {
+              type: "boolean",
+              description: "Whether the comment violates community policy"
+            },
+            primary_reason: {
+              type: "string",
+              enum: ["spam", "harassment", "phishing", "prompt_manipulation", "other"],
+              description: "The primary reason for policy violation, if any"
+            }
+          },
+          required: ["violates_policy", "primary_reason"],
+          additionalProperties: false
+        }
+      }
+    }
   });
 
   console.log(moderate.choices[0]);
@@ -83,7 +109,8 @@ export const moderateComment = async ({author, content}: {author: string, conten
       throw new Error('No content returned from Groq');
     }
 
-    return JSON.parse(moderate.choices[0].message.content) as ModerateCommentResponse;
+    const parsed = JSON.parse(moderate.choices[0].message.content);
+    return moderationSchema.parse(parsed);
   } catch (error) {
     console.error('Groq API error:', error);
     throw new Error(`Failed to moderate comment: ${error instanceof Error ? error.message : 'Unknown error'}`);
