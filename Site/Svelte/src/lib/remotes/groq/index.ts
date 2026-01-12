@@ -6,11 +6,9 @@ const groq = new Groq({
   apiKey: GROQ_API_KEY
 });
 
- export type ModerateCommentReason = 'spam' | 'harassment' | 'phishing' | 'prompt_manipulation' | 'other';
-
 export const moderationSchema = z.object({
-  violates_policy: z.boolean(),
-  primary_reason: z.enum(['spam', 'harassment', 'phishing', 'prompt_manipulation', 'other'])
+  violates_policy: z.boolean().describe('Whether the comment violates community policy'),
+  primary_reason: z.enum(['spam', 'harassment', 'phishing', 'prompt_manipulation', 'other']).describe('The primary reason for policy violation, if any')
 })
 
 export type ModerateCommentResponse = z.infer<typeof moderationSchema>
@@ -83,22 +81,7 @@ export const moderateComment = async ({author, content}: {author: string, conten
       json_schema: {
         name: 'moderation_audit',
         strict: true,
-        schema: {
-          type: "object",
-          properties: {
-            violates_policy: {
-              type: "boolean",
-              description: "Whether the comment violates community policy"
-            },
-            primary_reason: {
-              type: "string",
-              enum: ["spam", "harassment", "phishing", "prompt_manipulation", "other"],
-              description: "The primary reason for policy violation, if any"
-            }
-          },
-          required: ["violates_policy", "primary_reason"],
-          additionalProperties: false
-        }
+        schema: z.toJSONSchema(moderationSchema)
       }
     }
   });
