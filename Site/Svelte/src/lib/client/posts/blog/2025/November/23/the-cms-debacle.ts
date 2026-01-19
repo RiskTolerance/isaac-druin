@@ -6,7 +6,7 @@ export const metadata: PostMetadata = {
 	slug: "the-cms-debacle",
 	date: "2025-11-23",
 	excerpt: "Anyone complaining about the existence of too many frontend frameworks hasn't tried to choose a CMS.",
-	tags: ["development"],
+	tags: ["Development"],
 	featuredImage: mountains
 };
 

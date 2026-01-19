@@ -81,7 +81,7 @@ In Greek mythology, the Lernaean Hydra is a monster with many heads. To kill a H
 
 AI has become a CD Hydra. As it becomes applicable to more areas of our lives, we will find ourselves grappling with each "head" and the inconsistency in beliefs and values that it implies. We will be forced to voice opinions for which our actions must align lest we live with the resulting cognitive dissonance of believing one thing while justifying another.
 
-The impossible task arises from the lack of choice. It is a matter of fact that AI is a powerful tool that can accelerate output. You may feel that AI is an affront to the human spirit but simultaneously feel that ignoring it threatens your livelihood. It is a common (and likely true) sentiment that if a person does not learn to utilize AI, they will fall behind peers who do.
+The impossible task arises from the lack of choice. It is a matter of fact that AI is a powerful tool that can accelerate output. You may feel that AI is an affront to the human spirit but simultaneously feel that ignoring it threatens your livelihood. As a web developer and a hobbiest digital artist/photographer, that's how *I* feel. It is a common (and likely true) sentiment that if a person does not learn to utilize AI, they will fall behind peers who do.
 
 Perhaps if you are retired and sitting on a comfortable nest egg you will manage to dodge the problem entirely, but those who are active in academia or the workforce must face it.
 
@@ -89,7 +89,7 @@ Perhaps if you are retired and sitting on a comfortable nest egg you will manage
 
 ## The ~~Solution~~ Response
 
-AI is young, and although humanity created it, we don't truely understand what's happening when modern LLMs generate output. It is a black box into takes text in and spits text back out - the system that does so is so complex that it's very difficult to understand what's actually going on internally even in the simpilest models [5](https://www.youtube.com/watch?v=D8GOeCFFby4). While we don't have a firm understanding of the inner workings of AI, CD was first expressed over 100 years ago by the psychologist Leon Festinger [6](https://en.wikipedia.org/wiki/Leon_Festinger) and humanity has had more time to ponder the idea and how to live with or aleviate the associated sensations. While writing this, I found two relivant sources that address CD as it relates to AI.
+AI is young, and although humanity created it, we don't truely understand what's happening when modern LLMs generate output. It is a black box into takes text in and spits text back out - the system that does so is so complex that it's very difficult to understand what's actually going on internally even in the simpilest models [5](https://www.youtube.com/watch?v=D8GOeCFFby4). While we don't have a firm understanding of the inner workings of AI, CD was first expressed over 100 years ago by the psychologist Leon Festinger [6](https://en.wikipedia.org/wiki/Leon_Festinger) and humanity has had more time to ponder the idea and how to live with or aleviate the associated sensations. While writing this, I found two relivant sources that are relivant to CD as it relates to AI.
 
 [A conceptual exploration of generative AI-induced cognitive dissonance and its emergence in university-level academic writing [7]](https://www.frontiersin.org/journals/artificial-intelligence/articles/10.3389/frai.2025.1573368/full) offers a "call to action" in response to the CD which I believe can be extended to address most AI CD:
 

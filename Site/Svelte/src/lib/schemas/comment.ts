@@ -18,3 +18,5 @@ export const commentFormSchema = z.object({
 		.trim()
 });
 
+export type CommentForm = z.infer<typeof commentFormSchema>
+

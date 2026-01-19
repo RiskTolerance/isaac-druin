@@ -6,7 +6,7 @@ export const metadata: PostMetadata = {
 	slug: "the-stack",
 	date: "2025-11-21",
 	excerpt: "A look at the tools and technologies I use to build my projects",
-	tags: ["development"],
+	tags: ["Development", "SvelteKit"],
 	featuredImage: mountains
 };
 

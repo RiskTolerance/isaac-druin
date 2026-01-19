@@ -1,12 +1,24 @@
 const postComponents = import.meta.glob(['/src/lib/client/posts/blog/**/*.svelte', '!/src/lib/client/posts/blog/**/_*.svelte'], { eager: true });
 const postMetadata = import.meta.glob(['/src/lib/client/posts/blog/**/*.ts', '!/src/lib/client/posts/blog/**/_*.ts'], { eager: true });
 import type { Picture } from 'vite-imagetools';
+
+export type PostTag = 
+	| "AI"
+	| "Philosophy"
+	| "Development"
+	| "Updates"
+	| "SvelteKit"
+	| "Performance"
+	| "Self-Hosted" | "IRL";
+
+export const allPostTags: PostTag[] = ["AI", "Philosophy", "Development", "Updates", "SvelteKit", "Performance", "Self-Hosted", "IRL"];
+
 export interface PostMetadata {
 	title: string;
 	date: string;
 	slug?: string;
 	excerpt?: string;
-	tags?: string[];
+	tags?: PostTag[];
 	featuredImage?: Picture;
 	[key: string]: unknown;
 }

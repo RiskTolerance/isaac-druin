@@ -4,15 +4,22 @@
 		containerWidth,
 		textWidth,
 		baseFontSize,
-		timeline
-	}: { containerWidth: number; textWidth: number; baseFontSize: number; timeline: GSAPTimeline } =
-		$props();
+		timeline,
+		photographerHeight = $bindable()
+	}: {
+		containerWidth: number;
+		textWidth: number;
+		baseFontSize: number;
+		timeline: GSAPTimeline;
+		photographerHeight: number;
+	} = $props();
 	import { mountains } from '$client/images';
 
 	let shadowOffest = $derived(Math.floor(containerWidth / 120));
 </script>
 
 <div
+	bind:clientHeight={photographerHeight}
 	style="max-width: {textWidth}px; font-size: clamp(2.6rem, {baseFontSize * 1.4}px, 8rem);"
 	class="relative mx-auto flex w-full justify-between font-bold italic sm:font-black"
 >

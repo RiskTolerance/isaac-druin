@@ -219,8 +219,8 @@ I also use design tools and AI platforms, which I'll cover separately.
 	<Note>
 		<p class="prose prose-sm max-w-full text-gray-400!">
 			I've decided to leave out any technologies that I would consider as foundational to modern web
-			development. HTML, CSS, JavaScript, Vite, and Nodejs all meet this criteria. If you don't know
-			or use these, you're probably not reading this post (or you're my mom - hi mom!).
+			development. HTML, CSS, and JavaScript all meet this criteria. If you don't know or use these,
+			you're probably not reading this post (or you're my mom - hi mom!).
 		</p>
 	</Note>
 	<Marked

@@ -5,12 +5,16 @@
 	gsap.registerPlugin(SplitText);
 
 	let {
-		containerWidth,
+		uiuxNerdHeight = $bindable(),
 		textWidth,
 		baseFontSize,
 		timeline
-	}: { containerWidth: number; textWidth: number; baseFontSize: number; timeline: GSAPTimeline } =
-		$props();
+	}: {
+		textWidth: number;
+		baseFontSize: number;
+		timeline: GSAPTimeline;
+		uiuxNerdHeight: number;
+	} = $props();
 	let container: HTMLElement;
 	let innerContainer: HTMLElement;
 	let text: HTMLElement;
@@ -28,9 +32,15 @@
 
 	//SAP
 	onMount(() => {
+		// autoAlpha: 0 combined with CSS visibility:hidden ensures element stays hidden
+		// until the timeline playhead reaches this point
 		timeline.from(container, {
 			y: () => container.offsetHeight,
-			duration: 0.5
+			autoAlpha: 0,
+			duration: 0.5,
+			onStart: () => {
+				container.classList.remove('invisible');
+			}
 		});
 
 		timeline.from(innerContainer, {
@@ -52,8 +62,13 @@
 		});
 
 		timeline.from(xRuler, {
+			autoAlpha: 0,
 			scaleX: 0,
-			duration: 0.5
+			duration: 0.5,
+
+			onStart: () => {
+				xRuler.classList.remove('invisible');
+			}
 		});
 
 		if (xRulerText) {
@@ -63,8 +78,12 @@
 		}
 
 		timeline.from(yRuler, {
+			autoAlpha: 0,
 			scaleY: 0,
-			duration: 0.5
+			duration: 0.5,
+			onStart: () => {
+				yRuler.classList.remove('invisible');
+			}
 		});
 
 		if (yRulerText) {
@@ -75,10 +94,10 @@
 	});
 </script>
 
-<div class="overflow-clip">
+<div bind:clientHeight={uiuxNerdHeight} class="overflow-clip">
 	<div
 		style="max-width: {textWidth}px; padding-block: {contentH * 0.2}px;"
-		class="border-brandGreen-900 pattern relative mx-auto flex w-full justify-center overflow-clip border-4"
+		class="border-brandGreen-900 pattern invisible relative mx-auto flex w-full justify-center overflow-clip border-4"
 		bind:clientWidth={containerW}
 		bind:clientHeight={containerH}
 		bind:this={container}
@@ -86,7 +105,7 @@
 		<div
 			bind:this={xRuler}
 			style="width: {marginX - 10}px;"
-			class="border-x-brandYellow-200 absolute top-1/3 left-[5px] z-20 h-2 origin-center -translate-y-1/2 border-x-2 sm:top-1/2 sm:translate-y-0"
+			class="border-x-brandYellow-200 invisible absolute top-1/3 left-[5px] z-20 h-2 origin-center -translate-y-1/2 border-x-2 sm:top-1/2 sm:translate-y-0"
 		>
 			<div class="border-brandYellow-200 absolute top-1/2 w-full -translate-y-1/2 border-y"></div>
 			<div
@@ -105,7 +124,7 @@
 		<div
 			bind:this={yRuler}
 			style="height: {contentH * 0.2 - 4}px;"
-			class="border-y-brandYellow-200 -transalte-x-1/2 absolute bottom-[2px] left-1/2 w-2 origin-bottom border-y-2 sm:bottom-[2px]"
+			class="border-y-brandYellow-200 -transalte-x-1/2 invisible absolute bottom-[2px] left-1/2 w-2 origin-bottom border-y-2 sm:bottom-[2px]"
 		>
 			<div
 				class="border-brandYellow-200 absolute top-0 left-1/2 h-full -translate-x-1/2 border-x"

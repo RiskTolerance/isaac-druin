@@ -5,12 +5,10 @@
 	gsap.registerPlugin(DrawSVGPlugin);
 
 	let {
-		containerWidth,
 		textWidth,
-		baseFontSize,
-		timeline
-	}: { containerWidth: number; textWidth: number; baseFontSize: number; timeline: GSAPTimeline } =
-		$props();
+		timeline,
+		graphicDesignerHeight = $bindable()
+	}: { graphicDesignerHeight: number; textWidth: number; timeline: GSAPTimeline } = $props();
 	let gBgShape: SVGPathElement,
 		aBgShape: SVGPathElement,
 		lQuote: SVGPathElement,
@@ -167,7 +165,12 @@
 	});
 </script>
 
-<div id="steptwo" style="max-width: {textWidth}px;" class="mx-auto">
+<div
+	bind:clientHeight={graphicDesignerHeight}
+	id="steptwo"
+	style="max-width: {textWidth}px;"
+	class="mx-auto"
+>
 	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800.29 87.55">
 		<g>
 			<path
