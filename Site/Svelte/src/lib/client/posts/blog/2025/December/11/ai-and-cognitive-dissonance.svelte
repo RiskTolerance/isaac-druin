@@ -11,7 +11,7 @@
 </script>
 
 <Prose
-	class="-mt[12.5vh] dark:bg-brandGreen-800 post relative z-10 mx-auto max-w-3xl bg-neutral-50 md:-mt-[25vh] md:p-8"
+	class="-mt[12.5vh] dark:bg-brandGreen-800 post relative z-10 mx-auto max-w-3xl bg-neutral-50 p-4 md:-mt-[25vh] md:p-8"
 >
 	<Marked
 		md={`

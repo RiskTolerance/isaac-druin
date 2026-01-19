@@ -77,7 +77,7 @@
 <svelte:window onresize={ballBounceSetup} />
 
 <Prose
-	class="-mt[12.5vh] dark:bg-brandGreen-800 relative z-10 mx-auto max-w-3xl bg-neutral-50 p-8 md:-mt-[25vh]"
+	class="-mt[12.5vh] dark:bg-brandGreen-800 relative z-10 mx-auto max-w-3xl bg-neutral-50 p-4 md:-mt-[25vh] md:p-8"
 >
 	<Marked
 		md={`

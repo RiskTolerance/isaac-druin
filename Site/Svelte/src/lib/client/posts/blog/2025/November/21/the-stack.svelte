@@ -192,7 +192,7 @@
 <svelte:window bind:innerHeight bind:scrollY />
 
 <Prose
-	class="-mt[12.5vh] dark:bg-brandGreen-800 relative z-10 mx-auto max-w-3xl bg-neutral-50 md:-mt-[25vh] md:p-8"
+	class="-mt[12.5vh] dark:bg-brandGreen-800 relative z-10 mx-auto max-w-3xl bg-neutral-50 p-4 md:-mt-[25vh] md:p-8"
 >
 	<Marked
 		md={`
@@ -324,10 +324,7 @@ The "AI" is the part of the application that the user sees and interacts with. I
 			<div id="expanded-skill-short-description" class="h-1/2 w-full"></div>
 		</div>
 	</div>
-	<div
-		id="expanded-skill-long-description"
-		class="prose mx-auto flex w-full max-w-full justify-center"
-	></div>
+	<div id="expanded-skill-long-description" class="prose mx-auto flex justify-center"></div>
 </div>
 
 <button

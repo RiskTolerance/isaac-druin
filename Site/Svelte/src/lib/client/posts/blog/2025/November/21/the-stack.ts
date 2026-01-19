@@ -1,5 +1,5 @@
 import type { PostMetadata } from '$client/posts/posts';
-import { mountains } from '$images';
+import { stack } from '$images';
 
 export const metadata: PostMetadata = {
 	title: "My Development Stack",
@@ -7,6 +7,6 @@ export const metadata: PostMetadata = {
 	date: "2025-11-21",
 	excerpt: "A look at the tools and technologies I use to build my projects",
 	tags: ["Development", "SvelteKit"],
-	featuredImage: mountains
+	featuredImage: stack
 };
 

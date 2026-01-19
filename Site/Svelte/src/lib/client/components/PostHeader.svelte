@@ -3,6 +3,7 @@
 	import type { ProjectMetadata } from '$client/posts/projects';
 	import { Image } from '$blocks';
 	import { Chip } from '$components';
+	import { Link, Link2Off } from '@lucide/svelte';
 
 	function isProjectMetadata(meta: PostMetadata | ProjectMetadata): meta is ProjectMetadata {
 		return 'url' in meta;
@@ -22,10 +23,10 @@
 			class="absolute top-0 left-0 -z-10 flex  h-full w-full object-cover"
 		/>
 	{/if}
-	<div class="bg-brandGreen-800/50 flex w-3xl flex-col items-center gap-8 p-8">
-		<div class=" flex w-full items-center justify-center gap-4">
+	<div class="bg-brandGreen-800/50 relative flex w-3xl flex-col gap-8 p-2 pb-8 sm:p-4 md:p-8">
+		<div class=" flex w-full justify-center gap-4">
 			{#if date}
-				<time datetime={date} class="text-brandGray-200">
+				<time datetime={date} class="text-brandGray-200 text-xs sm:text-base">
 					{new Date(date).toLocaleDateString('en-US', {
 						year: 'numeric',
 						month: 'long',
@@ -51,6 +52,16 @@
 				</div>
 			{/if}
 		</div>
-		<h1 class="mb-2 text-center text-5xl! font-bold text-balance">{title}</h1>
+		<h1 class="my-auto text-center text-3xl! font-bold text-balance md:text-5xl!">
+			{title}
+		</h1>
 	</div>
+	<a
+		href="https://www.google.com"
+		target="_blank"
+		class="text-brandYellow-200 border-brandGray-300 bg-brandGray-800 absolute right-1 bottom-1 flex items-center gap-2 rounded-xs border px-2 py-1 text-xs"
+	>
+		<span>Image credit</span>
+		<Link class="stroke-brandYellow-300 aspect-square h-4 w-4"></Link>
+	</a>
 </header>

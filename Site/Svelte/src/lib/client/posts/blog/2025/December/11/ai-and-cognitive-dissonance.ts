@@ -9,4 +9,3 @@ export const metadata: PostMetadata = {
 	tags: ["AI", "Philosophy"],
 	featuredImage: hydra
 };
-
