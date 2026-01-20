@@ -7,6 +7,12 @@ export const metadata: PostMetadata = {
 	slug: "a-call-to-action-go-touch-grass",
 	excerpt: "",
 	tags: ["AI", "IRL"],
-	featuredImage: grass
+	featuredImage: grass,
+	featuredImageMetadata: {
+		url: 'https://artvee.com/dl/jeunes-filles-couchees-sur-lherbe-two-girls-lying-on-the-grass/',
+		artist: 'Jan Mirosław Peszke',
+		title: 'Two Girls Lying On The Grass',
+		year: '1900'
+	}
 };
 

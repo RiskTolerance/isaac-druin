@@ -81,7 +81,7 @@ In Greek mythology, the Lernaean Hydra is a monster with many heads. To kill a H
 
 AI has become a CD Hydra. As it becomes applicable to more areas of our lives, we will find ourselves grappling with each "head" and the inconsistency in beliefs and values that it implies. We will be forced to voice opinions for which our actions must align lest we live with the resulting cognitive dissonance of believing one thing while justifying another.
 
-The impossible task arises from the lack of choice. It is a matter of fact that AI is a powerful tool that can accelerate output. You may feel that AI is an affront to the human spirit but simultaneously feel that ignoring it threatens your livelihood. As a web developer and a hobbiest digital artist/photographer, that's how *I* feel. It is a common (and likely true) sentiment that if a person does not learn to utilize AI, they will fall behind peers who do.
+The impossible task arises from the lack of choice. It is a matter of fact that AI is a powerful tool that can accelerate output. You may feel that AI is an affront to the human spirit but simultaneously feel that ignoring it threatens your livelihood. As a web developer and a hobbyist digital artist/photographer, that's how *I* feel. It is a common (and likely true) sentiment that if a person does not learn to utilize AI, they will fall behind peers who do.
 
 Perhaps if you are retired and sitting on a comfortable nest egg you will manage to dodge the problem entirely, but those who are active in academia or the workforce must face it.
 
@@ -89,7 +89,7 @@ Perhaps if you are retired and sitting on a comfortable nest egg you will manage
 
 ## The ~~Solution~~ Response
 
-AI is young, and although humanity created it, we don't truely understand what's happening when modern LLMs generate output. It is a black box into takes text in and spits text back out - the system that does so is so complex that it's very difficult to understand what's actually going on internally even in the simpilest models [5](https://www.youtube.com/watch?v=D8GOeCFFby4). While we don't have a firm understanding of the inner workings of AI, CD was first expressed over 100 years ago by the psychologist Leon Festinger [6](https://en.wikipedia.org/wiki/Leon_Festinger) and humanity has had more time to ponder the idea and how to live with or aleviate the associated sensations. While writing this, I found two relivant sources that are relivant to CD as it relates to AI.
+AI is young, and although humanity created it, we don't truly understand what's happening when modern LLMs generate output. It is a black box into takes text in and spits text back out - the system that does so is so complex that it's very difficult to understand what's actually going on internally even in the simplest models [5](https://www.youtube.com/watch?v=D8GOeCFFby4). While we don't have a firm understanding of the inner workings of AI, CD was first expressed over 100 years ago by the psychologist Leon Festinger [6](https://en.wikipedia.org/wiki/Leon_Festinger) and humanity has had more time to ponder the idea and how to live with or alleviate the associated sensations. While writing this, I found two relevant sources that are relevant to CD as it relates to AI.
 
 [A conceptual exploration of generative AI-induced cognitive dissonance and its emergence in university-level academic writing [7]](https://www.frontiersin.org/journals/artificial-intelligence/articles/10.3389/frai.2025.1573368/full) offers a "call to action" in response to the CD which I believe can be extended to address most AI CD:
 
@@ -100,8 +100,8 @@ AI is young, and although humanity created it, we don't truely understand what's
 These approaches can be generalized for individuals and generic AI CD:
 
 1. Learning about AI (effective prompting, creative usage) and how to leverage it effectively (correct/incorrect scenarios) helps to alleviate the dissonance between effort and output.
-2. Comparing and contrasting strict AI output with strict reveiwer output might lead to deeper understanding and a better grasp on the subject, giving the reviewer more confidence in their own abilty to create AI assisted output that is superior to generic AI output.
-3. Experimenting with workflows which delegate menial or repetative work to the AI while reserving creative and fulfilling tasks for the individual.
+2. Comparing and contrasting strict AI output with strict reviewer output might lead to deeper understanding and a better grasp on the subject, giving the reviewer more confidence in their own ability to create AI assisted output that is superior to generic AI output.
+3. Experimenting with workflows which delegate menial or repetitive work to the AI while reserving creative and fulfilling tasks for the individual.
 
 [Cognitive Dissonance Artificial Intelligence (CD-AI): The Mind at War with Itself.
 Harnessing Discomfort to Sharpen Critical Thinking [8]](https://arxiv.org/pdf/2507.08804) argues that CD should not be viewed as a negative effect and that it should be harnessed for personal growth stating:
@@ -110,10 +110,10 @@ Harnessing Discomfort to Sharpen Critical Thinking [8]](https://arxiv.org/pdf/25
 
 Note the citation from 1957. Like I stated, CD has been a topic for cognitive science for a long time. In _The Mind at War with Itself_, the author is focusing on user interactions with AI text generation which diverges from the CD that I'm focusing on. They state that:
 
-1. AI is actually an inhibitor of CD in the sense that it oftan affirms the views of those interacting with it (it is trained to please).
+1. AI is actually an inhibitor of CD in the sense that it often affirms the views of those interacting with it (it is trained to please).
 2. AI is better used as a vehicle for challenging personal views and ideas.
 
-We can utilize AI in both ways. AI can be useful for growth (initiating CD for broader subject matter) and simultaneously an _aleviation_ for fundemental AI CD that is associated with human values _because_ of AI's potential as a tool for growth.
+We can utilize AI in both ways. AI can be useful for growth (initiating CD for broader subject matter) and simultaneously an _alleviation_ for fundamental AI CD that is associated with human values _because_ of AI's potential as a tool for growth.
 
 ## Summary
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { PostMetadata } from '$client/posts/posts';
+	import type { FeaturedImageMetadata, PostMetadata } from '$client/posts/posts';
 	import type { ProjectMetadata } from '$client/posts/projects';
 	import { Image } from '$blocks';
 	import { Chip } from '$components';
@@ -11,8 +11,14 @@
 
 	let { class: className, metadata }: { class?: string; metadata: PostMetadata | ProjectMetadata } =
 		$props();
+
 	let { title, date, tags, featuredImage } = metadata;
-	const url = isProjectMetadata(metadata) ? metadata.url : undefined;
+
+	let featuredImageMetadata: FeaturedImageMetadata | null = $state(null);
+
+	if ('featuredImageMetadata' in metadata) {
+		featuredImageMetadata = metadata.featuredImageMetadata;
+	}
 </script>
 
 <header class="{className} relative flex h-[30vh] items-start justify-center md:h-[50vh]">
@@ -56,12 +62,17 @@
 			{title}
 		</h1>
 	</div>
-	<a
-		href="https://www.google.com"
-		target="_blank"
-		class="text-brandYellow-200 border-brandGray-300 bg-brandGray-800 absolute right-1 bottom-1 flex items-center gap-2 rounded-xs border px-2 py-1 text-xs"
-	>
-		<span>Image credit</span>
-		<Link class="stroke-brandYellow-300 aspect-square h-4 w-4"></Link>
-	</a>
+	{#if featuredImageMetadata}
+		<a
+			href={featuredImageMetadata?.url}
+			target="_blank"
+			class="text-brandYellow-200 border-brandGray-300 bg-brandGray-800 absolute right-1 bottom-1 flex items-center gap-2 rounded-xs border px-2 py-1 text-xs"
+		>
+			<p>
+				{featuredImageMetadata.artist} -<br />
+				{featuredImageMetadata.title} ({featuredImageMetadata.year})
+			</p>
+			<Link class="stroke-brandYellow-300 aspect-square h-4 w-4"></Link>
+		</a>
+	{/if}
 </header>

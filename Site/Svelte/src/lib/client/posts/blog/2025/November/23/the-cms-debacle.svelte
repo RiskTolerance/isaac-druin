@@ -122,7 +122,7 @@ So far, the closest I've come is [SanityCMS](https://www.sanity.io/). There is n
 	/>
 
 	<HighlightCode
-		class=" max-w-3xl"
+		class="max-w-3xl"
 		code={`const post = {
 	title: 'Post',
 	name: 'post',
@@ -168,5 +168,3 @@ let myFunction = () => {
 }`}
 	></HighlightCode>
 </Prose>
-
-<div>Sanity declaration here</div>

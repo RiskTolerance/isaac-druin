@@ -13,15 +13,33 @@ export type PostTag =
 
 export const allPostTags: PostTag[] = ["AI", "Philosophy", "Development", "Updates", "SvelteKit", "Performance", "Self-Hosted", "IRL"];
 
-export interface PostMetadata {
-	title: string;
-	date: string;
-	slug?: string;
-	excerpt?: string;
-	tags?: PostTag[];
-	featuredImage?: Picture;
-	[key: string]: unknown;
+interface PostMetadataBase {
+  title: string;
+  date: string;
+  slug?: string;
+  excerpt?: string;
+  tags?: PostTag[];
 }
+
+export interface FeaturedImageMetadata {
+  url: string;
+  artist: string;
+	title: string;
+	year: string;
+}
+
+export interface PostWithFeaturedImage extends PostMetadataBase {
+  featuredImage: Picture;
+  featuredImageMetadata: FeaturedImageMetadata;
+}
+
+export interface PostWithoutFeaturedImage extends PostMetadataBase {
+  featuredImage?: never;
+  featuredImageDescription?: never;
+  featuredImageUrl?: never;
+}
+
+export type PostMetadata = PostWithFeaturedImage | PostWithoutFeaturedImage;
 
 export interface PostEntry {
 	slug: string;

@@ -12,7 +12,6 @@ export interface ProjectMetadata {
 	tags?: string[];
 	url?: string;
 	featuredImage?: Picture;
-	[key: string]: unknown;
 }
 
 export interface ProjectEntry {

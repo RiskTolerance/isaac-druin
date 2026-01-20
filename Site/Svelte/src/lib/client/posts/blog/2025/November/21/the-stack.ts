@@ -7,6 +7,12 @@ export const metadata: PostMetadata = {
 	date: "2025-11-21",
 	excerpt: "A look at the tools and technologies I use to build my projects",
 	tags: ["Development", "SvelteKit"],
-	featuredImage: stack
+	featuredImage: stack,
+	featuredImageMetadata: {
+		url: 'https://artvee.com/dl/stack-of-wheat/',
+		artist: 'Claude Monet',
+		title: 'Stack of Wheat',
+		year: '1890'
+	}
 };
 

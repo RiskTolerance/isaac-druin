@@ -282,7 +282,7 @@ For business logic, operational software, and anything requiring purpose-built i
 		md={`
 ## Design
 
-The "design" is the part of the application that the user sees and interacts with. It's the UI and the user experience.
+Tools to build out the visual identity of a site, both during pre-production (designing the site) and production (implementing a design)
 	`}
 	/>
 	<div class="grid grid-cols-1 gap-8 sm:grid-cols-2">

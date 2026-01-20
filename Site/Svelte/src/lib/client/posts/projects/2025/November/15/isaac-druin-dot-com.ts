@@ -8,6 +8,6 @@ export const metadata: ProjectMetadata = {
 	excerpt: "A personal website built with constraints: optimized for performance, running on minimal hardware, with zero ongoing costs.",
 	tags: ["sveltekit", "performance", "self-hosted"],
 	url: "https://isaacdruin.com",
-	featuredImage: mountains
+	featuredImage: mountains,
 };
 

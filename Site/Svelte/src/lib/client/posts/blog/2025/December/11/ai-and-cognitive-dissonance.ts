@@ -7,5 +7,11 @@ export const metadata: PostMetadata = {
 	slug: "ai-and-cognitive-dissonance",
 	excerpt: "Exploring how AI forces individuals to align their values with their actions (and thinking about the consequences).",
 	tags: ["AI", "Philosophy"],
-	featuredImage: hydra
+	featuredImage: hydra,
+	featuredImageMetadata: {
+		url: 'https://artvee.com/dl/hercules-and-the-lernaean-hydra/',
+		artist: 'Gustave Moreau',
+		title: 'Hercules and The Lernaean Hydra',
+		year: '1875'
+	}
 };

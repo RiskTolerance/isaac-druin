@@ -28,12 +28,14 @@
 				<span class="text-2xl font-bold text-gray-500 dark:text-gray-400">{name.charAt(0)}</span>
 			</div>
 		{/if}
-		<div class="prose text-start">
+		<div class="prose max-w-prose text-start">
 			<h4 class="skill-name">
 				{name}
 			</h4>
 			<p class="skill-short-description text-sm">{shortDescription}</p>
-			<p class="skill-long-description hidden text-sm">{description}</p>
+			<div class="skill-long-description hidden">
+				{@html description}
+			</div>
 		</div>
 	</div>
 </button>
