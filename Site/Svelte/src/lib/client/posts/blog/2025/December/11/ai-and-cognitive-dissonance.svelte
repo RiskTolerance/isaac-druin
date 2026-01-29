@@ -15,8 +15,6 @@
 >
 	<Marked
 		md={`
-Cover image: [Hercules and the Lernaean Hydra](https://www.artic.edu/artworks/20579/hercules-and-the-lernaean-hydra)
-
 ### Definitions
 
 Cognitive Dissonance: a mental phenomenon in which people unknowingly or subconsciously hold fundamentally conflicting cognitions. [1](https://en.wikipedia.org/wiki/Cognitive_dissonance)

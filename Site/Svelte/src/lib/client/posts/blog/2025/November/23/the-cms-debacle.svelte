@@ -117,7 +117,6 @@ So, I've been on a quest to find the CMS that works with the aforementioned down
 OK, I'll admit, that's a tall order. But like I said, there are a _lot_ of options.
 
 So far, the closest I've come is [SanityCMS](https://www.sanity.io/). There is no self-hosted option (and thus, no additional programming language), but the base tier is free. It handles images and all that jazz. But the crown jewel is the content modeling. Here's an example of a basic blog post:
-
 		`}
 	/>
 
