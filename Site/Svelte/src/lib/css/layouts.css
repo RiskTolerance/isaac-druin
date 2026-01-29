@@ -13,5 +13,5 @@
 }
 
 .grid-layout {
-  @apply gap-4 grid;
+  @apply gap-6 grid;
 }

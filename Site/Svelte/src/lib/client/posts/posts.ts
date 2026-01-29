@@ -1,50 +1,56 @@
-const postComponents = import.meta.glob(['/src/lib/client/posts/blog/**/*.svelte', '!/src/lib/client/posts/blog/**/_*.svelte'], { eager: true });
-const postMetadata = import.meta.glob(['/src/lib/client/posts/blog/**/*.ts', '!/src/lib/client/posts/blog/**/_*.ts'], { eager: true });
-import type { Picture } from 'vite-imagetools';
+const postComponents = import.meta.glob(['/src/lib/client/posts/blog/**/*.svelte', '!/src/lib/client/posts/blog/**/_*.svelte'], { eager: true })
+const postMetadata = import.meta.glob(['/src/lib/client/posts/blog/**/*.ts', '!/src/lib/client/posts/blog/**/_*.ts'], { eager: true })
+import type { Picture } from 'vite-imagetools'
 
-export type PostTag = 
+export type PostTag =
 	| "AI"
 	| "Philosophy"
 	| "Development"
 	| "Updates"
 	| "SvelteKit"
 	| "Performance"
-	| "Self-Hosted" | "IRL";
+	| "Self-Hosted" | "IRL" | "Music"
 
-export const allPostTags: PostTag[] = ["AI", "Philosophy", "Development", "Updates", "SvelteKit", "Performance", "Self-Hosted", "IRL"];
+export const allPostTags: PostTag[] = ["AI", "Philosophy", "Development", "Updates", "SvelteKit", "Performance", "Self-Hosted", "IRL", "Music"]
 
 interface PostMetadataBase {
-  title: string;
-  date: string;
-  slug?: string;
-  excerpt?: string;
-  tags?: PostTag[];
+	title: string
+	date: string
+	slug?: string
+	excerpt?: string
+	tags?: PostTag[]
 }
 
 export interface FeaturedImageMetadata {
-  url: string;
-  artist: string;
-	title: string;
-	year: string;
+	url: string
+	artist: string
+	title: string
+	year: string
 }
 
 export interface PostWithFeaturedImage extends PostMetadataBase {
-  featuredImage: Picture;
-  featuredImageMetadata: FeaturedImageMetadata;
+	featuredImage: Picture
+	featuredImageMetadata: FeaturedImageMetadata
+}
+
+export interface PostWithFeaturedImageOptionalMetadata extends PostMetadataBase {
+	featuredImage: Picture
+	featuredImageMetadata?: Partial<FeaturedImageMetadata>
 }
 
 export interface PostWithoutFeaturedImage extends PostMetadataBase {
-  featuredImage?: never;
-  featuredImageDescription?: never;
-  featuredImageUrl?: never;
+	featuredImage?: never
+	featuredImageDescription?: never
+	featuredImageUrl?: never
+	featuredImageMetadata?: never
 }
 
-export type PostMetadata = PostWithFeaturedImage | PostWithoutFeaturedImage;
+export type PostMetadata = PostWithFeaturedImage | PostWithFeaturedImageOptionalMetadata | PostWithoutFeaturedImage
 
 export interface PostEntry {
-	slug: string;
-	component: unknown;
-	metadata: PostMetadata;
+	slug: string
+	component: unknown
+	metadata: PostMetadata
 }
 
 /**
@@ -55,35 +61,35 @@ export function getAllPosts(): PostEntry[] {
 	return Object.entries(postComponents)
 		.map(([path, module]) => {
 			// Find corresponding metadata file
-			const metaPath = path.replace(/\.svelte$/, '.ts');
-			const metadataModule = postMetadata[metaPath] as { metadata: PostMetadata } | undefined;
+			const metaPath = path.replace(/\.svelte$/, '.ts')
+			const metadataModule = postMetadata[metaPath] as { metadata: PostMetadata } | undefined
 
 			if (!metadataModule || !metadataModule.metadata) {
-				throw new Error(`Missing metadata file for ${path}. Expected ${metaPath} with exported 'metadata'`);
+				throw new Error(`Missing metadata file for ${path}. Expected ${metaPath} with exported 'metadata'`)
 			}
 
-			const metadata = metadataModule.metadata;
+			const metadata = metadataModule.metadata
 
 			// Use explicit slug from metadata if provided, otherwise extract from filename
 			const slug = metadata.slug || path
 				.replace('/src/lib/client/posts/blog/', '')
 				.replace(/\.svelte$/, '')
 				.split('/')
-				.pop() || '';
+				.pop() || ''
 
 			return {
 				slug,
 				component: (module as { default: unknown }).default,
 				metadata
-			};
+			}
 		})
-		.filter((post): post is PostEntry => post !== null);
+		.filter((post): post is PostEntry => post !== null)
 }
 
 /**
  * Get a single post by slug
  */
 export function getPostBySlug(slug: string): PostEntry | undefined {
-	return getAllPosts().find((post) => post.slug === slug);
+	return getAllPosts().find((post) => post.slug === slug)
 }
 

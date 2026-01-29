@@ -20,10 +20,10 @@
 
 <a href="/{routePrefix}/{slug}" class="group transition-colors">
 	<CardLayout image={metadata.featuredImage} class="h-full">
-		<article class="border-brandGray-300 relative h-full border-b pb-6">
-			<div class="relative z-10 flex h-full flex-col justify-between">
+		<article class="relative h-full">
+			<div class="group z-10 flex h-full flex-col justify-between gap-4">
 				<div>
-					<h2 class="mb-2 text-center text-2xl! font-bold text-balance sm:text-left">
+					<h2 class="mb-2 text-center text-2xl! text-balance sm:text-left">
 						{metadata.title}
 					</h2>
 					{#if metadata.excerpt}
@@ -33,7 +33,9 @@
 					{/if}
 				</div>
 
-				<div class="text-brandGray-300 flex flex-col items-center gap-4 text-sm sm:flex-row">
+				<div
+					class="text-brandGreen-200 border-brandGreen-300 flex flex-col items-center justify-between gap-4 border-t pt-4 text-sm opacity-80 transition-opacity duration-200 group-hover:opacity-100 sm:flex-row"
+				>
 					{#if metadata.date}
 						<time datetime={metadata.date}>
 							{new Date(metadata.date).toLocaleDateString('en-US', {

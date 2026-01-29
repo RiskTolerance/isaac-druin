@@ -65,8 +65,8 @@
   --brand-light-dd: var(--color-brandGray-50);
 
   /* Dark theme semantic tokens */
-  --brand-dark-body: var(--color-brandGreen-50);
-  --brand-dark-headings: var(--color-brandGreen-100);
+  --brand-dark-body: var(--color-brandGray-50);
+  --brand-dark-headings: var(--color-brandGray-50);
   --brand-dark-lead: var(--color-brandGreen-300);
   --brand-dark-links: var(--color-brandYellow-200);
   --brand-dark-bold: var(--color-brandGreen-100);
@@ -87,46 +87,80 @@
 
 /* Prose styling for markdown/rich content (light) */
 @utility prose-brand-light {
-  p, li, dl, dd, em, ol, ul, table, tr, figure {
+
+  p,
+  li,
+  dl,
+  dd,
+  em,
+  ol,
+  ul,
+  table,
+  tr,
+  figure {
     color: var(--brand-light-body);
   }
+
   [class~="lead"] {
     color: var(--brand-light-lead);
   }
-  h1, h2, h3, h4, h5, h6, th, dt, strong, b, thead {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  th,
+  dt,
+  strong,
+  b,
+  thead {
     color: var(--brand-light-headings);
   }
+
   a {
     color: var(--brand-light-links);
   }
+
   blockquote {
     color: var(--brand-light-quotes);
     border-color: var(--brand-light-borders);
   }
+
   figcaption {
     color: var(--brand-light-captions);
   }
-  kbd, code {
+
+  kbd,
+  code {
     color: var(--brand-light-code);
   }
+
   pre {
     background-color: var(--brand-light-pre-bg);
   }
+
   pre code {
     color: var(--brand-light-pre-code);
   }
+
   hr {
     border-color: var(--brand-light-hr);
   }
+
   th {
     border-color: var(--brand-light-th-borders);
   }
+
   td {
     border-color: var(--brand-light-td-borders);
   }
+
   ol li::marker {
     color: var(--brand-light-counters);
   }
+
   ul li::marker {
     color: var(--brand-light-bullets);
   }
@@ -134,52 +168,89 @@
 
 /* Prose styling for markdown/rich content (dark) */
 @utility prose-brand-dark {
-  p, li, dl, dd, dt, em, ol, ul, table, tr, figure {
+
+  p,
+  li,
+  dl,
+  dd,
+  dt,
+  em,
+  ol,
+  ul,
+  table,
+  tr,
+  figure {
     color: var(--brand-dark-body);
   }
+
   [class~="lead"] {
     color: var(--brand-dark-lead);
   }
-  h1, h2, h3, h4, h5, h6, th, dt, strong, b, thead {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  th,
+  dt,
+  strong,
+  b,
+  thead {
     color: var(--brand-dark-headings);
   }
+
   a {
     color: var(--brand-dark-links);
   }
+
   blockquote {
     color: var(--brand-dark-quotes);
     border-color: var(--brand-dark-borders);
   }
+
   figcaption {
     color: var(--brand-dark-captions);
   }
-  kbd, code {
+
+  kbd,
+  code {
     color: var(--brand-dark-code);
   }
+
   pre {
     background-color: var(--brand-dark-pre-bg);
   }
+
   pre code {
     color: var(--brand-dark-pre-code);
   }
+
   hr {
     border-color: var(--brand-dark-hr);
   }
+
   th {
     border-color: var(--brand-dark-th-borders);
   }
+
   td {
     border-color: var(--brand-dark-td-borders);
   }
+
   ol li::marker {
     color: var(--brand-dark-counters);
   }
+
   ul li::marker {
     color: var(--brand-dark-bullets);
   }
+
   dl dt {
     color: var(--brand-dark-dt)
   }
+
   dl dd {
     color: var(--brand-dark-dd)
   }
@@ -187,49 +258,72 @@
 
 /* General text styling for non-prose content (light) */
 @utility text-brand-light {
-  p, li {
+
+  p,
+  li {
     color: var(--brand-light-body);
   }
-  h1, h2, h3, h4, h5, h6, strong, b {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  strong,
+  b {
     color: var(--brand-light-headings);
   }
+
   a {
     color: var(--brand-light-links);
   }
+
   code {
     color: var(--brand-light-code);
   }
+
   pre {
     background-color: var(--brand-light-pre-bg);
   }
+
   pre code {
     color: var(--brand-light-pre-code);
   }
+
   blockquote {
     color: var(--brand-light-quotes);
     border-color: var(--brand-light-borders);
   }
+
   figcaption {
     color: var(--brand-light-captions);
   }
+
   hr {
     border-color: var(--brand-light-hr);
   }
+
   ol li::marker {
     color: var(--brand-light-counters);
   }
+
   ul li::marker {
     color: var(--brand-light-bullets);
   }
+
   th {
     border-color: var(--brand-light-th-borders);
   }
+
   td {
     border-color: var(--brand-light-td-borders);
   }
+
   dl dt {
     color: var(--brand-light-dt)
   }
+
   dl dd {
     color: var(--brand-light-dd)
   }
@@ -237,43 +331,64 @@
 
 /* General text styling for non-prose content (dark) */
 @utility text-brand-dark {
-  p, li {
+
+  p,
+  li {
     color: var(--brand-dark-body);
   }
-  h1, h2, h3, h4, h5, h6, strong, b {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  strong,
+  b {
     color: var(--brand-dark-headings);
   }
+
   a {
     color: var(--brand-dark-links);
   }
+
   code {
     color: var(--brand-dark-code);
   }
+
   pre {
     background-color: var(--brand-dark-pre-bg);
   }
+
   pre code {
     color: var(--brand-dark-pre-code);
   }
+
   blockquote {
     color: var(--brand-dark-quotes);
     border-color: var(--brand-dark-borders);
   }
+
   figcaption {
     color: var(--brand-dark-captions);
   }
+
   hr {
     border-color: var(--brand-dark-hr);
   }
+
   ol li::marker {
     color: var(--brand-dark-counters);
   }
+
   ul li::marker {
     color: var(--brand-dark-bullets);
   }
+
   th {
     border-color: var(--brand-dark-th-borders);
   }
+
   td {
     border-color: var(--brand-dark-td-borders);
   }

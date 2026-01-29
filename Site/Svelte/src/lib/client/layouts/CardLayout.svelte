@@ -8,7 +8,7 @@
 	}: { children: any; class?: string; image?: Picture } = $props();
 </script>
 
-<div class="group relative h-full overflow-clip">
+<div class="group border-brandGreen-300 relative h-full overflow-clip border">
 	<!-- background image -->
 	{#if image}
 		<Image
